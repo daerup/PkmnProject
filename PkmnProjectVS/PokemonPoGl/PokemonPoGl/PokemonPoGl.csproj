@@ -48,6 +48,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.16\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -85,6 +88,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,6 +96,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="img\stage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\sprites\blastoiseBack.gif" />
+    <Resource Include="img\sprites\blastoiseFront.gif" />
+    <Resource Include="img\sprites\blazikenBack.gif" />
+    <Resource Include="img\sprites\blazikenFront.gif" />
+    <Resource Include="img\sprites\charizardBack.gif" />
+    <Resource Include="img\sprites\charizardFront.gif" />
+    <Resource Include="img\sprites\corsolaBack.gif" />
+    <Resource Include="img\sprites\corsolaFront.gif" />
+    <Resource Include="img\sprites\feraligatrBack.gif" />
+    <Resource Include="img\sprites\feraligatrFront.gif" />
+    <Resource Include="img\sprites\groudonBack.gif" />
+    <Resource Include="img\sprites\groudonFront.gif" />
+    <Resource Include="img\sprites\infernapeBack.gif" />
+    <Resource Include="img\sprites\infernapeFront.gif" />
+    <Resource Include="img\sprites\pinsirBack.gif" />
+    <Resource Include="img\sprites\pinsirFront.gif" />
+    <Resource Include="img\sprites\sceptileBack.gif" />
+    <Resource Include="img\sprites\sceptileFront.gif" />
+    <Resource Include="img\sprites\swampertBack.gif" />
+    <Resource Include="img\sprites\swampertFront.gif" />
+    <Resource Include="img\sprites\torterraBack.gif" />
+    <Resource Include="img\sprites\torterraFront.gif" />
+    <Resource Include="img\sprites\venusaurBack.gif" />
+    <Resource Include="img\sprites\venusaurFront.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
