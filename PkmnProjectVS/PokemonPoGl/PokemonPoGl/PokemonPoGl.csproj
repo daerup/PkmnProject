@@ -103,34 +103,32 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="res\sprites\blastoiseBack.gif" />
-    <Resource Include="res\sprites\blastoiseFront.gif" />
-    <Resource Include="res\sprites\blazikenBack.gif" />
-    <Resource Include="res\sprites\blazikenFront.gif" />
-    <Resource Include="res\sprites\charizardBack.gif" />
-    <Resource Include="res\sprites\charizardFront.gif" />
-    <Resource Include="res\sprites\corsolaBack.gif" />
-    <Resource Include="res\sprites\corsolaFront.gif" />
-    <Resource Include="res\sprites\feraligatrBack.gif" />
-    <Resource Include="res\sprites\feraligatrFront.gif" />
-    <Resource Include="res\sprites\groudonBack.gif" />
-    <Resource Include="res\sprites\groudonFront.gif" />
-    <Resource Include="res\sprites\infernapeBack.gif" />
-    <Resource Include="res\sprites\infernapeFront.gif" />
-    <Resource Include="res\sprites\pinsirBack.gif" />
-    <Resource Include="res\sprites\pinsirFront.gif" />
-    <Resource Include="res\sprites\sceptileBack.gif" />
-    <Resource Include="res\sprites\sceptileFront.gif" />
-    <Resource Include="res\sprites\swampertBack.gif" />
-    <Resource Include="res\sprites\swampertFront.gif" />
-    <Resource Include="res\sprites\torterraBack.gif" />
-    <Resource Include="res\sprites\torterraFront.gif" />
-    <Resource Include="res\sprites\venusaurBack.gif" />
-    <Resource Include="res\sprites\venusaurFront.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="res\music\battleMusic.wav" />
     <Content Include="res\music\titleMusic.wav" />
+    <Resource Include="res\sprites\blastoise\back.gif" />
+    <Resource Include="res\sprites\blastoise\front.gif" />
+    <Resource Include="res\sprites\blaziken\back.gif" />
+    <Resource Include="res\sprites\blaziken\front.gif" />
+    <Resource Include="res\sprites\charizard\back.gif" />
+    <Resource Include="res\sprites\charizard\front.gif" />
+    <Resource Include="res\sprites\charizard\pinsir\back.gif" />
+    <Resource Include="res\sprites\charizard\pinsir\front.gif" />
+    <Resource Include="res\sprites\corsola\back.gif" />
+    <Resource Include="res\sprites\corsola\front.gif" />
+    <Resource Include="res\sprites\feraligatr\back.gif" />
+    <Resource Include="res\sprites\feraligatr\front.gif" />
+    <Resource Include="res\sprites\groudon\back.gif" />
+    <Resource Include="res\sprites\groudon\front.gif" />
+    <Resource Include="res\sprites\infernape\back.gif" />
+    <Resource Include="res\sprites\infernape\front.gif" />
+    <Resource Include="res\sprites\sceptile\back.gif" />
+    <Resource Include="res\sprites\sceptile\front.gif" />
+    <Resource Include="res\sprites\swampert\back.gif" />
+    <Resource Include="res\sprites\swampert\front.gif" />
+    <Resource Include="res\sprites\torterra\back.gif" />
+    <Resource Include="res\sprites\torterra\front.gif" />
+    <Resource Include="res\sprites\venusaur\back.gif" />
+    <Resource Include="res\sprites\venusaur\front.gif" />
     <Content Include="res\stage\grass.png" />
     <Content Include="res\stage\rock.png" />
   </ItemGroup>

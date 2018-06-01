@@ -1,0 +1,16 @@
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Release\PokemonPoGl.exe.config
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Release\PokemonPoGl.exe
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Release\PokemonPoGl.pdb
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Release\WpfAnimatedGif.dll
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Release\WpfAnimatedGif.xml
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\MainWindow.baml
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\MainWindow.g.cs
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\App.g.cs
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl_Content.g.cs
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl_MarkupCompile.cache
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl.g.resources
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl.Properties.Resources.resources
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl.csproj.GenerateResource.Cache
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl.csproj.CoreCompileInputs.cache
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl.exe
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl.pdb
