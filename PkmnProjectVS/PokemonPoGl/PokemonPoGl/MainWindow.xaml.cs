@@ -23,6 +23,25 @@ namespace PokemonPoGl
         public MainWindow()
         {
             InitializeComponent();
+            InitializePokemon();
+            InitializeAttacks();
         }
+    }
+    void InitializePokemon()
+    {
+        pokemon Charizard = new pokemon(types.fire);
+        pokemon Blaziken = new pokemon(types.fire);
+        pokemon Infernape = new pokemon(types.fire);
+        pokemon Blastoise = new pokemon(types.water);
+        pokemon Feraligatr = new pokemon(types.water);
+        pokemon Swampert = new pokemon(types.water);
+        pokemon Sceptile = new pokemon(types.plant);
+        pokemon Torterra = new pokemon(types.plant);
+        pokemon Venusaur = new pokemon(types.plant);
+
+        pokemon Pinsir = new pokemon(types.plant);
+        pokemon corsola = new pokemon(types.water);
+        pokemon Groudon = new pokemon(types.fire);
+
     }
 }

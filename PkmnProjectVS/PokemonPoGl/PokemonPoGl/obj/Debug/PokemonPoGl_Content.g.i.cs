@@ -8,7 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/pokemon/pinsir/back.gif")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/pokemon/pinsir/front.gif")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("res/music/battlemusic.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("res/music/titlemusic.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("res/stage/grass.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("res/stage/rock.png")]
 
 
