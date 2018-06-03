@@ -1,15 +1,62 @@
 ﻿<Window x:Class="PokemonPoGl.MainWindow"
+        
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
-        Title="BattleWindow" Height="563" Width="1000">
-    <Grid>
+        xmlns:progressbar="clr-namespace:progressbar"
+        Title="BattleWindow" Height="821" Width="1000">
+    <Grid Margin="0,0,0,0">
         <Grid.Background>
             <ImageBrush ImageSource="H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\stage\rock.png"/>
         </Grid.Background>
-        <Image x:Name="enemyPokemon" gif:ImageBehavior.AnimatedSource="res\sprites\groudon\front.gif" Margin="580,58,142,240" MouseEnter="enemyPokemon_MouseEnter"/>
-        <Image x:Name="playerPokemon" gif:ImageBehavior.AnimatedSource="res\sprites\groudon\back.gif" Margin="78,58,494,11"/>
-        <ProgressBar x:Name="playerHP" Height="30" Width="400"  Margin="1356,657,156,302" Maximum="1000" Value="752"/>
-        <ProgressBar x:Name="enemyHP" Height="30" Width="400"  Margin="98,176,1414,783" Maximum="1000" Value="180"/>
+        <Image x:Name="img_playerPokemon" gif:ImageBehavior.AnimatedSource="res/sprites/venusaur/back.gif" Margin="48,189,411,-12"></Image>
+        <Image x:Name="img_enemyPokemon" gif:ImageBehavior.AnimatedSource="res/sprites/venusaur/front.gif" Margin="537,93,75,327"></Image>
+
+        <progressbar:SmoothProgressBar x:Name="playerHP" Height="30" Width="250"  Margin="667,529,75,231" Minimum="0" Maximum="1000" Value="1000" Foreground="Green" ValueChanged="PlayerHP_ValueChanged">
+            <ProgressBar.Style>
+                <Style>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="progressbar:SmoothProgressBar.DragEnter">
+                            <BeginStoryboard>
+                                <Storyboard x:Name="playerBlink">
+                                    <DoubleAnimation 
+                                        Storyboard.Target="{Binding Source={x:Reference img_playerPokemon}}"
+                                        Storyboard.TargetProperty="(Image.Opacity)"
+                                        BeginTime="0:0:0" Duration="0:0:0.3"
+                                        From="1.0" To="0.0" 
+                                        RepeatBehavior="3x" 
+                                        AutoReverse="True"
+                                        />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ProgressBar.Style>
+        </progressbar:SmoothProgressBar>
+
+        <progressbar:SmoothProgressBar x:Name="enemyHP" Height="30" Width="250"  Margin="0,30,592,472" Minimum="0" Maximum="1000" Value="1000" Foreground="Green" ValueChanged="EnemyHP_ValueChanged">
+            <ProgressBar.Style>
+                <Style>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="progressbar:SmoothProgressBar.DragEnter">
+                            <BeginStoryboard>
+                                <Storyboard x:Name="enemyBlink">
+                                    <DoubleAnimation 
+                                        Storyboard.Target="{Binding Source={x:Reference img_enemyPokemon}}"
+                                        Storyboard.TargetProperty="(Image.Opacity)"
+                                        BeginTime="0:0:0" Duration="0:0:0.3"
+                                        From="1.0" To="0.0" 
+                                        RepeatBehavior="3x" 
+                                        AutoReverse="True"
+                                        />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ProgressBar.Style>
+        </progressbar:SmoothProgressBar>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="667,625,0,0" VerticalAlignment="Top" Width="228" Height="74" Click="Button_Click"/>
     </Grid>
 </Window>

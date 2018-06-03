@@ -1,8 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using System.Threading;
+﻿using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace PokemonPoGl
 {
@@ -11,53 +9,76 @@ namespace PokemonPoGl
     /// </summary>
     public partial class MainWindow : Window
     {
-        public pokemon Charizard = new pokemon(types.fire);
-        public pokemon Blaziken = new pokemon(types.fire);
-        public pokemon Infernape = new pokemon(types.fire);
-        public pokemon Blastoise = new pokemon(types.water);
-        public pokemon Feraligatr = new pokemon(types.water);
-        public pokemon Swampert = new pokemon(types.water);
-        public pokemon Sceptile = new pokemon(types.plant);
-        public pokemon Torterra = new pokemon(types.plant);
-        public pokemon Venusaur = new pokemon(types.plant);
+        public pokemon Charizard = new pokemon(Types.Fire, nameof(Charizard));
+        public pokemon Blaziken = new pokemon(Types.Fire, nameof(Blaziken));
+        public pokemon Infernape = new pokemon(Types.Fire, nameof(Infernape));
+        public pokemon Blastoise = new pokemon(Types.Water, nameof(Blastoise));
+        public pokemon Feraligatr = new pokemon(Types.Water, nameof(Feraligatr));
+        public pokemon Swampert = new pokemon(Types.Water, nameof(Swampert));
+        public pokemon Sceptile = new pokemon(Types.Plant, nameof(Sceptile));
+        public pokemon Torterra = new pokemon(Types.Plant, nameof(Torterra));
+        public pokemon Venusaur = new pokemon(Types.Plant, nameof(Venusaur));
 
-        public pokemon Pinsir = new pokemon(types.plant);
-        public pokemon corsola = new pokemon(types.water);
-        public pokemon Groudon = new pokemon(types.fire);
+        public pokemon Pinsir = new pokemon(Types.Plant, nameof(Pinsir));
+        public pokemon corsola = new pokemon(Types.Water, nameof(corsola));
+        public pokemon Groudon = new pokemon(Types.Fire, nameof(Groudon));
 
+        private double _playerDamage;
+        private double _enemyDamage;
         
         public MainWindow()
         {
             InitializeComponent();
-            types weakness = Pinsir.GetWeakness();
-
-            //blink();
-
+            pokemon playerPokemon = Pinsir;
+            Types weakness = playerPokemon.GetWeakness();
         }
-        public void blink()
+
+        private void _decreasePlayerHP()
         {
-            for (int i = 0; i < 10; i++)
+            double newHP = playerHP.Value - _playerDamage;
+            while (playerHP.Value != newHP)
             {
-                enemyPokemon.Visibility = System.Windows.Visibility.Hidden;
-                Thread.Sleep(500);
-                enemyPokemon.Visibility = System.Windows.Visibility.Visible; 
+                //playerHP.Value -= 0.001;
             }
         }
 
-        private async void enemyPokemon_MouseEnter(object sender, MouseEventArgs e)
+        private void PlayerHP_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            for (int i = 0; i < 10; i++)
+            if (playerHP.Value < (playerHP.Maximum / 4)) //Damit immer nach 25% geprüft wird
             {
-
-                enemyPokemon.Visibility = System.Windows.Visibility.Hidden;
-                await PutTaskDelay();
-                enemyPokemon.Visibility = System.Windows.Visibility.Visible;
-
+                playerHP.Foreground = Brushes.Red;
+            }
+            else if (playerHP.Value < (playerHP.Maximum / 2))
+            {
+                playerHP.Foreground = Brushes.Orange;
+            }
+            else
+            {
+                playerHP.Foreground = Brushes.Green;
             }
         }
-        async Task PutTaskDelay()
+
+        private void EnemyHP_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            await Task.Delay(200);
+            if (enemyHP.Value < (enemyHP.Maximum / 4)) //Damit immer nach 25% geprüft wird
+            {
+                enemyHP.Foreground = Brushes.Red;
+            }
+            else if (enemyHP.Value < (enemyHP.Maximum / 2))
+            {
+                enemyHP.Foreground = Brushes.Orange;
+            }
+            else
+            {
+                enemyHP.Foreground = Brushes.Green;
+            }
+            //Storyboard sb = this.FindResource("playerBlink") as Storyboard;
+            //sb.Begin();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            playerHP._value = 20; 
         }
     }
 }

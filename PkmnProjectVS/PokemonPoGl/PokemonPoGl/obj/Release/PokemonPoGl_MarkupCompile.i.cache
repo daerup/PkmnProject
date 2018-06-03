@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\
 PokemonPoGl
 none
 false
-DEBUG;TRACE
+TRACE
 H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\App.xaml
 11151548125
 41246409986
-8-923057164
+111638872740
 16-1746926725
 MainWindow.xaml;
 

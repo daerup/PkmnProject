@@ -1,57 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-
-namespace PokemonPoGl
+﻿namespace PokemonPoGl
 {
-    public enum types
+    public enum Types
     {
-        fire,
-        water,
-        plant
+        Fire,
+        Water,
+        Plant
     }
     public class pokemon
     {
-        public types type { get; set; }
-        public int hp
+        public string Name { get; set; }
+        public Types Type { get; set; }
+        attack _stabAttack = new attack();
+        attack _normalAttack = new attack();
+        public int Hp
         {
-            get
+            get => Hp;
+            private set
             {
-                return hp;
-            }
-            set
-            {
-                if (hp > 1000)
+                if (Hp > 1000)
                 {
-                    hp = 1000;
+                    Hp = 1000;
                 }
-                else if (hp < 0)
+                else if (Hp < 0)
                 {
-                    hp = 0;
+                    Hp = 0;
                 }
             }
         }
-        attack stabAttack = new attack();
-        attack normalAttack = new attack();
+
 
        
 
-        public pokemon(types type)
+        public pokemon(Types type, string name)
         {
-
-            this.type = type;
+            Type = type;
+            Name = name;
         }
 
-        public types GetWeakness()
+        public Types GetWeakness()
         {
-            switch (this.type)
+            switch (Type)
             {
-                case types.water: return types.plant;
-                case types.plant: return types.fire;
-                default: return types.fire;
+                case Types.Water: return Types.Plant;
+                case Types.Plant: return Types.Fire;
+                default: return Types.Fire;
             }     
         }
 

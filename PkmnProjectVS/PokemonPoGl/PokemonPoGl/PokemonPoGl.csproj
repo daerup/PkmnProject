@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -45,6 +46,7 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -57,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SmoothProgressBar.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,9 +102,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="res\music\battleMusic.wav" />
     <Content Include="res\music\titleMusic.wav" />
@@ -111,8 +112,8 @@
     <Resource Include="res\sprites\blaziken\front.gif" />
     <Resource Include="res\sprites\charizard\back.gif" />
     <Resource Include="res\sprites\charizard\front.gif" />
-    <Resource Include="res\sprites\charizard\pinsir\back.gif" />
-    <Resource Include="res\sprites\charizard\pinsir\front.gif" />
+    <Resource Include="res\sprites\pinsir\back.gif" />
+    <Resource Include="res\sprites\pinsir\front.gif" />
     <Resource Include="res\sprites\corsola\back.gif" />
     <Resource Include="res\sprites\corsola\front.gif" />
     <Resource Include="res\sprites\feraligatr\back.gif" />

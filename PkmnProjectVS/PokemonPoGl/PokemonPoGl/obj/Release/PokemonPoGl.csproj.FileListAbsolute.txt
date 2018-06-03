@@ -14,3 +14,4 @@ H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPo
 H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl.csproj.CoreCompileInputs.cache
 H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl.exe
 H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl.pdb
+H:\Bilder\Bibliothek\Visual Studio 2017\pkmn\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Release\PokemonPoGl.csprojResolveAssemblyReference.cache
