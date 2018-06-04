@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Timers;
 using System.Windows.Controls;
-using System.Windows.Media.Animation;
 using System.Windows.Threading;
 
-namespace progressbar
+namespace smoothBar
 {
     class SmoothProgressBar : ProgressBar
     {
-        private Timer _drawTimer;
+        public bool ShouldBlink { get; set; }
+        private readonly Timer _drawTimer;
         private double _speed;
 
         private new double Value;
-        public double _value
+
+        public double SmoothValue
         {
-            get { return Value; }
+            get => Value;
             set
             {
                 if (Value > 1000)
@@ -33,7 +34,6 @@ namespace progressbar
         }
 
 
-
         public double Acceleration { get; set; }
 
         public SmoothProgressBar()
@@ -45,6 +45,7 @@ namespace progressbar
             _drawTimer.Interval = 40;
             _drawTimer.Enabled = true;
 
+            ShouldBlink = false;
             _speed = 0;
             Acceleration = 0.5;
             Value = 1000;
@@ -53,7 +54,7 @@ namespace progressbar
         public void OnTimerEvent(object source, ElapsedEventArgs e)
         {
             // Dispatcher aufrufen um an STA-Thread von wpf zu gelangen
-            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate
+            Dispatcher.Invoke(DispatcherPriority.Normal, (Action) delegate
             {
                 if (Value != base.Value)
                 {

@@ -131,7 +131,9 @@
     <Resource Include="res\sprites\venusaur\back.gif" />
     <Resource Include="res\sprites\venusaur\front.gif" />
     <Content Include="res\stage\grass.png" />
-    <Content Include="res\stage\rock.png" />
+    <Resource Include="res\stage\rock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

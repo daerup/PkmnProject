@@ -35,8 +35,8 @@ namespace PokemonPoGl
 
         private void _decreasePlayerHP()
         {
-            double newHP = playerHP.Value - _playerDamage;
-            while (playerHP.Value != newHP)
+            double newHP = PlayerHp.Value - _playerDamage;
+            while (PlayerHp.Value != newHP)
             {
                 //playerHP.Value -= 0.001;
             }
@@ -44,41 +44,62 @@ namespace PokemonPoGl
 
         private void PlayerHP_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (playerHP.Value < (playerHP.Maximum / 4)) //Damit immer nach 25% geprüft wird
+            if (PlayerHp.Value < (PlayerHp.Maximum / 4)) //Damit immer nach 25% geprüft wird
             {
-                playerHP.Foreground = Brushes.Red;
+                PlayerHp.Foreground = Brushes.Red;
             }
-            else if (playerHP.Value < (playerHP.Maximum / 2))
+            else if (PlayerHp.Value < (PlayerHp.Maximum / 2))
             {
-                playerHP.Foreground = Brushes.Orange;
+                PlayerHp.Foreground = Brushes.Orange;
             }
             else
             {
-                playerHP.Foreground = Brushes.Green;
+                PlayerHp.Foreground = Brushes.Green;
+            }
+
+            if (PlayerHp.SmoothValue != PlayerHp.Value)
+            {
+                if (PlayerHp.Tag != $@"ShouldBlink")
+                {
+                    PlayerHp.Tag = "ShouldBlink";
+                }
+            }
+            else
+            {
+                PlayerHp.Tag = "ShouldNotBlink";
             }
         }
 
         private void EnemyHP_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (enemyHP.Value < (enemyHP.Maximum / 4)) //Damit immer nach 25% geprüft wird
+            if (EnemyHp.Value < (EnemyHp.Maximum / 4)) //Damit immer nach 25% geprüft wird
             {
-                enemyHP.Foreground = Brushes.Red;
+                EnemyHp.Foreground = Brushes.Red;
             }
-            else if (enemyHP.Value < (enemyHP.Maximum / 2))
+            else if (EnemyHp.Value < (EnemyHp.Maximum / 2))
             {
-                enemyHP.Foreground = Brushes.Orange;
+                EnemyHp.Foreground = Brushes.Orange;
             }
             else
             {
-                enemyHP.Foreground = Brushes.Green;
+                EnemyHp.Foreground = Brushes.Green;
             }
-            //Storyboard sb = this.FindResource("playerBlink") as Storyboard;
-            //sb.Begin();
+            if (EnemyHp.SmoothValue != EnemyHp.Value)
+            {
+                if (EnemyHp.Tag != $@"ShouldBlink")
+                {
+                    EnemyHp.Tag = "ShouldBlink";
+                }
+            }
+            else
+            {
+                EnemyHp.Tag = "ShouldNotBlink";
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            playerHP._value = 20; 
+            EnemyHp.SmoothValue = 100; 
         }
     }
 }
