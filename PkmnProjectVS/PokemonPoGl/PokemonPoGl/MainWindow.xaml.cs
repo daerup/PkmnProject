@@ -6,6 +6,7 @@ using smoothBar;
 using WpfAnimatedGif;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Media.Animation;
 using PokemonPoGl.Annotations;
 
 namespace PokemonPoGl
@@ -31,47 +32,41 @@ namespace PokemonPoGl
         public Pokemon PlayerPokemon;
         public Pokemon EnemyPokemon;
 
-        private string playerSource;
-
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this;
-
 
             PlayerPokemon = Corsola;
             EnemyPokemon = Groudon;
             TxtPlayerPokemon.Text= PlayerPokemon.Name;
             TxtEnemyPokemon.Text = EnemyPokemon.Name;
-
-            ShowPokemon();
-
-
-
+        
             //Types weakness = playerPokemon.GetWeakness();
         }
 
         private void ShowPokemon()
         {
-            var front = $@"res/sprites/{EnemyPokemon.Name}/front.gif";
             var back = $@"res/sprites/{PlayerPokemon.Name}/back.gif";
-
-            EnemyPokemon.FrontPath.BeginInit();
-            EnemyPokemon.FrontPath.UriSource = new Uri(front);
-            EnemyPokemon.FrontPath.EndInit();
+            var front = $@"res/sprites/{EnemyPokemon.Name}/front.gif";
 
             PlayerPokemon.BackPath.BeginInit();
-            PlayerPokemon.BackPath.UriSource = new Uri(back);
+            PlayerPokemon.BackPath.UriSource = new Uri(back, UriKind.Relative);
             PlayerPokemon.BackPath.EndInit();
 
+            EnemyPokemon.FrontPath.BeginInit();
+            EnemyPokemon.FrontPath.UriSource = new Uri(front, UriKind.Relative);
+            EnemyPokemon.FrontPath.EndInit();
+ 
             ImageBehavior.SetAnimatedSource(ImgPlayerPokemon, PlayerPokemon.BackPath);
             ImageBehavior.SetAnimatedSource(ImgEnemyPokemon, EnemyPokemon.FrontPath);
 
+            ImageBehavior.SetRepeatBehavior(ImgPlayerPokemon, RepeatBehavior.Forever);
+            ImageBehavior.SetRepeatBehavior(ImgEnemyPokemon, RepeatBehavior.Forever);
         }
 
-        //new System.Windows.Media.Imaging.BitmapImage(new Uri("../../images/VIBlend.png", UriKind.Relative));
         public void Button_Click(object sender, RoutedEventArgs e)
         {
+            ShowPokemon();
             TakeDamage(800, EnemyHp);
         }
 
