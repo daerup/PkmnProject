@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Windows;
+using System.Windows.Forms.VisualStyles;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -15,9 +17,14 @@ namespace PokemonPoGl
     {
         public string Name { get; set; }
 
+
+        public Types Type { get; set; }
         public BitmapImage FrontPath = new BitmapImage();
         public BitmapImage BackPath = new BitmapImage();
-        public Types Type { get; set; }
+
+        public Thickness FrontMargin { get; set; }
+        public Thickness BackMargin { get; set; }
+
         // ReSharper disable once UnusedMember.Local
         attack _stabAttack = new attack();
         // ReSharper disable once UnusedMember.Local
@@ -45,10 +52,12 @@ namespace PokemonPoGl
 
 
         [SuppressMessage("ReSharper", "ArrangeThisQualifier")]
-        public Pokemon(Types type, string name)
+        public Pokemon(Types type, string name, Thickness back, Thickness front)
         {
             this.Type = type;
             this.Name = name;
+            this.FrontMargin = front;
+            this.BackMargin = back;
         }
 
         public Types GetWeakness()

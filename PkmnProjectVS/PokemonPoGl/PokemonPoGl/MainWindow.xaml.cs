@@ -16,19 +16,22 @@ namespace PokemonPoGl
     /// </summary>
     public partial class MainWindow
     {
-        public Pokemon Charizard = new Pokemon(Types.Fire, nameof(Charizard));
-        public Pokemon Blaziken = new Pokemon(Types.Fire, nameof(Blaziken));
-        public Pokemon Infernape = new Pokemon(Types.Fire, nameof(Infernape));
-        public Pokemon Blastoise = new Pokemon(Types.Water, nameof(Blastoise));
-        public Pokemon Feraligatr = new Pokemon(Types.Water, nameof(Feraligatr));
-        public Pokemon Swampert = new Pokemon(Types.Water, nameof(Swampert));
-        public Pokemon Sceptile = new Pokemon(Types.Plant, nameof(Sceptile));
-        public Pokemon Torterra = new Pokemon(Types.Plant, nameof(Torterra));
-        public Pokemon Venusaur = new Pokemon(Types.Plant, nameof(Venusaur));
+        public Pokemon Charizard = new Pokemon(Types.Fire, nameof(Charizard), new Thickness(-99,16,454,0), new Thickness(525,10,17,379));
+        public Pokemon Blaziken = new Pokemon(Types.Fire, nameof(Blaziken), new Thickness(102,279,497,130), new Thickness(585,96,168,375));
+        public Pokemon Infernape = new Pokemon(Types.Fire, nameof(Infernape), new Thickness(30,233,481,110), new Thickness(585,96,80,357));
+        public Pokemon Blastoise = new Pokemon(Types.Water, nameof(Blastoise), new Thickness(75,204,505,10), new Thickness(592,97,135,312));
+        public Pokemon Feraligatr = new Pokemon(Types.Water, nameof(Feraligatr), new Thickness(41,59,466,-26), new Thickness(526,59,120,347));
+        public Pokemon Swampert = new Pokemon(Types.Water, nameof(Swampert), new Thickness(48,159,411,0), new Thickness(507,48,105,372));
+        public Pokemon Sceptile = new Pokemon(Types.Plant, nameof(Sceptile), new Thickness(22,194,494,31), new Thickness(498,39,114,381));
+        public Pokemon Torterra = new Pokemon(Types.Plant, nameof(Torterra), new Thickness(15,129,444,48), new Thickness(548,48,64,372));
+        public Pokemon Venusaur = new Pokemon(Types.Plant, nameof(Venusaur), new Thickness(48,189,411,-12), new Thickness(530,93,82,327));
+
+      
          
-        public Pokemon Pinsir = new Pokemon(Types.Plant, nameof(Pinsir));
-        public Pokemon Corsola = new Pokemon(Types.Water, nameof(Corsola));
-        public Pokemon Groudon = new Pokemon(Types.Fire, nameof(Groudon));
+        public Pokemon Pinsir = new Pokemon(Types.Plant, nameof(Pinsir), new Thickness(77,10,415,-118), new Thickness(550,20,75,342));
+        public Pokemon Corsola = new Pokemon(Types.Water, nameof(Corsola), new Thickness(144,296,555,-26), new Thickness(667,185,156,347));
+        public Pokemon Groudon = new Pokemon(Types.Fire, nameof(Groudon), new Thickness(-39,-106,426,-233), new Thickness(485,10,17,361));
+
         public Pokemon PlayerPokemon;
         public Pokemon EnemyPokemon;
 
@@ -36,8 +39,8 @@ namespace PokemonPoGl
         {
             InitializeComponent();
 
-            PlayerPokemon = Corsola;
-            EnemyPokemon = Groudon;
+            PlayerPokemon = Groudon;
+            EnemyPokemon = Corsola;
             TxtPlayerPokemon.Text= PlayerPokemon.Name;
             TxtEnemyPokemon.Text = EnemyPokemon.Name;
         
@@ -62,6 +65,9 @@ namespace PokemonPoGl
 
             ImageBehavior.SetRepeatBehavior(ImgPlayerPokemon, RepeatBehavior.Forever);
             ImageBehavior.SetRepeatBehavior(ImgEnemyPokemon, RepeatBehavior.Forever);
+
+            ImgPlayerPokemon.Margin = PlayerPokemon.BackMargin;
+            ImgEnemyPokemon.Margin = EnemyPokemon.FrontMargin;
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)

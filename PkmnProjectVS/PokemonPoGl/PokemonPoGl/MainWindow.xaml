@@ -14,8 +14,9 @@
                 <ImageBrush ImageSource="res/stage/rock.png"/>
             </Grid.Background>
 
-        <Image x:Name="ImgPlayerPokemon" Margin="138,463,592,112"/>
-        <Image x:Name="ImgEnemyPokemon"  Margin="543,10,17,399"/>
+        <Image x:Name="ImgPlayerPokemon"/>
+
+        <Image x:Name="ImgEnemyPokemon"/>
 
         <smoothBar:SmoothProgressBar x:Name="PlayerHp" Height="30" Width="390" Minimum="0" Maximum="1000" Value="1000" Foreground="Green" ValueChanged="PlayerHP_ValueChanged" Tag="ShouldNotBlink" Panel.ZIndex="3" Margin="585,502,0,258" HorizontalAlignment="Left">
             <ProgressBar.Style>
