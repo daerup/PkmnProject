@@ -1,13 +1,13 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 
 namespace PokemonPoGl
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public pokemon Charizard = new pokemon(Types.Fire, nameof(Charizard));
         public pokemon Blaziken = new pokemon(Types.Fire, nameof(Blaziken));
@@ -20,26 +20,14 @@ namespace PokemonPoGl
         public pokemon Venusaur = new pokemon(Types.Plant, nameof(Venusaur));
 
         public pokemon Pinsir = new pokemon(Types.Plant, nameof(Pinsir));
-        public pokemon corsola = new pokemon(Types.Water, nameof(corsola));
+        public pokemon Corsola = new pokemon(Types.Water, nameof(Corsola));
         public pokemon Groudon = new pokemon(Types.Fire, nameof(Groudon));
 
-        private double _playerDamage;
-        private double _enemyDamage;
-        
         public MainWindow()
         {
             InitializeComponent();
-            pokemon playerPokemon = Pinsir;
-            Types weakness = playerPokemon.GetWeakness();
-        }
-
-        private void _decreasePlayerHP()
-        {
-            double newHP = PlayerHp.Value - _playerDamage;
-            while (PlayerHp.Value != newHP)
-            {
-                //playerHP.Value -= 0.001;
-            }
+            //pokemon playerPokemon = Pinsir;
+            //Types weakness = playerPokemon.GetWeakness();
         }
 
         private void PlayerHP_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -57,9 +45,9 @@ namespace PokemonPoGl
                 PlayerHp.Foreground = Brushes.Green;
             }
 
-            if (PlayerHp.SmoothValue != PlayerHp.Value)
+            if (Math.Abs(PlayerHp.SmoothValue - PlayerHp.Value) > 0)//genauer als ==
             {
-                if (PlayerHp.Tag != $@"ShouldBlink")
+                if ((string) PlayerHp.Tag != @"ShouldBlink")
                 {
                     PlayerHp.Tag = "ShouldBlink";
                 }
@@ -84,9 +72,9 @@ namespace PokemonPoGl
             {
                 EnemyHp.Foreground = Brushes.Green;
             }
-            if (EnemyHp.SmoothValue != EnemyHp.Value)
+            if (Math.Abs(EnemyHp.SmoothValue - EnemyHp.Value) > 0) //genauer als ==
             {
-                if (EnemyHp.Tag != $@"ShouldBlink")
+                if ((string) EnemyHp.Tag != "ShouldBlink")
                 {
                     EnemyHp.Tag = "ShouldBlink";
                 }

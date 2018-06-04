@@ -3,14 +3,16 @@ using System.Timers;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
+// ReSharper disable once CheckNamespace
 namespace smoothBar
 {
-    class SmoothProgressBar : ProgressBar
+    internal class SmoothProgressBar : ProgressBar
     {
         public bool ShouldBlink { get; set; }
         private readonly Timer _drawTimer;
         private double _speed;
 
+        // ReSharper disable once InconsistentNaming
         private new double Value;
 
         public double SmoothValue
@@ -56,7 +58,7 @@ namespace smoothBar
             // Dispatcher aufrufen um an STA-Thread von wpf zu gelangen
             Dispatcher.Invoke(DispatcherPriority.Normal, (Action) delegate
             {
-                if (Value != base.Value)
+                if (Math.Abs(Value - base.Value) > 0)
                 {
                     // beliebiges maximum normalisieren
                     double faktor = 1 / Maximum;
