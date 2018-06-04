@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using smoothBar;
 using WpfAnimatedGif;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Media.Animation;
-using PokemonPoGl.Annotations;
 
 namespace PokemonPoGl
 {
@@ -25,8 +21,6 @@ namespace PokemonPoGl
         public Pokemon Sceptile = new Pokemon(Types.Plant, nameof(Sceptile), new Thickness(22,194,494,31), new Thickness(498,39,114,381));
         public Pokemon Torterra = new Pokemon(Types.Plant, nameof(Torterra), new Thickness(15,129,444,48), new Thickness(548,48,64,372));
         public Pokemon Venusaur = new Pokemon(Types.Plant, nameof(Venusaur), new Thickness(48,189,411,-12), new Thickness(530,93,82,327));
-
-      
          
         public Pokemon Pinsir = new Pokemon(Types.Plant, nameof(Pinsir), new Thickness(77,10,415,-118), new Thickness(550,20,75,342));
         public Pokemon Corsola = new Pokemon(Types.Water, nameof(Corsola), new Thickness(144,296,555,-26), new Thickness(667,185,156,347));
@@ -38,13 +32,18 @@ namespace PokemonPoGl
         public MainWindow()
         {
             InitializeComponent();
+            DelcarePokemon(Charizard,Groudon);
 
-            PlayerPokemon = Groudon;
-            EnemyPokemon = Corsola;
-            TxtPlayerPokemon.Text= PlayerPokemon.Name;
-            TxtEnemyPokemon.Text = EnemyPokemon.Name;
-        
+
             //Types weakness = playerPokemon.GetWeakness();
+        }
+
+        private void DelcarePokemon(Pokemon player, Pokemon enemy)
+        {
+            PlayerPokemon = player;
+            EnemyPokemon = enemy;
+            TxtPlayerPokemon.Text = PlayerPokemon.Name;
+            TxtEnemyPokemon.Text = EnemyPokemon.Name;
         }
 
         private void ShowPokemon()
@@ -59,12 +58,15 @@ namespace PokemonPoGl
             EnemyPokemon.FrontPath.BeginInit();
             EnemyPokemon.FrontPath.UriSource = new Uri(front, UriKind.Relative);
             EnemyPokemon.FrontPath.EndInit();
- 
+
             ImageBehavior.SetAnimatedSource(ImgPlayerPokemon, PlayerPokemon.BackPath);
             ImageBehavior.SetAnimatedSource(ImgEnemyPokemon, EnemyPokemon.FrontPath);
 
             ImageBehavior.SetRepeatBehavior(ImgPlayerPokemon, RepeatBehavior.Forever);
             ImageBehavior.SetRepeatBehavior(ImgEnemyPokemon, RepeatBehavior.Forever);
+
+            ImageBehavior.SetAutoStart(ImgPlayerPokemon, false);
+            ImageBehavior.SetAutoStart(ImgEnemyPokemon, false);
 
             ImgPlayerPokemon.Margin = PlayerPokemon.BackMargin;
             ImgEnemyPokemon.Margin = EnemyPokemon.FrontMargin;
