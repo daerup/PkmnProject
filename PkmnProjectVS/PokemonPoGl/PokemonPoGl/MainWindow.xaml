@@ -17,7 +17,7 @@
         <Image x:Name="ImgPlayerPokemon" gif:ImageBehavior.AnimationLoaded="ImgPlayerPokemon_OnAnimationLoaded"/>
         <Image x:Name="ImgEnemyPokemon" gif:ImageBehavior.AnimationLoaded="ImgEnemyPokemon_OnAnimationLoaded"/>
 
-        <smoothBar:SmoothProgressBar x:Name="PlayerHp" Height="30" Width="390" Minimum="0" Maximum="1000" Value="1000" Foreground="Green" ValueChanged="PlayerHP_ValueChanged" Tag="ShouldNotBlink" Panel.ZIndex="3" Margin="585,502,0,258" HorizontalAlignment="Left">
+        <smoothBar:SmoothProgressBar x:Name="PlayerHp" Height="30" Width="390" Minimum="0" Maximum="1000" Value="0" Foreground="Green" ValueChanged="PlayerHP_ValueChanged" Tag="ShouldNotBlink" Panel.ZIndex="3" Margin="585,502,0,258" HorizontalAlignment="Left">
             <ProgressBar.Style>
                 <Style>
                     <Style.Triggers>
@@ -41,7 +41,7 @@
                 </Style>
             </ProgressBar.Style>
         </smoothBar:SmoothProgressBar>
-        <smoothBar:SmoothProgressBar x:Name="EnemyHp" Height="30" Width="390" Minimum="0" Maximum="1000" Value="1000" Foreground="Green" ValueChanged="EnemyHP_ValueChanged" Tag="ShouldNotBlink" Panel.ZIndex="3" Margin="10,114,592,646">
+        <smoothBar:SmoothProgressBar x:Name="EnemyHp" Height="30" Width="390" Minimum="0" Maximum="1000" Value="0" Foreground="Green" ValueChanged="EnemyHP_ValueChanged" Tag="ShouldNotBlink" Panel.ZIndex="3" Margin="10,114,592,646">
             <ProgressBar.Style>
                 <Style>
                     <Style.Triggers>

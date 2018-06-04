@@ -143,7 +143,6 @@ namespace PokemonPoGl
             ImageBehavior.SetAutoStart(ImgPlayerPokemon, false);
             ImgPlayerPokemon.Margin = PlayerPokemon.BackMargin;
         }
-
         private void ImgEnemyPokemon_OnAnimationLoaded(object sender, RoutedEventArgs e)
         {
             ImageBehavior.SetRepeatBehavior(ImgEnemyPokemon, RepeatBehavior.Forever);
