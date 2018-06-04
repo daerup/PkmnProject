@@ -5,16 +5,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:pokemonPoGl="clr-namespace:PokemonPoGl"
-        xmlns:smoothBar="clr-namespace:smoothBar"
-        Title="BattleWindow" Height="821" Width="1000">
-    <Grid Margin="0,0,0,0">
-        <Grid.Background>
-            <ImageBrush ImageSource="res/stage/rock.png"/>
-        </Grid.Background>
-        <Image x:Name="ImgPlayerPokemon" gif:ImageBehavior.AnimatedSource="res/sprites/Groudon/back.gif" Margin="0,149,407,10"></Image>
-        <Image x:Name="ImgEnemyPokemon" gif:ImageBehavior.AnimatedSource="res/sprites/Blaziken/front.gif" Margin="537,109,97,377"></Image>
+        xmlns:smoothBar="clr-namespace:smoothBar" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
 
-        <smoothBar:SmoothProgressBar x:Name="PlayerHp" Height="30" Width="250"  Margin="667,529,75,231" Minimum="0" Maximum="1000" Value="1000" Foreground="Green" ValueChanged="PlayerHP_ValueChanged" Tag="ShouldNotBlink">
+        Title="BattleWindow" Height="821" Width="1000">
+        <Grid Margin="0,0,0,0">
+            <Grid.Background>
+                <ImageBrush ImageSource="res/stage/rock.png"/>
+            </Grid.Background>
+
+        <Image x:Name="ImgPlayerPokemon" gif:ImageBehavior.AnimateInDesignMode="True" gif:ImageBehavior.AnimatedSource="res/sprites/Blastoise/back.gif" Margin="96,250,496,73" Panel.ZIndex="3"/>
+        <Image x:Name="ImgEnemyPokemon" gif:ImageBehavior.AnimateInDesignMode="True" gif:ImageBehavior.AnimatedSource="res/sprites/Charizard/front.gif" Margin="543,37,17,372" Panel.ZIndex="-1"/>
+
+        <smoothBar:SmoothProgressBar x:Name="PlayerHp" Height="30" Width="390"  Margin="585,502,17,258" Minimum="0" Maximum="1000" Value="1000" Foreground="Green" ValueChanged="PlayerHP_ValueChanged" Tag="ShouldNotBlink" Panel.ZIndex="3">
             <ProgressBar.Style>
                 <Style>
                     <Style.Triggers>
@@ -27,7 +30,7 @@
                                             Storyboard.TargetProperty="(Image.Opacity)"
                                             BeginTime="0:0:0" Duration="0:0:0.3"
                                             From="1.0" To="0.0" 
-                                            RepeatBehavior="4x" 
+                                            RepeatBehavior="3x" 
                                             AutoReverse="True"
                                         />
                                     </Storyboard>
@@ -39,7 +42,7 @@
             </ProgressBar.Style>
         </smoothBar:SmoothProgressBar>
 
-        <smoothBar:SmoothProgressBar x:Name="EnemyHp" Height="30" Width="250"  Margin="0,30,592,472" Minimum="0" Maximum="1000" Value="1000" Foreground="Green" ValueChanged="EnemyHP_ValueChanged" Tag="ShouldNotBlink">
+        <smoothBar:SmoothProgressBar x:Name="EnemyHp" Height="30" Width="390" Minimum="0" Maximum="1000" Value="1000" Foreground="Green" ValueChanged="EnemyHP_ValueChanged" Tag="ShouldNotBlink" Panel.ZIndex="3" Margin="10,114,592,646">
             <ProgressBar.Style>
                 <Style>
                     <Style.Triggers>
@@ -52,7 +55,7 @@
                                             Storyboard.TargetProperty="(Image.Opacity)"
                                             BeginTime="0:0:0" Duration="0:0:0.3"
                                             From="1.0" To="0.0" 
-                                            RepeatBehavior="4x" 
+                                            RepeatBehavior="3x" 
                                             AutoReverse="True"
                                         />
                                     </Storyboard>
@@ -63,6 +66,8 @@
                 </Style>
             </ProgressBar.Style>
         </smoothBar:SmoothProgressBar>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="667,625,0,0" VerticalAlignment="Top" Width="228" Height="74" Click="Button_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="228" Height="74" Click="Button_Click" Margin="705,643,0,0"/>
+        <TextBlock x:Name="TxtPlayerPokemon" HorizontalAlignment="Left" Margin="585,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="390" OpacityMask="Black" FontFamily="Stencil" FontSize="36" Text="Your pokemon"/>
+        <TextBlock x:Name="TxtEnemyPokemon" HorizontalAlignment="Left" Margin="10,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="390" OpacityMask="Black" FontFamily="Stencil" FontSize="36" Text="Enemy Pokemon"/>
     </Grid>
 </Window>

@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SmoothProgressBar.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -106,30 +107,30 @@
   <ItemGroup>
     <Content Include="res\music\battleMusic.wav" />
     <Content Include="res\music\titleMusic.wav" />
-    <Resource Include="res\sprites\blastoise\back.gif" />
-    <Resource Include="res\sprites\blastoise\front.gif" />
-    <Resource Include="res\sprites\blaziken\back.gif" />
-    <Resource Include="res\sprites\blaziken\front.gif" />
-    <Resource Include="res\sprites\charizard\back.gif" />
-    <Resource Include="res\sprites\charizard\front.gif" />
-    <Resource Include="res\sprites\pinsir\back.gif" />
-    <Resource Include="res\sprites\pinsir\front.gif" />
-    <Resource Include="res\sprites\corsola\back.gif" />
-    <Resource Include="res\sprites\corsola\front.gif" />
-    <Resource Include="res\sprites\feraligatr\back.gif" />
-    <Resource Include="res\sprites\feraligatr\front.gif" />
-    <Resource Include="res\sprites\groudon\back.gif" />
-    <Resource Include="res\sprites\groudon\front.gif" />
-    <Resource Include="res\sprites\infernape\back.gif" />
-    <Resource Include="res\sprites\infernape\front.gif" />
-    <Resource Include="res\sprites\sceptile\back.gif" />
-    <Resource Include="res\sprites\sceptile\front.gif" />
-    <Resource Include="res\sprites\swampert\back.gif" />
-    <Resource Include="res\sprites\swampert\front.gif" />
-    <Resource Include="res\sprites\torterra\back.gif" />
-    <Resource Include="res\sprites\torterra\front.gif" />
-    <Resource Include="res\sprites\venusaur\back.gif" />
-    <Resource Include="res\sprites\venusaur\front.gif" />
+    <Resource Include="res\sprites\Blastoise\back.gif" />
+    <Resource Include="res\sprites\Blastoise\front.gif" />
+    <Resource Include="res\sprites\Blaziken\back.gif" />
+    <Resource Include="res\sprites\Blaziken\front.gif" />
+    <Resource Include="res\sprites\Charizard\back.gif" />
+    <Resource Include="res\sprites\Charizard\front.gif" />
+    <Resource Include="res\sprites\Pinsir\back.gif" />
+    <Resource Include="res\sprites\Pinsir\front.gif" />
+    <Resource Include="res\sprites\Corsola\back.gif" />
+    <Resource Include="res\sprites\Corsola\front.gif" />
+    <Resource Include="res\sprites\Feraligatr\back.gif" />
+    <Resource Include="res\sprites\Feraligatr\front.gif" />
+    <Resource Include="res\sprites\Groudon\back.gif" />
+    <Resource Include="res\sprites\Groudon\front.gif" />
+    <Resource Include="res\sprites\Infernape\back.gif" />
+    <Resource Include="res\sprites\Infernape\front.gif" />
+    <Resource Include="res\sprites\Sceptile\back.gif" />
+    <Resource Include="res\sprites\Sceptile\front.gif" />
+    <Resource Include="res\sprites\Swampert\back.gif" />
+    <Resource Include="res\sprites\Swampert\front.gif" />
+    <Resource Include="res\sprites\Torterra\back.gif" />
+    <Resource Include="res\sprites\Torterra\front.gif" />
+    <Resource Include="res\sprites\Venusaur\back.gif" />
+    <Resource Include="res\sprites\Venusaur\front.gif" />
     <Content Include="res\stage\grass.png" />
     <Resource Include="res\stage\rock.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

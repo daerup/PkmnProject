@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using smoothBar;
+using WpfAnimatedGif;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using PokemonPoGl.Annotations;
 
 namespace PokemonPoGl
 {
@@ -9,25 +15,64 @@ namespace PokemonPoGl
     /// </summary>
     public partial class MainWindow
     {
-        public pokemon Charizard = new pokemon(Types.Fire, nameof(Charizard));
-        public pokemon Blaziken = new pokemon(Types.Fire, nameof(Blaziken));
-        public pokemon Infernape = new pokemon(Types.Fire, nameof(Infernape));
-        public pokemon Blastoise = new pokemon(Types.Water, nameof(Blastoise));
-        public pokemon Feraligatr = new pokemon(Types.Water, nameof(Feraligatr));
-        public pokemon Swampert = new pokemon(Types.Water, nameof(Swampert));
-        public pokemon Sceptile = new pokemon(Types.Plant, nameof(Sceptile));
-        public pokemon Torterra = new pokemon(Types.Plant, nameof(Torterra));
-        public pokemon Venusaur = new pokemon(Types.Plant, nameof(Venusaur));
+        public Pokemon Charizard = new Pokemon(Types.Fire, nameof(Charizard));
+        public Pokemon Blaziken = new Pokemon(Types.Fire, nameof(Blaziken));
+        public Pokemon Infernape = new Pokemon(Types.Fire, nameof(Infernape));
+        public Pokemon Blastoise = new Pokemon(Types.Water, nameof(Blastoise));
+        public Pokemon Feraligatr = new Pokemon(Types.Water, nameof(Feraligatr));
+        public Pokemon Swampert = new Pokemon(Types.Water, nameof(Swampert));
+        public Pokemon Sceptile = new Pokemon(Types.Plant, nameof(Sceptile));
+        public Pokemon Torterra = new Pokemon(Types.Plant, nameof(Torterra));
+        public Pokemon Venusaur = new Pokemon(Types.Plant, nameof(Venusaur));
+         
+        public Pokemon Pinsir = new Pokemon(Types.Plant, nameof(Pinsir));
+        public Pokemon Corsola = new Pokemon(Types.Water, nameof(Corsola));
+        public Pokemon Groudon = new Pokemon(Types.Fire, nameof(Groudon));
+        public Pokemon PlayerPokemon;
+        public Pokemon EnemyPokemon;
 
-        public pokemon Pinsir = new pokemon(Types.Plant, nameof(Pinsir));
-        public pokemon Corsola = new pokemon(Types.Water, nameof(Corsola));
-        public pokemon Groudon = new pokemon(Types.Fire, nameof(Groudon));
+        private string playerSource;
 
         public MainWindow()
         {
             InitializeComponent();
-            //pokemon playerPokemon = Pinsir;
+            DataContext = this;
+
+
+            PlayerPokemon = Corsola;
+            EnemyPokemon = Groudon;
+            TxtPlayerPokemon.Text= PlayerPokemon.Name;
+            TxtEnemyPokemon.Text = EnemyPokemon.Name;
+
+            ShowPokemon();
+
+
+
             //Types weakness = playerPokemon.GetWeakness();
+        }
+
+        private void ShowPokemon()
+        {
+            var front = $@"res/sprites/{EnemyPokemon.Name}/front.gif";
+            var back = $@"res/sprites/{PlayerPokemon.Name}/back.gif";
+
+            EnemyPokemon.FrontPath.BeginInit();
+            EnemyPokemon.FrontPath.UriSource = new Uri(front);
+            EnemyPokemon.FrontPath.EndInit();
+
+            PlayerPokemon.BackPath.BeginInit();
+            PlayerPokemon.BackPath.UriSource = new Uri(back);
+            PlayerPokemon.BackPath.EndInit();
+
+            ImageBehavior.SetAnimatedSource(ImgPlayerPokemon, PlayerPokemon.BackPath);
+            ImageBehavior.SetAnimatedSource(ImgEnemyPokemon, EnemyPokemon.FrontPath);
+
+        }
+
+        //new System.Windows.Media.Imaging.BitmapImage(new Uri("../../images/VIBlend.png", UriKind.Relative));
+        public void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TakeDamage(800, EnemyHp);
         }
 
         private void PlayerHP_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -85,9 +130,19 @@ namespace PokemonPoGl
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private static void TakeDamage(double damage, SmoothProgressBar hpBar)
         {
-            EnemyHp.SmoothValue = 100; 
+            double newHp = hpBar.Value - damage;
+
+            if (newHp < 0)
+            {
+                newHp = 0;
+            }else if (newHp > 1000)
+            {
+                newHp = 1000;
+            }
+
+            hpBar.SmoothValue = newHp;
         }
     }
 }

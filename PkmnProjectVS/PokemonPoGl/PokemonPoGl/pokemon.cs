@@ -1,4 +1,9 @@
-﻿namespace PokemonPoGl
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
+namespace PokemonPoGl
 {
     public enum Types
     {
@@ -6,15 +11,24 @@
         Water,
         Plant
     }
-    public class pokemon
+    public class Pokemon
     {
         public string Name { get; set; }
+
+        public BitmapImage FrontPath = new BitmapImage();
+        public BitmapImage BackPath = new BitmapImage();
         public Types Type { get; set; }
+        // ReSharper disable once UnusedMember.Local
         attack _stabAttack = new attack();
+        // ReSharper disable once UnusedMember.Local
         attack _normalAttack = new attack();
         public int Hp
         {
-            get => Hp;
+            get
+            {
+                return Hp;
+            }
+
             private set
             {
                 if (Hp > 1000)
@@ -29,12 +43,12 @@
         }
 
 
-       
 
-        public pokemon(Types type, string name)
+        [SuppressMessage("ReSharper", "ArrangeThisQualifier")]
+        public Pokemon(Types type, string name)
         {
-            Type = type;
-            Name = name;
+            this.Type = type;
+            this.Name = name;
         }
 
         public Types GetWeakness()
