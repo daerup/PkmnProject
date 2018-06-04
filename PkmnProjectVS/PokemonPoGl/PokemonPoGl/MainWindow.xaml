@@ -14,8 +14,8 @@
                 <ImageBrush ImageSource="res/stage/rock.png"/>
             </Grid.Background>
 
-        <Image x:Name="ImgPlayerPokemon"/>
-        <Image x:Name="ImgEnemyPokemon" />
+        <Image x:Name="ImgPlayerPokemon" gif:ImageBehavior.AnimationLoaded="ImgPlayerPokemon_OnAnimationLoaded"/>
+        <Image x:Name="ImgEnemyPokemon" gif:ImageBehavior.AnimationLoaded="ImgEnemyPokemon_OnAnimationLoaded"/>
 
         <smoothBar:SmoothProgressBar x:Name="PlayerHp" Height="30" Width="390" Minimum="0" Maximum="1000" Value="1000" Foreground="Green" ValueChanged="PlayerHP_ValueChanged" Tag="ShouldNotBlink" Panel.ZIndex="3" Margin="585,502,0,258" HorizontalAlignment="Left">
             <ProgressBar.Style>

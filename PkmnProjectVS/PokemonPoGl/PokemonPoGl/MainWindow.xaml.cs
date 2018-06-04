@@ -32,10 +32,29 @@ namespace PokemonPoGl
         public MainWindow()
         {
             InitializeComponent();
-            DelcarePokemon(Charizard,Groudon);
+            DelcarePokemon(Groudon,Corsola);
 
-
+            ShowPokemon();
             //Types weakness = playerPokemon.GetWeakness();
+        }
+        public void Button_Click(object sender, RoutedEventArgs e)
+        {
+            TakeDamage(100, EnemyHp);
+        }
+        private static void TakeDamage(double damage, SmoothProgressBar hpBar)
+        {
+            double newHp = hpBar.Value - damage;
+
+            if (newHp < 0)
+            {
+                newHp = 0;
+            }
+            else if (newHp > 1000)
+            {
+                newHp = 1000;
+            }
+
+            hpBar.SmoothValue = newHp;
         }
 
         private void DelcarePokemon(Pokemon player, Pokemon enemy)
@@ -61,21 +80,6 @@ namespace PokemonPoGl
 
             ImageBehavior.SetAnimatedSource(ImgPlayerPokemon, PlayerPokemon.BackPath);
             ImageBehavior.SetAnimatedSource(ImgEnemyPokemon, EnemyPokemon.FrontPath);
-
-            ImageBehavior.SetRepeatBehavior(ImgPlayerPokemon, RepeatBehavior.Forever);
-            ImageBehavior.SetRepeatBehavior(ImgEnemyPokemon, RepeatBehavior.Forever);
-
-            ImageBehavior.SetAutoStart(ImgPlayerPokemon, false);
-            ImageBehavior.SetAutoStart(ImgEnemyPokemon, false);
-
-            ImgPlayerPokemon.Margin = PlayerPokemon.BackMargin;
-            ImgEnemyPokemon.Margin = EnemyPokemon.FrontMargin;
-        }
-
-        public void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ShowPokemon();
-            TakeDamage(800, EnemyHp);
         }
 
         private void PlayerHP_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -133,19 +137,18 @@ namespace PokemonPoGl
             }
         }
 
-        private static void TakeDamage(double damage, SmoothProgressBar hpBar)
+        private void ImgPlayerPokemon_OnAnimationLoaded(object sender, RoutedEventArgs e)
         {
-            double newHp = hpBar.Value - damage;
+            ImageBehavior.SetRepeatBehavior(ImgPlayerPokemon, RepeatBehavior.Forever);
+            ImageBehavior.SetAutoStart(ImgPlayerPokemon, false);
+            ImgPlayerPokemon.Margin = PlayerPokemon.BackMargin;
+        }
 
-            if (newHp < 0)
-            {
-                newHp = 0;
-            }else if (newHp > 1000)
-            {
-                newHp = 1000;
-            }
-
-            hpBar.SmoothValue = newHp;
+        private void ImgEnemyPokemon_OnAnimationLoaded(object sender, RoutedEventArgs e)
+        {
+            ImageBehavior.SetRepeatBehavior(ImgEnemyPokemon, RepeatBehavior.Forever);
+            ImageBehavior.SetAutoStart(ImgEnemyPokemon, false);
+            ImgEnemyPokemon.Margin = EnemyPokemon.FrontMargin;
         }
     }
 }
