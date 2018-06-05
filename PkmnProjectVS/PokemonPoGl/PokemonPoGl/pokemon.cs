@@ -50,7 +50,6 @@ namespace PokemonPoGl
         }
 
 
-
         [SuppressMessage("ReSharper", "ArrangeThisQualifier")]
         public Pokemon(Types type, string name, Thickness back, Thickness front)
         {
@@ -58,6 +57,7 @@ namespace PokemonPoGl
             this.Name = name;
             this.FrontMargin = front;
             this.BackMargin = back;
+            
         }
 
         public Types GetWeakness()
@@ -69,6 +69,7 @@ namespace PokemonPoGl
                 default: return Types.Fire;
             }     
         }
+
 
     }
 }

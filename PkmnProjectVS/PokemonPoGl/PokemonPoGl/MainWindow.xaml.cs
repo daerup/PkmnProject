@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using smoothBar;
@@ -12,6 +14,7 @@ namespace PokemonPoGl
     /// </summary>
     public partial class MainWindow
     {
+        List<Pokemon> allPokemon = new List<Pokemon>();
         public Pokemon Charizard = new Pokemon(Types.Fire, nameof(Charizard), new Thickness(-99,16,454,0), new Thickness(525,10,17,379));
         public Pokemon Blaziken = new Pokemon(Types.Fire, nameof(Blaziken), new Thickness(102,279,497,130), new Thickness(585,96,168,375));
         public Pokemon Infernape = new Pokemon(Types.Fire, nameof(Infernape), new Thickness(30,233,481,110), new Thickness(585,96,80,357));
@@ -29,14 +32,18 @@ namespace PokemonPoGl
         public Pokemon PlayerPokemon;
         public Pokemon EnemyPokemon;
 
+        
+
+
         public MainWindow()
         {
             InitializeComponent();
-            DelcarePokemon(Groudon,Corsola);
+            DelcarePokemon(Groudon);
 
             ShowPokemon();
             //Types weakness = playerPokemon.GetWeakness();
         }
+
         public void Button_Click(object sender, RoutedEventArgs e)
         {
             TakeDamage(100, EnemyHp);
@@ -57,12 +64,34 @@ namespace PokemonPoGl
             hpBar.SmoothValue = newHp;
         }
 
-        private void DelcarePokemon(Pokemon player, Pokemon enemy)
+        private void DelcarePokemon(Pokemon player)
         {
+            AddToList(player);
+            Random random = new Random();
+            int r = random.Next(0, 10);
+
             PlayerPokemon = player;
-            EnemyPokemon = enemy;
+            EnemyPokemon = allPokemon[r];
             TxtPlayerPokemon.Text = PlayerPokemon.Name;
             TxtEnemyPokemon.Text = EnemyPokemon.Name;
+        }
+        private void AddToList(Pokemon toRemove)
+        {
+            allPokemon.Add(Charizard);
+            allPokemon.Add(Blastoise);
+            allPokemon.Add(Blaziken);
+            allPokemon.Add(Infernape);
+            allPokemon.Add(Feraligatr);
+            allPokemon.Add(Swampert);
+            allPokemon.Add(Sceptile);
+            allPokemon.Add(Torterra);
+            allPokemon.Add(Venusaur);
+
+            allPokemon.Add(Pinsir);
+            allPokemon.Add(Corsola);
+            allPokemon.Add(Groudon);
+
+            allPokemon.RemoveAll(a => a.Name == toRemove.Name);
         }
 
         private void ShowPokemon()
