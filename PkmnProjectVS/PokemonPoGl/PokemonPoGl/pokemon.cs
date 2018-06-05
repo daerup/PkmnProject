@@ -16,11 +16,11 @@ namespace PokemonPoGl
     public class Pokemon
     {
         public string Name { get; set; }
-
+        public bool beaten { get; set; }
 
         public Types Type { get; set; }
-        public BitmapImage FrontPath = new BitmapImage();
-        public BitmapImage BackPath = new BitmapImage();
+        public ImageSource FrontPath;
+        public ImageSource BackPath; 
 
         public Thickness FrontMargin { get; set; }
         public Thickness BackMargin { get; set; }
@@ -51,15 +51,21 @@ namespace PokemonPoGl
 
 
         [SuppressMessage("ReSharper", "ArrangeThisQualifier")]
-        public Pokemon(Types type, string name, Thickness back, Thickness front)
+        public Pokemon(Types type, string name, Thickness backSideMargin, Thickness frontSideMargin)
         {
+            string backSidePath = $@"pack://application:,,,/res/sprites/{name}/back.gif";
+            string frontSidePath = $@"pack://application:,,,/res/sprites/{name}/front.gif";
             this.Type = type;
             this.Name = name;
-            this.FrontMargin = front;
-            this.BackMargin = back;
-            
-        }
 
+
+            this.FrontMargin = frontSideMargin;
+            this.BackMargin = backSideMargin;
+            this.beaten = false;
+
+            this.FrontPath = new ImageSourceConverter().ConvertFromString(frontSidePath) as ImageSource;
+            this.BackPath = new ImageSourceConverter().ConvertFromString(backSidePath) as ImageSource;
+        }
         public Types GetWeakness()
         {
             switch (Type)
@@ -67,9 +73,7 @@ namespace PokemonPoGl
                 case Types.Water: return Types.Plant;
                 case Types.Plant: return Types.Fire;
                 default: return Types.Fire;
-            }     
+            }
         }
-
-
     }
 }
