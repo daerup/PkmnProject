@@ -10,6 +10,7 @@ namespace smoothBar
     {
         private readonly Timer _drawTimer;
         private double _speed;
+        public double Acceleration { get; set; }
 
         // ReSharper disable once InconsistentNaming
         private new double Value;
@@ -41,7 +42,6 @@ namespace smoothBar
 
 
 
-        public double Acceleration { get; set; }
 
         public void OnTimerEvent(object source, ElapsedEventArgs e)
         {

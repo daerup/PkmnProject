@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Media;
 using smoothBar;
@@ -15,7 +16,7 @@ namespace PokemonPoGl
     /// </summary>
     public partial class MainWindow
     {
-        List<Pokemon> allPokemon = new List<Pokemon>();
+        public readonly List<Pokemon> _allPokemon = new List<Pokemon>();
         public Pokemon Charizard = new Pokemon(Types.Fire, nameof(Charizard), new Thickness(-99,16,454,0), new Thickness(525,10,17,379));
         public Pokemon Blaziken = new Pokemon(Types.Fire, nameof(Blaziken), new Thickness(102,279,497,130), new Thickness(585,96,168,375));
         public Pokemon Infernape = new Pokemon(Types.Fire, nameof(Infernape), new Thickness(30,233,481,110), new Thickness(585,96,80,357));
@@ -33,26 +34,13 @@ namespace PokemonPoGl
         public Pokemon PlayerPokemon;
         public Pokemon EnemyPokemon;
 
-        ObservableCollection<int> myList = new ObservableCollection<int>();
-
-        //myList.CollectionChanged += new System.Collections.Specialized.NotifyCollectionChangedEventHandler(
-        //delegate (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        //{
-        //    if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
-        //    {
-        //        MessageBox.Show("Added value");
-        //    }
-        //}
-        //);
-
-    //myList.Add(1);
-
-
         public MainWindow()
         {
             InitializeComponent();
             CreateList();
-            PlayerPokemon = Groudon;
+            PlayerPokemon = Corsola;
+            Stab.Content = PlayerPokemon.StabAttack.Name;
+            Normal.Content = PlayerPokemon.NormalAttack.Name;
             DelcareEnemyPokemon();
             ShowPokemon();
             
@@ -68,9 +56,18 @@ namespace PokemonPoGl
             EnemyHp.SmoothValue = 1000;
         }
 
-        public void Button_Click(object sender, RoutedEventArgs e)
+        private double CalculateDamage(Pokemon attacker)
         {
-            TakeDamage(400, EnemyHp);
+            Pokemon defender;
+            if (attacker == PlayerPokemon)
+            {
+                defender = EnemyPokemon;
+            }
+            else
+            {
+                defender = PlayerPokemon;
+            }
+
         }
         private void TakeDamage(double damage, SmoothProgressBar hpBar)
         {
@@ -91,36 +88,35 @@ namespace PokemonPoGl
         private void DelcareEnemyPokemon()
         {
             Random random = new Random();
-            int r = random.Next(0, allPokemon.Count-1);
+            int r = random.Next(0, _allPokemon.Count-1);
 
             UpdateList();
 
-            EnemyPokemon = allPokemon[r];
+            EnemyPokemon = _allPokemon[r];
 
             TxtPlayerPokemon.Text = PlayerPokemon.Name;
             TxtEnemyPokemon.Text = EnemyPokemon.Name;
         }
         private void CreateList()
         {
-            allPokemon.Add(Charizard);
-            allPokemon.Add(Blastoise);
-            allPokemon.Add(Blaziken);
-            allPokemon.Add(Infernape);
-            allPokemon.Add(Feraligatr);
-            allPokemon.Add(Swampert);
-            allPokemon.Add(Sceptile);
-            allPokemon.Add(Torterra);
-            allPokemon.Add(Venusaur);
+            _allPokemon.Add(Charizard);
+            _allPokemon.Add(Blastoise);
+            _allPokemon.Add(Blaziken);
+            _allPokemon.Add(Infernape);
+            _allPokemon.Add(Feraligatr);
+            _allPokemon.Add(Swampert);
+            _allPokemon.Add(Sceptile);
+            _allPokemon.Add(Torterra);
+            _allPokemon.Add(Venusaur);
 
-            allPokemon.Add(Pinsir);
-            allPokemon.Add(Corsola);
-            allPokemon.Add(Groudon);
+            _allPokemon.Add(Pinsir);
+            _allPokemon.Add(Corsola);
         }
 
         private void UpdateList()
         {
-            allPokemon.RemoveAll(a => a.beaten);
-            allPokemon.RemoveAll(a => a.Name == PlayerPokemon.Name);
+            _allPokemon.RemoveAll(a => a.Beaten);
+            _allPokemon.RemoveAll(a => a.Name == PlayerPokemon.Name);
             CheckIfWon();
         }
 
@@ -187,16 +183,23 @@ namespace PokemonPoGl
             }
             if (EnemyHp.Value == 0)
             {
-                EnemyPokemon.beaten = true;
+                EnemyPokemon.Beaten = true;
                 UpdateEnemy();
             }
         }
 
         private void CheckIfWon()
         {
-            if (allPokemon.Count == 0)
+            if (_allPokemon.Count == 0)
             {
-                MessageBox.Show("Sie haben gewonnen");
+                if (!Groudon.Beaten)
+                {
+                    _allPokemon.Add(Groudon);
+                }
+                else
+                {
+                    MessageBox.Show("Sie haben gewonnen"); 
+                }
             }
         }
 
@@ -211,6 +214,16 @@ namespace PokemonPoGl
             ImageBehavior.SetRepeatBehavior(ImgEnemyPokemon, RepeatBehavior.Forever);
             ImageBehavior.SetAutoStart(ImgEnemyPokemon, true);
             ImgEnemyPokemon.Margin = EnemyPokemon.FrontMargin;
+        }
+
+        private void Normal_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Stab_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

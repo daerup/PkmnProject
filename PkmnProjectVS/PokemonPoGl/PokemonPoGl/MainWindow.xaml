@@ -9,10 +9,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 
         Title="BattleWindow" Height="821" Width="1000">
-        <Grid Margin="0,0,0,0">
-            <Grid.Background>
-                <ImageBrush ImageSource="res/stage/rock.png"/>
-            </Grid.Background>
+    <Grid Margin="0,0,0,0">
+        <Grid.Background>
+            <ImageBrush ImageSource="res/stage/rock.png"/>
+        </Grid.Background>
 
         <Image x:Name="ImgPlayerPokemon" gif:ImageBehavior.AnimationLoaded="ImgPlayerPokemon_OnAnimationLoaded"/>
         <Image x:Name="ImgEnemyPokemon" gif:ImageBehavior.AnimationLoaded="ImgEnemyPokemon_OnAnimationLoaded"/>
@@ -65,7 +65,8 @@
                 </Style>
             </ProgressBar.Style>
         </smoothBar:SmoothProgressBar>
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="228" Height="74" Click="Button_Click" Margin="705,643,0,0"/>
+        <Button x:Name="Stab" Content="StabAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Height="153" Click="Stab_Click" Margin="872,561,0,0"/>
+        <Button x:Name="Normal" Content="NormalAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Height="153" Click="Normal_Click" Margin="743,561,0,0"/>
         <TextBlock x:Name="TxtPlayerPokemon" HorizontalAlignment="Left" Margin="585,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="390" OpacityMask="Black" FontFamily="Impact" FontSize="36" Text="Your Pokemon"/>
         <TextBlock x:Name="TxtEnemyPokemon" HorizontalAlignment="Left" Margin="10,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="390" OpacityMask="Black" FontFamily="Impact" FontSize="36" Text="Enemy Pokemon"/>
     </Grid>
