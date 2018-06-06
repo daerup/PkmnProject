@@ -25,14 +25,14 @@
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation 
+                                        <DoubleAnimation
                                             Storyboard.Target="{Binding Source={x:Reference ImgPlayerPokemon}}"
                                             Storyboard.TargetProperty="(Image.Opacity)"
                                             BeginTime="0:0:0" Duration="0:0:0.3"
                                             From="1.0" To="0.0" 
                                             RepeatBehavior="3x" 
-                                            AutoReverse="True"
-                                        />
+                                            AutoReverse="True">
+                                        </DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -49,14 +49,14 @@
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation 
+                                        <DoubleAnimation
                                             Storyboard.Target="{Binding Source={x:Reference ImgEnemyPokemon}}"
                                             Storyboard.TargetProperty="(Image.Opacity)"
                                             BeginTime="0:0:0" Duration="0:0:0.3"
                                             From="1.0" To="0.0" 
                                             RepeatBehavior="3x" 
                                             AutoReverse="True"
-                                        />
+                                            />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -65,9 +65,12 @@
                 </Style>
             </ProgressBar.Style>
         </smoothBar:SmoothProgressBar>
-        <Button x:Name="Stab" Content="StabAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="232" Height="60" Click="Stab_Click" Margin="743,651,0,0" FontFamily="Impact" FontSize="24" Foreground="White"/>
-        <Button x:Name="Normal" Content="NormalAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="232" Height="60" Click="Normal_Click" Margin="743,585,0,0" FontFamily="Impact" FontSize="24"/>
+
+        <Button x:Name="Stab" Content="StabAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="232" Height="60" Click="Stab_Click" Margin="743,651,0,0" FontFamily="Impact" FontSize="24" BorderBrush="Black" BorderThickness="3" IsEnabled="False"/>
+        <Button x:Name="Normal" Content="NormalAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="232" Height="60" Click="Normal_Click" Margin="743,585,0,0" FontFamily="Impact" FontSize="24" BorderBrush="White" BorderThickness="3" IsEnabled="False"/>
+
         <TextBlock x:Name="TxtPlayerPokemon" HorizontalAlignment="Left" Margin="585,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="390" OpacityMask="Black" FontFamily="Impact" FontSize="36" Text="Your Pokemon"/>
         <TextBlock x:Name="TxtEnemyPokemon" HorizontalAlignment="Left" Margin="10,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="390" OpacityMask="Black" FontFamily="Impact" FontSize="36" Text="Enemy Pokemon"/>
+        <TextBlock x:Name="Narrator" HorizontalAlignment="Left" Margin="26,717,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="73" Width="966" Foreground="White" FontSize="45" FontFamily="Impact"/>
     </Grid>
 </Window>

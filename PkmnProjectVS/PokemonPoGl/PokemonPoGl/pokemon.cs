@@ -19,6 +19,7 @@ namespace PokemonPoGl
         public readonly List<Attack> FireAttacks = new List<Attack>();
         public readonly List<Attack> WaterAttacks = new List<Attack>();
         public readonly List<Attack> PlantAttacks = new List<Attack>();
+        Random random = new Random();
 
         public string Name { get; set; }
         public bool Beaten { get; set; }
@@ -50,8 +51,7 @@ namespace PokemonPoGl
             this.BackPath = new ImageSourceConverter().ConvertFromString(backSidePath) as ImageSource;
 
             CreateAttacks();
-            Random random = new Random();
-            int r = random.Next(0, 8);
+            int r = random.Next(0, 9);
             switch (type)
             {
                 case Types.Fire: StabAttack = FireAttacks[r]; break;
@@ -59,7 +59,7 @@ namespace PokemonPoGl
                 case Types.Plant: StabAttack = PlantAttacks[r]; break;
             }
 
-            r = random.Next(0, 8);
+            r = random.Next(0, 9);
             NormalAttack = NormalAttacks[r];
 
         }
@@ -87,37 +87,37 @@ namespace PokemonPoGl
             Attack Judgment = new Attack(nameof(Judgment), Types.Normal, 400);
 
             //fire Attack
-            Attack Blueflare = new Attack(nameof(Blueflare), Types.Fire, 350);
-            Attack Incinerate = new Attack(nameof(Incinerate), Types.Fire, 180);
-            Attack Searingshot = new Attack(nameof(Searingshot), Types.Fire, 200);
-            Attack Lavaplume = new Attack(nameof(Lavaplume), Types.Fire, 150);
-            Attack Flamethrower = new Attack(nameof(Flamethrower), Types.Fire, 300);
-            Attack Ember = new Attack(nameof(Ember), Types.Fire, 150);
-            Attack Inferno = new Attack(nameof(Inferno), Types.Fire, 220);
-            Attack Blastburn = new Attack(nameof(Blastburn), Types.Fire, 500);
-            Attack Vcreate = new Attack(nameof(Vcreate), Types.Fire, 500);
+            Attack Blueflare = new Attack(nameof(Blueflare), Types.Fire, 450);
+            Attack Incinerate = new Attack(nameof(Incinerate), Types.Fire, 280);
+            Attack Searingshot = new Attack(nameof(Searingshot), Types.Fire, 300);
+            Attack Lavaplume = new Attack(nameof(Lavaplume), Types.Fire, 250);
+            Attack Flamethrower = new Attack(nameof(Flamethrower), Types.Fire, 400);
+            Attack Ember = new Attack(nameof(Ember), Types.Fire, 250);
+            Attack Inferno = new Attack(nameof(Inferno), Types.Fire, 320);
+            Attack Blastburn = new Attack(nameof(Blastburn), Types.Fire, 600);
+            Attack Vcreate = new Attack(nameof(Vcreate), Types.Fire, 600);
 
             //water Attack
-            Attack Hydrocannon = new Attack(nameof(Hydrocannon), Types.Water, 500);
-            Attack Waterspout = new Attack(nameof(Waterspout), Types.Water, 200);
-            Attack Waterfall = new Attack(nameof(Waterfall), Types.Water, 180);
-            Attack Watergun = new Attack(nameof(Watergun), Types.Water, 210);
-            Attack Aquatail = new Attack(nameof(Aquatail), Types.Water, 230);
-            Attack Hydropump = new Attack(nameof(Hydropump), Types.Water, 450);
-            Attack Waterpledge = new Attack(nameof(Waterpledge), Types.Water, 250);
-            Attack Watershuriken = new Attack(nameof(Watershuriken), Types.Water, 300);
-            Attack Bubblebeam = new Attack(nameof(Bubblebeam), Types.Water, 250);
+            Attack Hydrocannon = new Attack(nameof(Hydrocannon), Types.Water, 600);
+            Attack Waterspout = new Attack(nameof(Waterspout), Types.Water, 300);
+            Attack Waterfall = new Attack(nameof(Waterfall), Types.Water, 280);
+            Attack Watergun = new Attack(nameof(Watergun), Types.Water, 310);
+            Attack Aquatail = new Attack(nameof(Aquatail), Types.Water, 330);
+            Attack Hydropump = new Attack(nameof(Hydropump), Types.Water, 550);
+            Attack Waterpledge = new Attack(nameof(Waterpledge), Types.Water, 350);
+            Attack Watershuriken = new Attack(nameof(Watershuriken), Types.Water, 400);
+            Attack Bubblebeam = new Attack(nameof(Bubblebeam), Types.Water, 350);
 
             //plant Attack
-            Attack Leafstorm = new Attack(nameof(Leafstorm), Types.Plant, 300);
-            Attack Powerwhip = new Attack(nameof(Powerwhip), Types.Plant, 300);
-            Attack Petaldance = new Attack(nameof(Petaldance), Types.Plant, 100);
-            Attack Frenzyplant = new Attack(nameof(Frenzyplant), Types.Plant, 500);
-            Attack Woodhammer = new Attack(nameof(Woodhammer), Types.Plant, 250);
-            Attack Seedflare = new Attack(nameof(Seedflare), Types.Plant, 250);
-            Attack Solarbeam = new Attack(nameof(Solarbeam), Types.Plant, 400);
-            Attack Synthesis = new Attack(nameof(Synthesis), Types.Plant, 300);
-            Attack Solarblade = new Attack(nameof(Solarblade), Types.Plant, 150);
+            Attack Leafstorm = new Attack(nameof(Leafstorm), Types.Plant, 400);
+            Attack Powerwhip = new Attack(nameof(Powerwhip), Types.Plant, 400);
+            Attack Petaldance = new Attack(nameof(Petaldance), Types.Plant, 200);
+            Attack Frenzyplant = new Attack(nameof(Frenzyplant), Types.Plant, 600);
+            Attack Woodhammer = new Attack(nameof(Woodhammer), Types.Plant, 350);
+            Attack Seedflare = new Attack(nameof(Seedflare), Types.Plant, 350);
+            Attack Solarbeam = new Attack(nameof(Solarbeam), Types.Plant, 500);
+            Attack Synthesis = new Attack(nameof(Synthesis), Types.Plant, 400);
+            Attack Solarblade = new Attack(nameof(Solarblade), Types.Plant, 250);
 
             //add to normal list
             NormalAttacks.Add(Hyperbeam);

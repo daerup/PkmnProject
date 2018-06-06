@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 using smoothBar;
 using WpfAnimatedGif;
@@ -34,21 +37,15 @@ namespace PokemonPoGl
         public Pokemon PlayerPokemon;
         public Pokemon EnemyPokemon;
         private Brush color;
+        private string effectiveness;
+
+        Random random = new Random();
         public MainWindow()
         {
             InitializeComponent();
             CreateList();
-            PlayerPokemon = Blastoise;
-            Stab.Content = PlayerPokemon.StabAttack.Name;
-            Normal.Content = PlayerPokemon.NormalAttack.Name;
-
-            switch (PlayerPokemon.Type)
-            {
-                case Types.Fire: color = Brushes.DarkRed; break;
-                case Types.Water: color =Brushes.CornflowerBlue; break;
-                case Types.Plant: color = Brushes.DarkGreen; break;
-            }
-            Stab.Background = color;
+            PlayerPokemon = Blaziken;
+            PrepareUi();
             DelcareEnemyPokemon();
             ShowPokemon();
             
@@ -56,6 +53,21 @@ namespace PokemonPoGl
             //Types weakness = playerPokemon.GetWeakness();
         }
 
+        private void PrepareUi()
+        {
+            switch (PlayerPokemon.Type)
+            {
+                case Types.Fire: color = Brushes.OrangeRed; break;
+                case Types.Water: color = Brushes.CornflowerBlue; break;
+                case Types.Plant: color = Brushes.ForestGreen; break;
+            }
+
+            Stab.Content = PlayerPokemon.StabAttack.Name;
+            Normal.Content = PlayerPokemon.NormalAttack.Name;
+
+            Normal.Background = new SolidColorBrush(Color.FromArgb(255, 95, 95, 95));
+            Stab.Background = color;
+        }
         private void UpdateEnemy()
         {
             DelcareEnemyPokemon();
@@ -79,14 +91,32 @@ namespace PokemonPoGl
 
             if (attack.Type == defender.GetWeakness())
             {
-                damage = (attack.Strength * 2);
-            }else if (attacker.GetWeakness() == defender.Type && attack.Type != Types.Normal)
+                if (attacker == PlayerPokemon)
+                {
+                    damage = (attack.Strength * 1.75); 
+                }
+                else
+                {
+                    damage = (attack.Strength * 1.25);
+                }
+                effectiveness = "super effective";
+            }
+            else if (attacker.GetWeakness() == defender.Type && attack.Type != Types.Normal)
             {
-                damage = (attack.Strength / 2);
+                if (attacker == PlayerPokemon)
+                {
+                    damage = (attack.Strength / 2); 
+                }
+                else
+                {
+                    damage = (attack.Strength / 2.5);
+                }
+                effectiveness = "not so effective";
             }
             else
             {
                 damage = attack.Strength;
+                effectiveness = "normal effective";
             }
 
             return damage;
@@ -110,7 +140,6 @@ namespace PokemonPoGl
 
         private void DelcareEnemyPokemon()
         {
-            Random random = new Random();
             int r = random.Next(0, _allPokemon.Count-1);
 
             UpdateList();
@@ -165,7 +194,10 @@ namespace PokemonPoGl
             {
                 PlayerHp.Foreground = Brushes.Green;
             }
-
+            if (PlayerHp.Value == PlayerHp.SmoothValue && PlayerHp.SmoothValue != PlayerHp.Maximum && PlayerHp.SmoothValue != 0)
+            {
+                EnableButtons();
+            }
             if (Math.Abs(PlayerHp.SmoothValue - PlayerHp.Value) > 0)//genauer als ==
             {
                 if ((string) PlayerHp.Tag != @"ShouldBlink")
@@ -176,6 +208,11 @@ namespace PokemonPoGl
             else
             {
                 PlayerHp.Tag = "ShouldNotBlink";
+            }
+
+            if (PlayerHp.Value == 0)
+            {
+                MessageBox.Show("YOU DIED");
             }
         }
 
@@ -193,22 +230,39 @@ namespace PokemonPoGl
             {
                 EnemyHp.Foreground = Brushes.Green;
             }
+
+            if (EnemyHp.Value == EnemyHp.SmoothValue && EnemyHp.SmoothValue != EnemyHp.Maximum && EnemyHp.SmoothValue != 0)
+            {
+                EnemyAttack();
+            }
             if (Math.Abs(EnemyHp.SmoothValue - EnemyHp.Value) > 0) //genauer als ==
             {
-                if ((string) EnemyHp.Tag != "ShouldBlink")
+                if ((string)EnemyHp.Tag != "ShouldBlink")
                 {
                     EnemyHp.Tag = "ShouldBlink";
+                    if (Stab != null && Normal != null)
+                    {
+                        DisableButtons();
+                    }
                 }
             }
             else
             {
                 EnemyHp.Tag = "ShouldNotBlink";
+                if (Stab != null && Normal != null && EnemyHp.Value == EnemyHp.Maximum)
+                {
+                    EnableButtons();
+                }
             }
+
             if (EnemyHp.Value == 0)
             {
                 EnemyPokemon.Beaten = true;
+                DeathNarrator(EnemyPokemon);
+                PlayerHp.SmoothValue = PlayerHp.Maximum;
                 UpdateEnemy();
             }
+
         }
 
         private void CheckIfWon()
@@ -226,6 +280,35 @@ namespace PokemonPoGl
             }
         }
 
+        private void EnemyAttack()
+        {
+            List<Attack> availableAttacks = new List<Attack>();
+
+            availableAttacks.Add(EnemyPokemon.NormalAttack);
+            availableAttacks.Add(EnemyPokemon.StabAttack);
+
+            int r = random.Next(0, 2);
+
+            double damage = CalculateDamage(EnemyPokemon, availableAttacks[r]);
+            TakeDamage(damage, PlayerHp);
+
+            AttackNarrator(EnemyPokemon, availableAttacks[r]);
+        }
+        private void DisableButtons()
+        {
+            Stab.IsEnabled = false;
+            Normal.IsEnabled = false;
+            Stab.Foreground = Brushes.SlateGray;
+            Normal.Foreground = Brushes.SlateGray;
+        }
+        public void EnableButtons()
+        {
+            Stab.IsEnabled = true;
+            Normal.IsEnabled = true;
+            Stab.Foreground = Brushes.White;
+            Normal.Foreground = Brushes.White;
+        }
+
         private void ImgPlayerPokemon_OnAnimationLoaded(object sender, RoutedEventArgs e)
         {
             ImageBehavior.SetRepeatBehavior(ImgPlayerPokemon, RepeatBehavior.Forever);
@@ -241,14 +324,30 @@ namespace PokemonPoGl
 
         private void Normal_Click(object sender, RoutedEventArgs e)
         {
+            //DisableButtons();
             double damage = CalculateDamage(PlayerPokemon, PlayerPokemon.NormalAttack);
             TakeDamage(damage, EnemyHp);
+            AttackNarrator(PlayerPokemon, PlayerPokemon.NormalAttack);
         }
 
         private void Stab_Click(object sender, RoutedEventArgs e)
         {
+            //DisableButtons();
             double damage = CalculateDamage(PlayerPokemon, PlayerPokemon.StabAttack);
             TakeDamage(damage, EnemyHp);
+            AttackNarrator(PlayerPokemon, PlayerPokemon.StabAttack);
+        }
+
+        private void AttackNarrator(Pokemon attacker, Attack attack)
+        {
+            string statement = $"{attacker.Name} used {attack.Name}...It's {effectiveness}";
+            
+            Narrator.Text = statement;
+        }
+        private void DeathNarrator(Pokemon deadpokemon)
+        {
+            string statement = $"RIP, {deadpokemon.Name}. You will be missed";
+            Narrator.Text = statement;
         }
     }
 }
