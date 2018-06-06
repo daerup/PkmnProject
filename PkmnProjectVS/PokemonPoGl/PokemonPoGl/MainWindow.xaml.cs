@@ -33,14 +33,22 @@ namespace PokemonPoGl
 
         public Pokemon PlayerPokemon;
         public Pokemon EnemyPokemon;
-
+        private Brush color;
         public MainWindow()
         {
             InitializeComponent();
             CreateList();
-            PlayerPokemon = Corsola;
+            PlayerPokemon = Blastoise;
             Stab.Content = PlayerPokemon.StabAttack.Name;
             Normal.Content = PlayerPokemon.NormalAttack.Name;
+
+            switch (PlayerPokemon.Type)
+            {
+                case Types.Fire: color = Brushes.DarkRed; break;
+                case Types.Water: color =Brushes.CornflowerBlue; break;
+                case Types.Plant: color = Brushes.DarkGreen; break;
+            }
+            Stab.Background = color;
             DelcareEnemyPokemon();
             ShowPokemon();
             
@@ -56,9 +64,10 @@ namespace PokemonPoGl
             EnemyHp.SmoothValue = 1000;
         }
 
-        private double CalculateDamage(Pokemon attacker)
+        private double CalculateDamage(Pokemon attacker, Attack attack)
         {
             Pokemon defender;
+            double damage;
             if (attacker == PlayerPokemon)
             {
                 defender = EnemyPokemon;
@@ -67,6 +76,20 @@ namespace PokemonPoGl
             {
                 defender = PlayerPokemon;
             }
+
+            if (attack.Type == defender.GetWeakness())
+            {
+                damage = (attack.Strength * 2);
+            }else if (attacker.GetWeakness() == defender.Type && attack.Type != Types.Normal)
+            {
+                damage = (attack.Strength / 2);
+            }
+            else
+            {
+                damage = attack.Strength;
+            }
+
+            return damage;
 
         }
         private void TakeDamage(double damage, SmoothProgressBar hpBar)
@@ -218,12 +241,14 @@ namespace PokemonPoGl
 
         private void Normal_Click(object sender, RoutedEventArgs e)
         {
-
+            double damage = CalculateDamage(PlayerPokemon, PlayerPokemon.NormalAttack);
+            TakeDamage(damage, EnemyHp);
         }
 
         private void Stab_Click(object sender, RoutedEventArgs e)
         {
-
+            double damage = CalculateDamage(PlayerPokemon, PlayerPokemon.StabAttack);
+            TakeDamage(damage, EnemyHp);
         }
     }
 }

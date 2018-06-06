@@ -67,18 +67,19 @@ namespace PokemonPoGl
         {
             switch (Type)
             {
+                case Types.Fire: return Types.Water;
                 case Types.Water: return Types.Plant;
                 case Types.Plant: return Types.Fire;
-                default: return Types.Fire;
+                default: return Types.Normal;
             }
         }
         private void CreateAttacks()
         {
             //normal Attack
-            Attack Hyperbeam = new Attack(nameof(Hyperbeam), Types.Normal, 700);
-            Attack Explosion = new Attack(nameof(Explosion), Types.Normal, 650);
+            Attack Hyperbeam = new Attack(nameof(Hyperbeam), Types.Normal, 550);
+            Attack Explosion = new Attack(nameof(Explosion), Types.Normal, 250);
             Attack Takle = new Attack(nameof(Takle), Types.Normal, 150);
-            Attack Extreamspeed = new Attack(nameof(Extreamspeed), Types.Normal, 250);
+            Attack Extreamspeed = new Attack(nameof(Extreamspeed), Types.Normal, 200);
             Attack Boomburst = new Attack(nameof(Boomburst), Types.Normal, 250);
             Attack Gigaimpact = new Attack(nameof(Gigaimpact), Types.Normal, 240);
             Attack Megakick = new Attack(nameof(Megakick), Types.Normal, 200);

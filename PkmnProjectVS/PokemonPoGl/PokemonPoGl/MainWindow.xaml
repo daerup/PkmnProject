@@ -65,8 +65,8 @@
                 </Style>
             </ProgressBar.Style>
         </smoothBar:SmoothProgressBar>
-        <Button x:Name="Stab" Content="StabAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Height="153" Click="Stab_Click" Margin="872,561,0,0"/>
-        <Button x:Name="Normal" Content="NormalAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="103" Height="153" Click="Normal_Click" Margin="743,561,0,0"/>
+        <Button x:Name="Stab" Content="StabAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="232" Height="60" Click="Stab_Click" Margin="743,651,0,0" FontFamily="Impact" FontSize="24" Foreground="White"/>
+        <Button x:Name="Normal" Content="NormalAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="232" Height="60" Click="Normal_Click" Margin="743,585,0,0" FontFamily="Impact" FontSize="24"/>
         <TextBlock x:Name="TxtPlayerPokemon" HorizontalAlignment="Left" Margin="585,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="390" OpacityMask="Black" FontFamily="Impact" FontSize="36" Text="Your Pokemon"/>
         <TextBlock x:Name="TxtEnemyPokemon" HorizontalAlignment="Left" Margin="10,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="390" OpacityMask="Black" FontFamily="Impact" FontSize="36" Text="Enemy Pokemon"/>
     </Grid>
