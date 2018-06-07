@@ -13,29 +13,30 @@ namespace PokemonPoGl
         Plant,
         Normal
     }
+
     public class Pokemon
     {
-        Attack Precipiceblades = new Attack(nameof(Precipiceblades), Types.Fire, 650);
+        private static readonly Attack _precipiceblades = new Attack(nameof(_precipiceblades), Types.Fire, 600);
 
-        public readonly List<Attack> NormalAttacks = new List<Attack>();
-        public readonly List<Attack> FireAttacks = new List<Attack>();
-        public readonly List<Attack> WaterAttacks = new List<Attack>();
-        public readonly List<Attack> PlantAttacks = new List<Attack>();
-        Random random = new Random();
+        public static readonly List<Attack> NormalAttacks = new List<Attack>();
+        public static readonly List<Attack> FireAttacks = new List<Attack>();
+        public static readonly List<Attack> WaterAttacks = new List<Attack>();
+        public static readonly List<Attack> PlantAttacks = new List<Attack>();
+        static Random _random = new Random();
+        private static bool hasRun = false;
 
         public string Name { get; set; }
         public bool Beaten { get; set; }
 
         public Types Type { get; set; }
         public ImageSource FrontPath;
-        public ImageSource BackPath; 
+        public ImageSource BackPath;
 
         public Thickness FrontMargin { get; set; }
         public Thickness BackMargin { get; set; }
 
         public Attack StabAttack { get; set; }
         public Attack NormalAttack { get; set; }
-
 
         [SuppressMessage("ReSharper", "ArrangeThisQualifier")]
         public Pokemon(Types type, string name, Thickness backSideMargin, Thickness frontSideMargin)
@@ -53,25 +54,40 @@ namespace PokemonPoGl
             this.BackPath = new ImageSourceConverter().ConvertFromString(backSidePath) as ImageSource;
 
             CreateAttacks();
-            int r = random.Next(0, 9);
-            if (this.Name  != "Groudon")
+
+            if (this.Name != "Groudon")
             {
+                int rStab;
                 switch (type)
                 {
-                    case Types.Fire: StabAttack = FireAttacks[r]; break;
-                    case Types.Water: StabAttack = WaterAttacks[r]; break;
-                    case Types.Plant: StabAttack = PlantAttacks[r]; break;
-                } 
+                    case Types.Fire:
+                        rStab = _random.Next(0, FireAttacks.Count - 1);
+                        StabAttack = FireAttacks[rStab];
+                        FireAttacks.RemoveAt(rStab);
+                        break;
+                    case Types.Water:
+                        rStab = _random.Next(0, WaterAttacks.Count - 1);
+                        StabAttack = WaterAttacks[rStab];
+                        WaterAttacks.RemoveAt(rStab);
+                        break;
+                    case Types.Plant:
+                        rStab = _random.Next(0, PlantAttacks.Count - 1);
+                        StabAttack = PlantAttacks[rStab];
+                        PlantAttacks.RemoveAt(rStab);
+                        break;
+                }
             }
             else
             {
-                StabAttack = Precipiceblades;
+                StabAttack = _precipiceblades;
             }
 
-            r = random.Next(0, 9);
-            NormalAttack = NormalAttacks[r];
+            int rNormal = _random.Next(0, NormalAttacks.Count -1);
 
+            NormalAttack = NormalAttacks[rNormal];
+            NormalAttacks.RemoveAt(rNormal);
         }
+
         public Types GetWeakness()
         {
             switch (Type)
@@ -82,95 +98,118 @@ namespace PokemonPoGl
                 default: return Types.Normal;
             }
         }
-        private void CreateAttacks()
+
+        private static void CreateAttacks()
         {
-            //normal Attack
-            Attack Hyperbeam = new Attack(nameof(Hyperbeam), Types.Normal, 550);
-            Attack Explosion = new Attack(nameof(Explosion), Types.Normal, 400);
-            Attack Takle = new Attack(nameof(Takle), Types.Normal, 250);
-            Attack Extreamspeed = new Attack(nameof(Extreamspeed), Types.Normal, 200);
-            Attack Boomburst = new Attack(nameof(Boomburst), Types.Normal, 250);
-            Attack Gigaimpact = new Attack(nameof(Gigaimpact), Types.Normal, 240);
-            Attack Megakick = new Attack(nameof(Megakick), Types.Normal, 250);
-            Attack Cut = new Attack(nameof(Cut), Types.Normal, 250);
-            Attack Judgment = new Attack(nameof(Judgment), Types.Normal, 400);
+            if (!hasRun)
+            {
+                // ReSharper disable InconsistentNaming
+                //normal Attack
+                Attack Extreamspeed = new Attack(nameof(Extreamspeed), Types.Normal, 200);
+                Attack Gigaimpact = new Attack(nameof(Gigaimpact), Types.Normal, 240);
+                Attack Boomburst = new Attack(nameof(Boomburst), Types.Normal, 250);
+                Attack Hyperbeam = new Attack(nameof(Hyperbeam), Types.Normal, 550);
+                Attack Explosion = new Attack(nameof(Explosion), Types.Normal, 400);
+                Attack Judgment = new Attack(nameof(Judgment), Types.Normal, 480);
+                Attack Megakick = new Attack(nameof(Megakick), Types.Normal, 250);
+                Attack Takle = new Attack(nameof(Takle), Types.Normal, 250);
+                Attack Cut = new Attack(nameof(Cut), Types.Normal, 250);
 
-            //fire Attack
-            Attack Blueflare = new Attack(nameof(Blueflare), Types.Fire, 450);
-            Attack Incinerate = new Attack(nameof(Incinerate), Types.Fire, 280);
-            Attack Searingshot = new Attack(nameof(Searingshot), Types.Fire, 300);
-            Attack Lavaplume = new Attack(nameof(Lavaplume), Types.Fire, 250);
-            Attack Flamethrower = new Attack(nameof(Flamethrower), Types.Fire, 400);
-            Attack Ember = new Attack(nameof(Ember), Types.Fire, 250);
-            Attack Inferno = new Attack(nameof(Inferno), Types.Fire, 320);
-            Attack Blastburn = new Attack(nameof(Blastburn), Types.Fire, 500);
-            Attack Vcreate = new Attack(nameof(Vcreate), Types.Fire, 500);
+                Attack Doublehit = new Attack(nameof(Doublehit), Types.Normal, 220);
+                Attack Eggbomb = new Attack(nameof(Eggbomb), Types.Normal, 250);
+                Attack Headcharge = new Attack(nameof(Headcharge), Types.Normal, 450);
+                Attack Headbutt = new Attack(nameof(Headbutt), Types.Normal, 300);
+                Attack Guillotine = new Attack(nameof(Guillotine), Types.Normal, 600);
+                Attack Thrash = new Attack(nameof(Thrash), Types.Normal, 450);
 
-            //water Attack
-            Attack Hydrocannon = new Attack(nameof(Hydrocannon), Types.Water, 500);
-            Attack Waterspout = new Attack(nameof(Waterspout), Types.Water, 300);
-            Attack Waterfall = new Attack(nameof(Waterfall), Types.Water, 280);
-            Attack Watergun = new Attack(nameof(Watergun), Types.Water, 310);
-            Attack Aquatail = new Attack(nameof(Aquatail), Types.Water, 330);
-            Attack Hydropump = new Attack(nameof(Hydropump), Types.Water, 550);
-            Attack Waterpledge = new Attack(nameof(Waterpledge), Types.Water, 350);
-            Attack Watershuriken = new Attack(nameof(Watershuriken), Types.Water, 400);
-            Attack Bubblebeam = new Attack(nameof(Bubblebeam), Types.Water, 350);
+                //fire Attack
+                Attack Flamethrower = new Attack(nameof(Flamethrower), Types.Fire, 400);
+                Attack Searingshot = new Attack(nameof(Searingshot), Types.Fire, 300);
+                Attack Incinerate = new Attack(nameof(Incinerate), Types.Fire, 280);
+                Attack Blueflare = new Attack(nameof(Blueflare), Types.Fire, 450);
+                Attack Lavaplume = new Attack(nameof(Lavaplume), Types.Fire, 250);
+                Attack Blastburn = new Attack(nameof(Blastburn), Types.Fire, 500);
+                Attack Vcreate = new Attack(nameof(Vcreate), Types.Fire, 500);
+                Attack Inferno = new Attack(nameof(Inferno), Types.Fire, 320);
+                Attack Ember = new Attack(nameof(Ember), Types.Fire, 250);
 
-            //plant Attack
-            Attack Leafstorm = new Attack(nameof(Leafstorm), Types.Plant, 400);
-            Attack Powerwhip = new Attack(nameof(Powerwhip), Types.Plant, 400);
-            Attack Petaldance = new Attack(nameof(Petaldance), Types.Plant, 200);
-            Attack Frenzyplant = new Attack(nameof(Frenzyplant), Types.Plant, 500);
-            Attack Woodhammer = new Attack(nameof(Woodhammer), Types.Plant, 350);
-            Attack Seedflare = new Attack(nameof(Seedflare), Types.Plant, 350);
-            Attack Solarbeam = new Attack(nameof(Solarbeam), Types.Plant, 500);
-            Attack Synthesis = new Attack(nameof(Synthesis), Types.Plant, 400);
-            Attack Solarblade = new Attack(nameof(Solarblade), Types.Plant, 250);
 
-            //add to normal list
-            NormalAttacks.Add(Hyperbeam);
-            NormalAttacks.Add(Explosion);
-            NormalAttacks.Add(Takle);
-            NormalAttacks.Add(Extreamspeed);
-            NormalAttacks.Add(Boomburst);
-            NormalAttacks.Add(Gigaimpact);
-            NormalAttacks.Add(Megakick);
-            NormalAttacks.Add(Cut);
-            NormalAttacks.Add(Judgment);
+                //water Attack
+                Attack Watershuriken = new Attack(nameof(Watershuriken), Types.Water, 400);
+                Attack Hydrocannon = new Attack(nameof(Hydrocannon), Types.Water, 500);
+                Attack Waterpledge = new Attack(nameof(Waterpledge), Types.Water, 350);
+                Attack Waterspout = new Attack(nameof(Waterspout), Types.Water, 400);
+                Attack Bubblebeam = new Attack(nameof(Bubblebeam), Types.Water, 350);
+                Attack Hydropump = new Attack(nameof(Hydropump), Types.Water, 550);
+                Attack Waterfall = new Attack(nameof(Waterfall), Types.Water, 380);
+                Attack Watergun = new Attack(nameof(Watergun), Types.Water, 310);
+                Attack Aquatail = new Attack(nameof(Aquatail), Types.Water, 330);
 
-            //add to fire list
-            FireAttacks.Add(Blueflare);
-            FireAttacks.Add(Incinerate);
-            FireAttacks.Add(Searingshot);
-            FireAttacks.Add(Lavaplume);
-            FireAttacks.Add(Flamethrower);
-            FireAttacks.Add(Ember);
-            FireAttacks.Add(Inferno);
-            FireAttacks.Add(Blastburn);
-            FireAttacks.Add(Vcreate);
+                //plant Attack
+                Attack Frenzyplant = new Attack(nameof(Frenzyplant), Types.Plant, 500);
+                Attack Solarblade = new Attack(nameof(Solarblade), Types.Plant, 250);
+                Attack Woodhammer = new Attack(nameof(Woodhammer), Types.Plant, 350);
+                Attack Petaldance = new Attack(nameof(Petaldance), Types.Plant, 200);
+                Attack Leafstorm = new Attack(nameof(Leafstorm), Types.Plant, 400);
+                Attack Powerwhip = new Attack(nameof(Powerwhip), Types.Plant, 400);
+                Attack Seedflare = new Attack(nameof(Seedflare), Types.Plant, 350);
+                Attack Solarbeam = new Attack(nameof(Solarbeam), Types.Plant, 500);
+                Attack Synthesis = new Attack(nameof(Synthesis), Types.Plant, 400);
 
-            //add to water list
-            WaterAttacks.Add(Hydrocannon);
-            WaterAttacks.Add(Waterspout);
-            WaterAttacks.Add(Waterfall);
-            WaterAttacks.Add(Watergun);
-            WaterAttacks.Add(Aquatail);
-            WaterAttacks.Add(Hydropump);
-            WaterAttacks.Add(Waterpledge);
-            WaterAttacks.Add(Watershuriken);
-            WaterAttacks.Add(Bubblebeam);
 
-            //add to plant list
-            PlantAttacks.Add(Leafstorm);
-            PlantAttacks.Add(Powerwhip);
-            PlantAttacks.Add(Petaldance);
-            PlantAttacks.Add(Frenzyplant);
-            PlantAttacks.Add(Woodhammer);
-            PlantAttacks.Add(Seedflare);
-            PlantAttacks.Add(Solarbeam);
-            PlantAttacks.Add(Synthesis);
-            PlantAttacks.Add(Solarblade);
+                //add to normal list
+                NormalAttacks.Add(Cut);
+                NormalAttacks.Add(Takle);
+                NormalAttacks.Add(Megakick);
+                NormalAttacks.Add(Judgment);
+                NormalAttacks.Add(Hyperbeam);
+                NormalAttacks.Add(Explosion);
+                NormalAttacks.Add(Boomburst);
+                NormalAttacks.Add(Gigaimpact);
+                NormalAttacks.Add(Extreamspeed);
+                NormalAttacks.Add(Doublehit);
+                NormalAttacks.Add(Eggbomb);
+                NormalAttacks.Add(Headcharge);
+                NormalAttacks.Add(Headbutt);
+                NormalAttacks.Add(Guillotine);
+                NormalAttacks.Add(Thrash);
+
+                //add to fire list
+                FireAttacks.Add(Ember);
+                FireAttacks.Add(Vcreate);
+                FireAttacks.Add(Inferno);
+                FireAttacks.Add(Blueflare);
+                FireAttacks.Add(Lavaplume);
+                FireAttacks.Add(Blastburn);
+                FireAttacks.Add(Incinerate);
+                FireAttacks.Add(Searingshot);
+                FireAttacks.Add(Flamethrower);
+
+                //add to water list
+                WaterAttacks.Add(Watergun);
+                WaterAttacks.Add(Aquatail);
+                WaterAttacks.Add(Waterfall);
+                WaterAttacks.Add(Hydropump);
+                WaterAttacks.Add(Waterspout);
+                WaterAttacks.Add(Bubblebeam);
+                WaterAttacks.Add(Waterpledge);
+                WaterAttacks.Add(Hydrocannon);
+                WaterAttacks.Add(Watershuriken);
+
+                //add to plant list
+                PlantAttacks.Add(Leafstorm);
+                PlantAttacks.Add(Powerwhip);
+                PlantAttacks.Add(Seedflare);
+                PlantAttacks.Add(Solarbeam);
+                PlantAttacks.Add(Synthesis);
+                PlantAttacks.Add(Petaldance);
+                PlantAttacks.Add(Woodhammer);
+                PlantAttacks.Add(Solarblade);
+                PlantAttacks.Add(Frenzyplant);
+
+                hasRun = true;
+                // ReSharper restore InconsistentNaming 
+            }
         }
     }
 }

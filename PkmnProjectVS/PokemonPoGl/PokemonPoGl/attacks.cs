@@ -9,10 +9,9 @@
 
         public Attack(string name, Types type, uint strength)
         {
-            this.Name = name;
-            this.Type = type;
-            this.Strength = strength;
+            Name = name;
+            Type = type;
+            Strength = strength;
         }
-
     }
 }
