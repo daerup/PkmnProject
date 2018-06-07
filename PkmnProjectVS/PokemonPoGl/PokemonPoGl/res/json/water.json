@@ -1,0 +1,45 @@
+[{
+	"Name": "Watergun",
+	"Type": 1,
+	"Strength": 310
+},
+{
+	"Name": "Aquatail",
+	"Type": 1,
+	"Strength": 330
+},
+{
+	"Name": "Waterfall",
+	"Type": 1,
+	"Strength": 380
+},
+{
+	"Name": "Hydropump",
+	"Type": 1,
+	"Strength": 550
+},
+{
+	"Name": "Waterspout",
+	"Type": 1,
+	"Strength": 400
+},
+{
+	"Name": "Bubblebeam",
+	"Type": 1,
+	"Strength": 350
+},
+{
+	"Name": "Waterpledge",
+	"Type": 1,
+	"Strength": 350
+},
+{
+	"Name": "Hydrocannon",
+	"Type": 1,
+	"Strength": 500
+},
+{
+	"Name": "Watershuriken",
+	"Type": 1,
+	"Strength": 400
+}]

@@ -1,0 +1,45 @@
+[{
+	"Name": "Ember",
+	"Type": 0,
+	"Strength": 250
+},
+{
+	"Name": "Vcreate",
+	"Type": 0,
+	"Strength": 500
+},
+{
+	"Name": "Inferno",
+	"Type": 0,
+	"Strength": 320
+},
+{
+	"Name": "Blueflare",
+	"Type": 0,
+	"Strength": 450
+},
+{
+	"Name": "Lavaplume",
+	"Type": 0,
+	"Strength": 250
+},
+{
+	"Name": "Blastburn",
+	"Type": 0,
+	"Strength": 500
+},
+{
+	"Name": "Incinerate",
+	"Type": 0,
+	"Strength": 280
+},
+{
+	"Name": "Searingshot",
+	"Type": 0,
+	"Strength": 300
+},
+{
+	"Name": "Flamethrower",
+	"Type": 0,
+	"Strength": 400
+}]

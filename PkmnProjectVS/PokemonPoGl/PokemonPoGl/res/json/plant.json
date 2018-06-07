@@ -1,0 +1,45 @@
+[{
+	"Name": "Leafstorm",
+	"Type": 2,
+	"Strength": 400
+},
+{
+	"Name": "Powerwhip",
+	"Type": 2,
+	"Strength": 400
+},
+{
+	"Name": "Seedflare",
+	"Type": 2,
+	"Strength": 350
+},
+{
+	"Name": "Solarbeam",
+	"Type": 2,
+	"Strength": 500
+},
+{
+	"Name": "Synthesis",
+	"Type": 2,
+	"Strength": 400
+},
+{
+	"Name": "Petaldance",
+	"Type": 2,
+	"Strength": 200
+},
+{
+	"Name": "Woodhammer",
+	"Type": 2,
+	"Strength": 350
+},
+{
+	"Name": "Solarblade",
+	"Type": 2,
+	"Strength": 250
+},
+{
+	"Name": "Frenzyplant",
+	"Type": 2,
+	"Strength": 500
+}]

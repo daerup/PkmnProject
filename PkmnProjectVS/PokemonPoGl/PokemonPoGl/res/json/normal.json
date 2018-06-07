@@ -1,0 +1,75 @@
+[{
+	"Name": "Cut",
+	"Type": 3,
+	"Strength": 250
+},
+{
+	"Name": "Takle",
+	"Type": 3,
+	"Strength": 250
+},
+{
+	"Name": "Megakick",
+	"Type": 3,
+	"Strength": 250
+},
+{
+	"Name": "Judgment",
+	"Type": 3,
+	"Strength": 480
+},
+{
+	"Name": "Hyperbeam",
+	"Type": 3,
+	"Strength": 550
+},
+{
+	"Name": "Explosion",
+	"Type": 3,
+	"Strength": 400
+},
+{
+	"Name": "Boomburst",
+	"Type": 3,
+	"Strength": 250
+},
+{
+	"Name": "Gigaimpact",
+	"Type": 3,
+	"Strength": 240
+},
+{
+	"Name": "Extreamspeed",
+	"Type": 3,
+	"Strength": 200
+},
+{
+	"Name": "Doublehit",
+	"Type": 3,
+	"Strength": 220
+},
+{
+	"Name": "Eggbomb",
+	"Type": 3,
+	"Strength": 250
+},
+{
+	"Name": "Headcharge",
+	"Type": 3,
+	"Strength": 450
+},
+{
+	"Name": "Headbutt",
+	"Type": 3,
+	"Strength": 300
+},
+{
+	"Name": "Guillotine",
+	"Type": 3,
+	"Strength": 600
+},
+{
+	"Name": "Thrash",
+	"Type": 3,
+	"Strength": 450
+}]
