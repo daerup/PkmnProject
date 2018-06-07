@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 using smoothBar;
 using WpfAnimatedGif;
 using System.Windows.Media.Animation;
-using PokemonPoGl.Annotations;
-// ReSharper disable CompareOfFloatsByEqualityOperator
-// ReSharper disable SuggestVarOrType_BuiltInTypes
-// ReSharper disable SuggestVarOrType_Elsewhere
 
 namespace PokemonPoGl
 {
@@ -17,20 +19,47 @@ namespace PokemonPoGl
     /// </summary>
     public partial class MainWindow
     {
-        public readonly List<Pokemon> AllPokemon = new List<Pokemon>();
+        public readonly List<Pokemon> _allPokemon = JsonSerialization.ReadFromJsonFile<List<Pokemon>>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json");
+        //public Pokemon Charizard = new Pokemon(Types.Fire, nameof(Charizard), new Thickness(-99, 16, 454, 0), new Thickness(525, 10, 17, 379));
+        //public Pokemon Blaziken = new Pokemon(Types.Fire, nameof(Blaziken), new Thickness(102, 279, 497, 130), new Thickness(585, 96, 168, 375));
+        //public Pokemon Infernape = new Pokemon(Types.Fire, nameof(Infernape), new Thickness(30, 233, 481, 110), new Thickness(585, 96, 80, 357));
+        //public Pokemon Blastoise = new Pokemon(Types.Water, nameof(Blastoise), new Thickness(75, 204, 505, 10), new Thickness(592, 97, 135, 312));
+        //public Pokemon Feraligatr = new Pokemon(Types.Water, nameof(Feraligatr), new Thickness(41, 59, 466, -26), new Thickness(526, 35, 59, 347));
+        //public Pokemon Swampert = new Pokemon(Types.Water, nameof(Swampert), new Thickness(48, 159, 411, 0), new Thickness(558, 142, 105, 372));
+        //public Pokemon Sceptile = new Pokemon(Types.Plant, nameof(Sceptile), new Thickness(22, 194, 494, 31), new Thickness(540, 114, 114, 381));
+        //public Pokemon Torterra = new Pokemon(Types.Plant, nameof(Torterra), new Thickness(15, 129, 444, 48), new Thickness(546, 93, 64, 372));
+        //public Pokemon Venusaur = new Pokemon(Types.Plant, nameof(Venusaur), new Thickness(48, 189, 411, -12), new Thickness(530, 93, 82, 327));
+
+        //public Pokemon Pinsir = new Pokemon(Types.Plant, nameof(Pinsir), new Thickness(77, 10, 415, -118), new Thickness(550, 20, 75, 342));
+        //public Pokemon Corsola = new Pokemon(Types.Water, nameof(Corsola), new Thickness(144, 296, 555, -26), new Thickness(667, 185, 156, 347));
         public Pokemon Groudon = new Pokemon(Types.Fire, nameof(Groudon), new Thickness(-39, -106, 426, -233), new Thickness(485, 10, 17, 361));
 
         public Pokemon PlayerPokemon;
         public Pokemon EnemyPokemon;
-        private Brush _color;
-        private string _effectiveness;
+        private Brush color;
+        private string effectiveness;
 
-        private readonly Random _random = new Random();
+        Random random = new Random();
         public MainWindow()
         {
             InitializeComponent();
-            CreateList();
-            PlayerPokemon = AllPokemon.Find(x => x.Name == "Blastoise");
+            //CreateList();
+
+            //JsonSerialization.WriteToJsonFile(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", _allPokemon);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Groudon);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Blaziken);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Infernape);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Blastoise);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Feraligatr);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Swampert);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Sceptile);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Torterra);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Venusaur);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Pinsir);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Corsola);
+            //JsonSerialization.WriteToJsonFile<Pokemon>(@"C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\res\json\pokemon.json", Charizard);
+
+            PlayerPokemon = _allPokemon.Find(x => x.Name == "Blastoise");
             PrepareUi();
             DelcareEnemyPokemon();
             ShowPokemon();
@@ -43,16 +72,16 @@ namespace PokemonPoGl
         {
             switch (PlayerPokemon.Type)
             {
-                case Types.Fire: _color = Brushes.OrangeRed; break;
-                case Types.Water: _color = Brushes.CornflowerBlue; break;
-                case Types.Plant: _color = Brushes.ForestGreen; break;
+                case Types.Fire: color = Brushes.OrangeRed; break;
+                case Types.Water: color = Brushes.CornflowerBlue; break;
+                case Types.Plant: color = Brushes.ForestGreen; break;
             }
 
             Stab.Content = PlayerPokemon.StabAttack.Name;
             Normal.Content = PlayerPokemon.NormalAttack.Name;
 
             Normal.Background = new SolidColorBrush(Color.FromArgb(255, 95, 95, 95));
-            Stab.Background = _color;
+            Stab.Background = color;
         }
         private void UpdateEnemy()
         {
@@ -62,7 +91,7 @@ namespace PokemonPoGl
             EnemyHp.SmoothValue = 1000;
         }
 
-        private double CalculateDamage([NotNull] Pokemon attacker, [NotNull] Attack attack)
+        private double CalculateDamage(Pokemon attacker, Attack attack)
         {
             Pokemon defender;
             double damage;
@@ -76,7 +105,7 @@ namespace PokemonPoGl
                 defender = PlayerPokemon;
             }
 
-            int r = _random.Next(0, 11);
+            int r = random.Next(0, 11);
             if (r == 10)
             {
                 criticalhit = true;
@@ -98,36 +127,36 @@ namespace PokemonPoGl
                     {
                         damage = (attack.Strength * 1.25);
                     }
-                    _effectiveness = "super effective";
+                    effectiveness = "super effective";
                 }
                 else if (attacker.GetWeakness() == defender.Type && attack.Type != Types.Normal)
                 {
                     if (attacker == PlayerPokemon)
                     {
-                        damage = (attack.Strength * 0.5);
+                        damage = (attack.Strength / 2);
                     }
                     else
                     {
-                        damage = (attack.Strength * 0.3);
+                        damage = (attack.Strength / 2.5);
                     }
-                    _effectiveness = "not so effective";
+                    effectiveness = "not so effective";
                 }
                 else
                 {
                     damage = attack.Strength;
-                    _effectiveness = "normal effective";
+                    effectiveness = "normal effective";
                 } 
             }
             else
             {
                 damage = (attack.Strength * 2);
-                _effectiveness = "a Critical Hit";
+                effectiveness = "a Critical Hit";
             }
 
             return damage;
 
         }
-        private static void TakeDamage(double damage, SmoothProgressBar hpBar)
+        private void TakeDamage(double damage, SmoothProgressBar hpBar)
         {
             double newHp = hpBar.Value - damage;
 
@@ -145,48 +174,36 @@ namespace PokemonPoGl
 
         private void DelcareEnemyPokemon()
         {
-            int r = _random.Next(0, AllPokemon.Count-1);
+            int r = random.Next(0, _allPokemon.Count-1);
 
             UpdateList();
 
-            EnemyPokemon = AllPokemon[r];
+            EnemyPokemon = _allPokemon[r];
 
             TxtPlayerPokemon.Text = PlayerPokemon.Name;
             TxtEnemyPokemon.Text = EnemyPokemon.Name;
         }
-        private void CreateList()
-        {
-            Pokemon Charizard = new Pokemon(Types.Fire, nameof(Charizard), new Thickness(-99, 16, 454, 0), new Thickness(525, 10, 17, 379));
-            Pokemon Blaziken = new Pokemon(Types.Fire, nameof(Blaziken), new Thickness(102, 279, 497, 130), new Thickness(585, 96, 168, 375));
-            Pokemon Infernape = new Pokemon(Types.Fire, nameof(Infernape), new Thickness(30, 233, 481, 110), new Thickness(585, 96, 80, 357));
-            Pokemon Blastoise = new Pokemon(Types.Water, nameof(Blastoise), new Thickness(75, 204, 505, 10), new Thickness(592, 97, 135, 312));
-            Pokemon Feraligatr = new Pokemon(Types.Water, nameof(Feraligatr), new Thickness(41, 59, 466, -26), new Thickness(526, 35, 59, 347));
-            Pokemon Swampert = new Pokemon(Types.Water, nameof(Swampert), new Thickness(48, 159, 411, 0), new Thickness(558, 142, 105, 372));
-            Pokemon Sceptile = new Pokemon(Types.Plant, nameof(Sceptile), new Thickness(22, 194, 494, 31), new Thickness(540, 114, 114, 381));
-            Pokemon Torterra = new Pokemon(Types.Plant, nameof(Torterra), new Thickness(15, 129, 444, 48), new Thickness(546, 93, 64, 372));
-            Pokemon Venusaur = new Pokemon(Types.Plant, nameof(Venusaur), new Thickness(48, 189, 411, -12), new Thickness(530, 93, 82, 327));
+        //private void CreateList()
+        //{
+        //    _allPokemon.Add(Charizard);
+        //    _allPokemon.Add(Blastoise);
+        //    _allPokemon.Add(Blaziken);
+        //    _allPokemon.Add(Infernape);
+        //    _allPokemon.Add(Feraligatr);
+        //    _allPokemon.Add(Swampert);
+        //    _allPokemon.Add(Sceptile);
+        //    _allPokemon.Add(Torterra);
+        //    _allPokemon.Add(Venusaur);
+        //    //_allPokemon.Add(Groudon);
 
-            Pokemon Pinsir = new Pokemon(Types.Plant, nameof(Pinsir), new Thickness(77, 10, 415, -118), new Thickness(550, 20, 75, 342));
-            Pokemon Corsola = new Pokemon(Types.Water, nameof(Corsola), new Thickness(144, 296, 555, -26), new Thickness(667, 185, 156, 347));
-
-            AllPokemon.Add(Charizard);
-            AllPokemon.Add(Blastoise);
-            AllPokemon.Add(Blaziken);
-            AllPokemon.Add(Infernape);
-            AllPokemon.Add(Feraligatr);
-            AllPokemon.Add(Swampert);
-            AllPokemon.Add(Sceptile);
-            AllPokemon.Add(Torterra);
-            AllPokemon.Add(Venusaur);
-
-            AllPokemon.Add(Pinsir);
-            AllPokemon.Add(Corsola);
-        }
+        //    _allPokemon.Add(Pinsir);
+        //    _allPokemon.Add(Corsola);
+        //}
 
         private void UpdateList()
         {
-            AllPokemon.RemoveAll(a => a.Beaten);
-            AllPokemon.RemoveAll(a => a.Name == PlayerPokemon.Name);
+            _allPokemon.RemoveAll(a => a.Beaten);
+            _allPokemon.RemoveAll(a => a.Name == PlayerPokemon.Name);
             CheckIfWon();
         }
 
@@ -217,7 +234,7 @@ namespace PokemonPoGl
             {
                 EnableButtons();
             }
-            if (PlayerHp.SmoothValue != PlayerHp.Value)
+            if (Math.Abs(PlayerHp.SmoothValue - PlayerHp.Value) > 0)//genauer als ==
             {
                 if ((string) PlayerHp.Tag != @"ShouldBlink")
                 {
@@ -254,7 +271,7 @@ namespace PokemonPoGl
             {
                 EnemyAttack();
             }
-            if (EnemyHp.SmoothValue != EnemyHp.Value)
+            if (Math.Abs(EnemyHp.SmoothValue - EnemyHp.Value) > 0) //genauer als ==
             {
                 if ((string)EnemyHp.Tag != "ShouldBlink")
                 {
@@ -286,26 +303,27 @@ namespace PokemonPoGl
 
         private void CheckIfWon()
         {
-            if (AllPokemon.Count != 0) return;
-            if (!Groudon.Beaten)
+            if (_allPokemon.Count == 0)
             {
-                AllPokemon.Add(Groudon);
-            }
-            else
-            {
-                MessageBox.Show("Sie haben gewonnen"); 
+                if (!Groudon.Beaten)
+                {
+                    _allPokemon.Add(Groudon);
+                }
+                else
+                {
+                    MessageBox.Show("Sie haben gewonnen"); 
+                }
             }
         }
 
         private void EnemyAttack()
         {
-            List<Attack> availableAttacks = new List<Attack>
-            {
-                EnemyPokemon.NormalAttack,
-                EnemyPokemon.StabAttack
-            };
+            List<Attack> availableAttacks = new List<Attack>();
 
-            int r = _random.Next(0, 2);
+            availableAttacks.Add(EnemyPokemon.NormalAttack);
+            availableAttacks.Add(EnemyPokemon.StabAttack);
+
+            int r = random.Next(0, 2);
 
             double damage = CalculateDamage(EnemyPokemon, availableAttacks[r]);
             TakeDamage(damage, PlayerHp);
@@ -358,7 +376,7 @@ namespace PokemonPoGl
 
         private void AttackNarrator(Pokemon attacker, Attack attack)
         {
-            string statement = $"{attacker.Name} used {attack.Name}...It's {_effectiveness}";
+            string statement = $"{attacker.Name} used {attack.Name}...It's {effectiveness}";
             
             Narrator.Text = statement;
         }

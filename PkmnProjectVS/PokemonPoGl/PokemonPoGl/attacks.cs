@@ -6,7 +6,6 @@
         public Types Type { get; set; }
 
         public uint Strength { get; set; }
-
         public Attack(string name, Types type, uint strength)
         {
             Name = name;

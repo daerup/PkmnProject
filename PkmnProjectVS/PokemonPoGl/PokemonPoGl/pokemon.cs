@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Media;
+using Newtonsoft.Json;
 
 namespace PokemonPoGl
 {
@@ -16,14 +17,14 @@ namespace PokemonPoGl
 
     public class Pokemon
     {
-        private static readonly Attack _precipiceblades = new Attack(nameof(_precipiceblades), Types.Fire, 600);
+        private static readonly Attack Precipiceblades = new Attack(nameof(Precipiceblades), Types.Fire, 600);
 
         public static readonly List<Attack> NormalAttacks = new List<Attack>();
         public static readonly List<Attack> FireAttacks = new List<Attack>();
         public static readonly List<Attack> WaterAttacks = new List<Attack>();
         public static readonly List<Attack> PlantAttacks = new List<Attack>();
-        static Random _random = new Random();
-        private static bool hasRun = false;
+        private static Random _random = new Random();
+        private static bool _hasRun = false;
 
         public string Name { get; set; }
         public bool Beaten { get; set; }
@@ -35,17 +36,23 @@ namespace PokemonPoGl
         public Thickness FrontMargin { get; set; }
         public Thickness BackMargin { get; set; }
 
+        [JsonIgnore]
         public Attack StabAttack { get; set; }
+        [JsonIgnore]
         public Attack NormalAttack { get; set; }
 
         [SuppressMessage("ReSharper", "ArrangeThisQualifier")]
+
+        public Pokemon()
+        {
+        }
         public Pokemon(Types type, string name, Thickness backSideMargin, Thickness frontSideMargin)
         {
+            this.Name = name;
             string backSidePath = $@"pack://application:,,,/res/sprites/{name}/back.gif";
             string frontSidePath = $@"pack://application:,,,/res/sprites/{name}/front.gif";
             this.Type = type;
-            this.Name = name;
-
+            
             this.FrontMargin = frontSideMargin;
             this.BackMargin = backSideMargin;
             this.Beaten = false;
@@ -79,7 +86,7 @@ namespace PokemonPoGl
             }
             else
             {
-                StabAttack = _precipiceblades;
+                StabAttack = Precipiceblades;
             }
 
             int rNormal = _random.Next(0, NormalAttacks.Count -1);
@@ -101,26 +108,26 @@ namespace PokemonPoGl
 
         private static void CreateAttacks()
         {
-            if (!hasRun)
+            if (!_hasRun)
             {
                 // ReSharper disable InconsistentNaming
                 //normal Attack
                 Attack Extreamspeed = new Attack(nameof(Extreamspeed), Types.Normal, 200);
                 Attack Gigaimpact = new Attack(nameof(Gigaimpact), Types.Normal, 240);
+                Attack Guillotine = new Attack(nameof(Guillotine), Types.Normal, 600);
+                Attack Headcharge = new Attack(nameof(Headcharge), Types.Normal, 450);
                 Attack Boomburst = new Attack(nameof(Boomburst), Types.Normal, 250);
                 Attack Hyperbeam = new Attack(nameof(Hyperbeam), Types.Normal, 550);
+                Attack Doublehit = new Attack(nameof(Doublehit), Types.Normal, 220);
                 Attack Explosion = new Attack(nameof(Explosion), Types.Normal, 400);
+                Attack Headbutt = new Attack(nameof(Headbutt), Types.Normal, 300);
                 Attack Judgment = new Attack(nameof(Judgment), Types.Normal, 480);
                 Attack Megakick = new Attack(nameof(Megakick), Types.Normal, 250);
+                Attack Eggbomb = new Attack(nameof(Eggbomb), Types.Normal, 250);
+                Attack Thrash = new Attack(nameof(Thrash), Types.Normal, 450);
                 Attack Takle = new Attack(nameof(Takle), Types.Normal, 250);
                 Attack Cut = new Attack(nameof(Cut), Types.Normal, 250);
 
-                Attack Doublehit = new Attack(nameof(Doublehit), Types.Normal, 220);
-                Attack Eggbomb = new Attack(nameof(Eggbomb), Types.Normal, 250);
-                Attack Headcharge = new Attack(nameof(Headcharge), Types.Normal, 450);
-                Attack Headbutt = new Attack(nameof(Headbutt), Types.Normal, 300);
-                Attack Guillotine = new Attack(nameof(Guillotine), Types.Normal, 600);
-                Attack Thrash = new Attack(nameof(Thrash), Types.Normal, 450);
 
                 //fire Attack
                 Attack Flamethrower = new Attack(nameof(Flamethrower), Types.Fire, 400);
@@ -207,7 +214,8 @@ namespace PokemonPoGl
                 PlantAttacks.Add(Solarblade);
                 PlantAttacks.Add(Frenzyplant);
 
-                hasRun = true;
+
+                _hasRun = true;
                 // ReSharper restore InconsistentNaming 
             }
         }
