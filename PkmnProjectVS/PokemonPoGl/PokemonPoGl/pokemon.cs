@@ -15,6 +15,8 @@ namespace PokemonPoGl
     }
     public class Pokemon
     {
+        Attack Precipiceblades = new Attack(nameof(Precipiceblades), Types.Fire, 650);
+
         public readonly List<Attack> NormalAttacks = new List<Attack>();
         public readonly List<Attack> FireAttacks = new List<Attack>();
         public readonly List<Attack> WaterAttacks = new List<Attack>();
@@ -52,11 +54,18 @@ namespace PokemonPoGl
 
             CreateAttacks();
             int r = random.Next(0, 9);
-            switch (type)
+            if (this.Name  != "Groudon")
             {
-                case Types.Fire: StabAttack = FireAttacks[r]; break;
-                case Types.Water: StabAttack = WaterAttacks[r]; break;
-                case Types.Plant: StabAttack = PlantAttacks[r]; break;
+                switch (type)
+                {
+                    case Types.Fire: StabAttack = FireAttacks[r]; break;
+                    case Types.Water: StabAttack = WaterAttacks[r]; break;
+                    case Types.Plant: StabAttack = PlantAttacks[r]; break;
+                } 
+            }
+            else
+            {
+                StabAttack = Precipiceblades;
             }
 
             r = random.Next(0, 9);
@@ -77,13 +86,13 @@ namespace PokemonPoGl
         {
             //normal Attack
             Attack Hyperbeam = new Attack(nameof(Hyperbeam), Types.Normal, 550);
-            Attack Explosion = new Attack(nameof(Explosion), Types.Normal, 250);
-            Attack Takle = new Attack(nameof(Takle), Types.Normal, 150);
+            Attack Explosion = new Attack(nameof(Explosion), Types.Normal, 400);
+            Attack Takle = new Attack(nameof(Takle), Types.Normal, 250);
             Attack Extreamspeed = new Attack(nameof(Extreamspeed), Types.Normal, 200);
             Attack Boomburst = new Attack(nameof(Boomburst), Types.Normal, 250);
             Attack Gigaimpact = new Attack(nameof(Gigaimpact), Types.Normal, 240);
-            Attack Megakick = new Attack(nameof(Megakick), Types.Normal, 200);
-            Attack Cut = new Attack(nameof(Cut), Types.Normal, 150);
+            Attack Megakick = new Attack(nameof(Megakick), Types.Normal, 250);
+            Attack Cut = new Attack(nameof(Cut), Types.Normal, 250);
             Attack Judgment = new Attack(nameof(Judgment), Types.Normal, 400);
 
             //fire Attack
@@ -94,11 +103,11 @@ namespace PokemonPoGl
             Attack Flamethrower = new Attack(nameof(Flamethrower), Types.Fire, 400);
             Attack Ember = new Attack(nameof(Ember), Types.Fire, 250);
             Attack Inferno = new Attack(nameof(Inferno), Types.Fire, 320);
-            Attack Blastburn = new Attack(nameof(Blastburn), Types.Fire, 600);
-            Attack Vcreate = new Attack(nameof(Vcreate), Types.Fire, 600);
+            Attack Blastburn = new Attack(nameof(Blastburn), Types.Fire, 500);
+            Attack Vcreate = new Attack(nameof(Vcreate), Types.Fire, 500);
 
             //water Attack
-            Attack Hydrocannon = new Attack(nameof(Hydrocannon), Types.Water, 600);
+            Attack Hydrocannon = new Attack(nameof(Hydrocannon), Types.Water, 500);
             Attack Waterspout = new Attack(nameof(Waterspout), Types.Water, 300);
             Attack Waterfall = new Attack(nameof(Waterfall), Types.Water, 280);
             Attack Watergun = new Attack(nameof(Watergun), Types.Water, 310);
@@ -112,7 +121,7 @@ namespace PokemonPoGl
             Attack Leafstorm = new Attack(nameof(Leafstorm), Types.Plant, 400);
             Attack Powerwhip = new Attack(nameof(Powerwhip), Types.Plant, 400);
             Attack Petaldance = new Attack(nameof(Petaldance), Types.Plant, 200);
-            Attack Frenzyplant = new Attack(nameof(Frenzyplant), Types.Plant, 600);
+            Attack Frenzyplant = new Attack(nameof(Frenzyplant), Types.Plant, 500);
             Attack Woodhammer = new Attack(nameof(Woodhammer), Types.Plant, 350);
             Attack Seedflare = new Attack(nameof(Seedflare), Types.Plant, 350);
             Attack Solarbeam = new Attack(nameof(Solarbeam), Types.Plant, 500);

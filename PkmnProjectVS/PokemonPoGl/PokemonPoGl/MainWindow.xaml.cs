@@ -44,7 +44,7 @@ namespace PokemonPoGl
         {
             InitializeComponent();
             CreateList();
-            PlayerPokemon = Blaziken;
+            PlayerPokemon = Blastoise;
             PrepareUi();
             DelcareEnemyPokemon();
             ShowPokemon();
@@ -80,6 +80,7 @@ namespace PokemonPoGl
         {
             Pokemon defender;
             double damage;
+            bool criticalhit;
             if (attacker == PlayerPokemon)
             {
                 defender = EnemyPokemon;
@@ -89,34 +90,52 @@ namespace PokemonPoGl
                 defender = PlayerPokemon;
             }
 
-            if (attack.Type == defender.GetWeakness())
+            int r = random.Next(0, 11);
+            if (r == 10)
             {
-                if (attacker == PlayerPokemon)
-                {
-                    damage = (attack.Strength * 1.75); 
-                }
-                else
-                {
-                    damage = (attack.Strength * 1.25);
-                }
-                effectiveness = "super effective";
-            }
-            else if (attacker.GetWeakness() == defender.Type && attack.Type != Types.Normal)
-            {
-                if (attacker == PlayerPokemon)
-                {
-                    damage = (attack.Strength / 2); 
-                }
-                else
-                {
-                    damage = (attack.Strength / 2.5);
-                }
-                effectiveness = "not so effective";
+                criticalhit = true;
             }
             else
             {
-                damage = attack.Strength;
-                effectiveness = "normal effective";
+                criticalhit = false;
+            }
+
+            if (!criticalhit)
+            {
+                if (attack.Type == defender.GetWeakness())
+                {
+                    if (attacker == PlayerPokemon)
+                    {
+                        damage = (attack.Strength * 1.75);
+                    }
+                    else
+                    {
+                        damage = (attack.Strength * 1.25);
+                    }
+                    effectiveness = "super effective";
+                }
+                else if (attacker.GetWeakness() == defender.Type && attack.Type != Types.Normal)
+                {
+                    if (attacker == PlayerPokemon)
+                    {
+                        damage = (attack.Strength / 2);
+                    }
+                    else
+                    {
+                        damage = (attack.Strength / 2.5);
+                    }
+                    effectiveness = "not so effective";
+                }
+                else
+                {
+                    damage = attack.Strength;
+                    effectiveness = "normal effective";
+                } 
+            }
+            else
+            {
+                damage = (attack.Strength * 2);
+                effectiveness = "a Critical Hit";
             }
 
             return damage;
@@ -194,6 +213,7 @@ namespace PokemonPoGl
             {
                 PlayerHp.Foreground = Brushes.Green;
             }
+
             if (PlayerHp.Value == PlayerHp.SmoothValue && PlayerHp.SmoothValue != PlayerHp.Maximum && PlayerHp.SmoothValue != 0)
             {
                 EnableButtons();
@@ -210,7 +230,7 @@ namespace PokemonPoGl
                 PlayerHp.Tag = "ShouldNotBlink";
             }
 
-            if (PlayerHp.Value == 0)
+            if (PlayerHp.Value == 0 && PlayerHp.SmoothValue == 0)
             {
                 MessageBox.Show("YOU DIED");
             }
