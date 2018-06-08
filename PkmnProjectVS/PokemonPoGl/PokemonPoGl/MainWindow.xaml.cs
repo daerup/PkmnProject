@@ -31,6 +31,7 @@ namespace PokemonPoGl
 
         public Pokemon Groudon = new Pokemon(Types.Fire, nameof(Groudon), new Thickness(-39, -106, 426, -233), new Thickness(485, 10, 17, 361));
 
+        public static bool _Hardmode;
         public Pokemon PlayerPokemon;
         public Pokemon EnemyPokemon;
         private Brush _color;
@@ -42,7 +43,8 @@ namespace PokemonPoGl
         {
             InitializeComponent();
             AssignAttacks();
-            PlayerPokemon = _allPokemon.Find(x => x.Name == "Blastoise");
+            _Hardmode = false;
+            PlayerPokemon = _allPokemon.Find(x => x.Name == "Pinsir");
             PrepareUi();
             DelcareEnemyPokemon();
             ShowPokemon();
@@ -116,6 +118,7 @@ namespace PokemonPoGl
         {
             Pokemon defender;
             double damage;
+            int r;
             bool criticalhit;
             if (attacker == PlayerPokemon)
             {
@@ -125,8 +128,15 @@ namespace PokemonPoGl
             {
                 defender = PlayerPokemon;
             }
+            if (_Hardmode && attacker == EnemyPokemon)
+            {
+                r = _random.Next(0, 6);
+            }
+            else
+            {
+                r = _random.Next(0, 11);
+            }
 
-            int r = _random.Next(0, 11);
             if (r == 0)
             {
                 criticalhit = true;
@@ -140,26 +150,40 @@ namespace PokemonPoGl
             {
                 if (attack.Type == defender.GetWeakness())
                 {
-                    if (attacker == PlayerPokemon)
+                    if (!_Hardmode)
                     {
-                        damage = (attack.Strength * 1.75);
+                        if (attacker == PlayerPokemon)
+                        {
+                            damage = (attack.Strength * 1.75);
+                        }
+                        else
+                        {
+                            damage = (attack.Strength * 1.25);
+                        }
                     }
                     else
                     {
-                        damage = (attack.Strength * 1.25);
+                        damage = (attack.Strength * 1.75);
                     }
 
                     _effectiveness = "super effective";
                 }
                 else if (attacker.GetWeakness() == defender.Type && attack.Type != Types.Normal)
                 {
-                    if (attacker == PlayerPokemon)
+                    if (!_Hardmode)
                     {
-                        damage = (attack.Strength / 2);
+                        if (attacker == PlayerPokemon)
+                        {
+                            damage = (attack.Strength / 2);
+                        }
+                        else
+                        {
+                            damage = (attack.Strength / 2.5);
+                        }
                     }
                     else
                     {
-                        damage = (attack.Strength / 2.5);
+                        damage = (attack.Strength / 2);
                     }
 
                     _effectiveness = "not so effective";
@@ -167,7 +191,7 @@ namespace PokemonPoGl
                 else
                 {
                     damage = attack.Strength;
-                    _effectiveness = "normal effective";
+                    _effectiveness = "effective";
                 }
             }
             else
@@ -182,14 +206,21 @@ namespace PokemonPoGl
         private void TakeDamage(double damage, SmoothProgressBar hpBar)
         {
             double newHp = hpBar.Value - damage;
-
-            if (newHp < 0)
+            int r = _random.Next(0, 7);
+            if (r == 0)
             {
-                newHp = 0;
+                newHp = hpBar.Value;
+                DodgeNarrator()
             }
-            else if (newHp > 1000)
-            {
-                newHp = 1000;
+            else{
+                if (newHp < 0)
+                {
+                    newHp = 0;
+                }
+                else if (newHp > 1000)
+                {
+                    newHp = 1000;
+                } 
             }
 
             hpBar.SmoothValue = newHp;
@@ -365,6 +396,12 @@ namespace PokemonPoGl
         private void DeathNarrator(Pokemon deadpokemon)
         {
             string statement = $"RIP, {deadpokemon.Name}. You will be missed";
+            Narrator.Text = statement;
+        }
+
+        private void DodgeNarrator(Pokemon pokemon, Attack attack)
+        {
+            string statement = $"{pokemon.Name} has dodged{attack.Name}!";
             Narrator.Text = statement;
         }
 
