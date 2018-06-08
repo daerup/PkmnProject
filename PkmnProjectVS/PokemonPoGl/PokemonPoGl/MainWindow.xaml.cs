@@ -32,6 +32,7 @@ namespace PokemonPoGl
         public Pokemon Groudon = new Pokemon(Types.Fire, nameof(Groudon), new Thickness(-39, -106, 426, -233), new Thickness(485, 10, 17, 361));
 
         public static bool _Hardmode;
+        public static bool _Dodged;
         public Pokemon PlayerPokemon;
         public Pokemon EnemyPokemon;
         private Brush _color;
@@ -117,9 +118,11 @@ namespace PokemonPoGl
         private double CalculateDamage(Pokemon attacker, Attack attack)
         {
             Pokemon defender;
-            double damage;
+            double damage = 0;
             int r;
             bool criticalhit;
+            r = _random.Next(0, 11);
+
             if (attacker == PlayerPokemon)
             {
                 defender = EnemyPokemon;
@@ -128,101 +131,106 @@ namespace PokemonPoGl
             {
                 defender = PlayerPokemon;
             }
-            if (_Hardmode && attacker == EnemyPokemon)
-            {
-                r = _random.Next(0, 6);
-            }
-            else
-            {
-                r = _random.Next(0, 11);
-            }
 
             if (r == 0)
             {
-                criticalhit = true;
+                _Dodged = true;
+                damage = 50;
+                DodgeNarrator(defender, attack);
             }
             else
             {
-                criticalhit = false;
+                _Dodged = false;
             }
-
-            if (!criticalhit)
+            if (!_Dodged)
             {
-                if (attack.Type == defender.GetWeakness())
+                if (_Hardmode && attacker == EnemyPokemon)
                 {
-                    if (!_Hardmode)
-                    {
-                        if (attacker == PlayerPokemon)
-                        {
-                            damage = (attack.Strength * 1.75);
-                        }
-                        else
-                        {
-                            damage = (attack.Strength * 1.25);
-                        }
-                    }
-                    else
-                    {
-                        damage = (attack.Strength * 1.75);
-                    }
-
-                    _effectiveness = "super effective";
-                }
-                else if (attacker.GetWeakness() == defender.Type && attack.Type != Types.Normal)
-                {
-                    if (!_Hardmode)
-                    {
-                        if (attacker == PlayerPokemon)
-                        {
-                            damage = (attack.Strength / 2);
-                        }
-                        else
-                        {
-                            damage = (attack.Strength / 2.5);
-                        }
-                    }
-                    else
-                    {
-                        damage = (attack.Strength / 2);
-                    }
-
-                    _effectiveness = "not so effective";
+                    r = _random.Next(0, 6);
                 }
                 else
                 {
-                    damage = attack.Strength;
-                    _effectiveness = "effective";
+                    r = _random.Next(0, 11);
                 }
-            }
-            else
-            {
-                damage = (attack.Strength * 2);
-                _effectiveness = "a Critical Hit";
-            }
 
+                if (r == 0)
+                {
+                    criticalhit = true;
+                }
+                else
+                {
+                    criticalhit = false;
+                }
+
+                if (!criticalhit)
+                {
+                    if (attack.Type == defender.GetWeakness())
+                    {
+                        if (!_Hardmode)
+                        {
+                            if (attacker == PlayerPokemon)
+                            {
+                                damage = (attack.Strength * 1.75);
+                            }
+                            else
+                            {
+                                damage = (attack.Strength * 1.25);
+                            }
+                        }
+                        else
+                        {
+                            damage = (attack.Strength * 1.75);
+                        }
+
+                        _effectiveness = "super effective";
+                    }
+                    else if (attacker.GetWeakness() == defender.Type && attack.Type != Types.Normal)
+                    {
+                        if (!_Hardmode)
+                        {
+                            if (attacker == PlayerPokemon)
+                            {
+                                damage = (attack.Strength / 2);
+                            }
+                            else
+                            {
+                                damage = (attack.Strength / 2.5);
+                            }
+                        }
+                        else
+                        {
+                            damage = (attack.Strength / 2);
+                        }
+
+                        _effectiveness = "not so effective";
+                    }
+                    else
+                    {
+                        damage = attack.Strength;
+                        _effectiveness = "effective";
+                    }
+                }
+                else
+                {
+                    damage = (attack.Strength * 2);
+                    _effectiveness = "a Critical Hit";
+                } 
+            }
             return damage;
         }
 
         private void TakeDamage(double damage, SmoothProgressBar hpBar)
         {
             double newHp = hpBar.Value - damage;
-            int r = _random.Next(0, 7);
-            if (r == 0)
-            {
-                newHp = hpBar.Value;
-                DodgeNarrator()
-            }
-            else{
-                if (newHp < 0)
-                {
-                    newHp = 0;
-                }
-                else if (newHp > 1000)
-                {
-                    newHp = 1000;
-                } 
-            }
 
+            if (newHp < 0)
+            {
+                newHp = 0;
+            }
+            else if (newHp > 1000)
+            {
+                newHp = 1000;
+            }
             hpBar.SmoothValue = newHp;
         }
 
@@ -365,7 +373,14 @@ namespace PokemonPoGl
             double damage = CalculateDamage(EnemyPokemon, availableAttacks[r]);
             TakeDamage(damage, PlayerHp);
 
-            AttackNarrator(EnemyPokemon, availableAttacks[r]);
+            if (!_Dodged)
+            {
+                AttackNarrator(EnemyPokemon, availableAttacks[r]);
+            }
+            else
+            {
+                _Dodged = false;
+            }
 
             availableAttacks.Clear();
         }
@@ -389,7 +404,6 @@ namespace PokemonPoGl
         private void AttackNarrator(Pokemon attacker, Attack attack)
         {
             string statement = $"{attacker.Name} used {attack.Name}...It's {_effectiveness}";
-
             Narrator.Text = statement;
         }
 
@@ -399,9 +413,10 @@ namespace PokemonPoGl
             Narrator.Text = statement;
         }
 
-        private void DodgeNarrator(Pokemon pokemon, Attack attack)
+        private void DodgeNarrator(Pokemon defender, Attack attack)
         {
-            string statement = $"{pokemon.Name} has dodged{attack.Name}!";
+            
+            string statement = $"{defender.Name} has dodged {attack.Name}!";
             Narrator.Text = statement;
         }
 
@@ -421,16 +436,25 @@ namespace PokemonPoGl
 
         private void Normal_Click(object sender, RoutedEventArgs e)
         {
+            _Dodged = false;
+
             double damage = CalculateDamage(PlayerPokemon, PlayerPokemon.NormalAttack);
             TakeDamage(damage, EnemyHp);
-            AttackNarrator(PlayerPokemon, PlayerPokemon.NormalAttack);
+            if (!_Dodged)
+            {
+                AttackNarrator(PlayerPokemon, PlayerPokemon.NormalAttack); 
+            }
         }
 
         private void Stab_Click(object sender, RoutedEventArgs e)
         {
+            _Dodged = false;
             double damage = CalculateDamage(PlayerPokemon, PlayerPokemon.StabAttack);
             TakeDamage(damage, EnemyHp);
-            AttackNarrator(PlayerPokemon, PlayerPokemon.StabAttack);
+            if (!_Dodged)
+            {
+                AttackNarrator(PlayerPokemon, PlayerPokemon.StabAttack); 
+            }
         }
     }
 }
