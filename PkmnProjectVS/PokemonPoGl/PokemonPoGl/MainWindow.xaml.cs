@@ -42,7 +42,7 @@ namespace PokemonPoGl
         {
             InitializeComponent();
             AssignAttacks();
-            PlayerPokemon = Groudon; //_allPokemon.Find(x => x.Name == "Blastoise");
+            PlayerPokemon = _allPokemon.Find(x => x.Name == "Blastoise");
             PrepareUi();
             DelcareEnemyPokemon();
             ShowPokemon();
@@ -260,7 +260,7 @@ namespace PokemonPoGl
 
         private void EnemyHP_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (EnemyHp.Value < (EnemyHp.Maximum / 4)) //Damit immer nach 25% geprüft wird
+            if (EnemyHp.Value < (EnemyHp.Maximum / 4))
             {
                 EnemyHp.Foreground = Brushes.Red;
             }
@@ -278,7 +278,7 @@ namespace PokemonPoGl
                 EnemyAttack();
             }
 
-            if (Math.Abs(EnemyHp.SmoothValue - EnemyHp.Value) > 0) //genauer als ==
+            if (Math.Abs(EnemyHp.SmoothValue - EnemyHp.Value) > 0)
             {
                 if ((string) EnemyHp.Tag != "ShouldBlink")
                 {

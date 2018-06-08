@@ -26,7 +26,7 @@
 {
 	"Name": "Petaldance",
 	"Type": 2,
-	"Strength": 200
+	"Strength": 350
 },
 {
 	"Name": "Woodhammer",
@@ -36,7 +36,7 @@
 {
 	"Name": "Solarblade",
 	"Type": 2,
-	"Strength": 250
+	"Strength": 350
 },
 {
 	"Name": "Frenzyplant",

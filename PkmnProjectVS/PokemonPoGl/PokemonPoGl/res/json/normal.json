@@ -21,7 +21,7 @@
 {
 	"Name": "Hyperbeam",
 	"Type": 3,
-	"Strength": 550
+	"Strength": 499
 },
 {
 	"Name": "Explosion",
@@ -66,7 +66,7 @@
 {
 	"Name": "Guillotine",
 	"Type": 3,
-	"Strength": 600
+	"Strength": 490
 },
 {
 	"Name": "Thrash",

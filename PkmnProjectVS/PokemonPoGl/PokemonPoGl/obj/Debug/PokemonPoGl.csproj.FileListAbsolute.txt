@@ -119,3 +119,8 @@ H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\Pokemo
 H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.Properties.Resources.resources
 H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.GenerateResource.Cache
 H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.CoreCompileInputs.cache
+C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\Newtonsoft.Json.dll
+C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\Newtonsoft.Json.xml
+C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\de\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\GeneratedInternalTypeHelper.g.cs

@@ -55,7 +55,6 @@ namespace PokemonPoGl
             this.FrontPath = new ImageSourceConverter().ConvertFromString(frontSidePath) as ImageSource;
             this.BackPath = new ImageSourceConverter().ConvertFromString(backSidePath) as ImageSource;
 
-
             if (this.Name == "Groudon")
             {
                 StabAttack = Precipiceblades;

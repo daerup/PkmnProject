@@ -1,7 +1,7 @@
 [{
 	"Name": "Ember",
 	"Type": 0,
-	"Strength": 250
+	"Strength": 350
 },
 {
 	"Name": "Vcreate",
@@ -21,7 +21,7 @@
 {
 	"Name": "Lavaplume",
 	"Type": 0,
-	"Strength": 250
+	"Strength": 300
 },
 {
 	"Name": "Blastburn",
