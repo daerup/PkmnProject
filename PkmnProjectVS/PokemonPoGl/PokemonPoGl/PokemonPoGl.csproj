@@ -13,6 +13,21 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -65,9 +80,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CharSelect.xaml.cs">
+      <DependentUpon>CharSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="JsonSerialization.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SmoothProgressBar.cs" />
+    <Page Include="CharSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,9 +132,27 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\stage\stars.png" />
+    <Resource Include="res\stage\headLogo.png" />
+    <Resource Include="Pokemon.png" />
+    <Resource Include="HeadLogo.png" />
+    <Resource Include="PoGl.png" />
+    <Resource Include="f58fafdac7cc519d0b3c4796af10515e.png" />
     <Content Include="res\music\battleMusic.wav" />
+    <Content Include="res\music\hitSound.wav" />
     <Content Include="res\music\titleMusic.wav" />
     <Resource Include="res\sprites\Blastoise\back.gif" />
     <Resource Include="res\sprites\Blastoise\front.gif" />
@@ -138,6 +178,7 @@
     <Resource Include="res\sprites\Torterra\front.gif" />
     <Resource Include="res\sprites\Venusaur\back.gif" />
     <Resource Include="res\sprites\Venusaur\front.gif" />
+    <Resource Include="res\stage\footLogo.png" />
     <Content Include="res\stage\grass.png" />
     <Resource Include="res\stage\rock.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

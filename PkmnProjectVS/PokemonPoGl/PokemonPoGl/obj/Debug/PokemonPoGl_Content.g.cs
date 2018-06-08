@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("res/music/battlemusic.wav")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("res/music/hitsound.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("res/music/titlemusic.wav")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("res/stage/grass.png")]
 

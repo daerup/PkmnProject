@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Media;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Media;
 using smoothBar;
 using WpfAnimatedGif;
 using System.Windows.Media.Animation;
+using MessageBox = System.Windows.MessageBox;
 
 namespace PokemonPoGl
 {
@@ -30,11 +33,15 @@ namespace PokemonPoGl
         private List<Attack> _plantAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/plant.json");
 
         public Pokemon Groudon = new Pokemon(Types.Fire, nameof(Groudon), new Thickness(-39, -106, 426, -233), new Thickness(485, 10, 17, 361));
+        SoundPlayer battleMusic = new SoundPlayer(@"../../res/music/battleMusic.wav");
 
-        public static bool _Hardmode;
+
+        //public static bool _Hardmode;
+        public bool _Hardmode { get; set; }
         public static bool _Dodged;
-        public Pokemon PlayerPokemon;
-        public Pokemon EnemyPokemon;
+        public string choosenPokemon = JsonSerialization.ReadFromJsonFile<Pokemon>(@"../../res/json/player.json").Name;
+        public static Pokemon PlayerPokemon; 
+        public static Pokemon EnemyPokemon;
         private Brush _color;
         private string _effectiveness;
 
@@ -43,9 +50,9 @@ namespace PokemonPoGl
         public MainWindow()
         {
             InitializeComponent();
+            PlayerPokemon = _allPokemon.Find(pokemon => pokemon.Name == choosenPokemon);
+            battleMusic.PlayLooping();
             AssignAttacks();
-            _Hardmode = false;
-            PlayerPokemon = _allPokemon.Find(x => x.Name == "Pinsir");
             PrepareUi();
             DelcareEnemyPokemon();
             ShowPokemon();
@@ -146,7 +153,7 @@ namespace PokemonPoGl
             {
                 if (_Hardmode && attacker == EnemyPokemon)
                 {
-                    r = _random.Next(0, 6);
+                    r = _random.Next(0, 7);
                 }
                 else
                 {
