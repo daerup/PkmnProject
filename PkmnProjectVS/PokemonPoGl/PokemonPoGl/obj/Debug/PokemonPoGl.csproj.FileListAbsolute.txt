@@ -149,3 +149,5 @@ C:\Users\vmadmin\Desktop\M226B&M120Project\PoGl\PkmnProjectVS\PokemonPoGl\Pokemo
 C:\Users\vmadmin\Desktop\M226B&M120Project\PoGl\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.CoreCompileInputs.cache
 C:\Users\vmadmin\Desktop\M226B&M120Project\PoGl\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.exe
 C:\Users\vmadmin\Desktop\M226B&M120Project\PoGl\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.pdb
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\CharSelect.g.cs
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\CharSelect.baml

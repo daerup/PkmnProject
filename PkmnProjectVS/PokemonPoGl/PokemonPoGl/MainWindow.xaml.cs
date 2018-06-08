@@ -128,7 +128,7 @@ namespace PokemonPoGl
             double damage = 0;
             int r;
             bool criticalhit;
-            r = _random.Next(0, 11);
+            
 
             if (attacker == PlayerPokemon)
             {
@@ -138,16 +138,33 @@ namespace PokemonPoGl
             {
                 defender = PlayerPokemon;
             }
-
-            if (r == 0)
+            if (_Hardmode && defender == EnemyPokemon)
             {
-                _Dodged = true;
-                damage = 50;
-                DodgeNarrator(defender, attack);
+                r = _random.Next(0, 6);
+                if (r == 0)
+                {
+                    _Dodged = true;
+                    damage = 50;
+                    DodgeNarrator(defender, attack);
+                }
+                else
+                {
+                    _Dodged = false;
+                }
             }
             else
             {
-                _Dodged = false;
+                r = _random.Next(0, 11);
+                if (r == 0)
+                {
+                    _Dodged = true;
+                    damage = 50;
+                    DodgeNarrator(defender, attack);
+                }
+                else
+                {
+                    _Dodged = false;
+                }
             }
             if (!_Dodged)
             {

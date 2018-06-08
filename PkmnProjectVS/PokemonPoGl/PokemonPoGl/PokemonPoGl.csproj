@@ -147,10 +147,6 @@
   <ItemGroup>
     <Resource Include="res\stage\stars.png" />
     <Resource Include="res\stage\headLogo.png" />
-    <Resource Include="Pokemon.png" />
-    <Resource Include="HeadLogo.png" />
-    <Resource Include="PoGl.png" />
-    <Resource Include="f58fafdac7cc519d0b3c4796af10515e.png" />
     <Content Include="res\music\battleMusic.wav" />
     <Content Include="res\music\hitSound.wav" />
     <Content Include="res\music\titleMusic.wav" />
