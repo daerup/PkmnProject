@@ -23,6 +23,7 @@ namespace PokemonPoGl
     public partial class CharSelect : Window
     {
         private List<Pokemon> _allPokemon = JsonSerialization.ReadFromJsonFile<List<Pokemon>>(@"../../res/json/pokemon.json");
+        public Pokemon Groudon = new Pokemon(Types.Fire, nameof(Groudon), new Thickness(-39, -106, 426, -233), new Thickness(485, 10, 17, 361));
         SoundPlayer titleMusic = new SoundPlayer(@"../../res/music/titleMusic.wav");
         private int index;
 
@@ -33,9 +34,9 @@ namespace PokemonPoGl
             set
             {
                 if (value < 0)
-                    index = 10;
+                    index = _allPokemon.Count -1;
 
-                else if (value > 10)
+                else if (value > _allPokemon.Count - 1)
                     index = 0;
 
                 else index = value;
@@ -44,7 +45,7 @@ namespace PokemonPoGl
         public CharSelect()
         {
             InitializeComponent();
-
+            addGroudon();
             titleMusic.PlayLooping();
 
 
@@ -52,7 +53,15 @@ namespace PokemonPoGl
             ImageBehavior.SetAnimatedSource(Pokemon, _allPokemon[Index].FrontPath);
         }
 
-        
+        private void addGroudon()
+        {
+            bool unlocked = JsonSerialization.ReadFromJsonFile<bool>(@"../../res/json/unlocked.json");
+            if (unlocked)
+            {
+                _allPokemon.Add(Groudon);
+            }
+        }
+
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
@@ -73,17 +82,25 @@ namespace PokemonPoGl
 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
-            JsonSerialization.WriteToJsonFile(@"../../res/json/player.json", _allPokemon[index]);
+            bool _Hardmode;
             titleMusic.Stop();
-            MainWindow battleWindow = new MainWindow();
 
+            if (HardMode.IsChecked == true)
+            {
+                _Hardmode = true;
+            }
+            else
+            {
+                _Hardmode = false;
+            }
+
+            MainWindow battleWindow = new MainWindow(Groudon, _allPokemon[index].Name, _Hardmode);
             if (HardMode.IsChecked == true)
             {
                 battleWindow._Hardmode = true;
             }
-            this.Hide();
             battleWindow.Show();
-
+            this.Close();
         }
     }
 }

@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Media;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Media;
 using smoothBar;
@@ -32,14 +26,14 @@ namespace PokemonPoGl
 
         private List<Attack> _plantAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/plant.json");
 
-        public Pokemon Groudon = new Pokemon(Types.Fire, nameof(Groudon), new Thickness(-39, -106, 426, -233), new Thickness(485, 10, 17, 361));
+        public Pokemon Groudon;
+
         SoundPlayer battleMusic = new SoundPlayer(@"../../res/music/battleMusic.wav");
 
 
         //public static bool _Hardmode;
         public bool _Hardmode { get; set; }
         public static bool _Dodged;
-        public string choosenPokemon = JsonSerialization.ReadFromJsonFile<Pokemon>(@"../../res/json/player.json").Name;
         public static Pokemon PlayerPokemon; 
         public static Pokemon EnemyPokemon;
         private Brush _color;
@@ -47,11 +41,21 @@ namespace PokemonPoGl
 
         private readonly Random _random = new Random();
 
-        public MainWindow()
+        public MainWindow(Pokemon groudon, string choosenPokemon, bool hardmode)
         {
             InitializeComponent();
-            PlayerPokemon = _allPokemon.Find(pokemon => pokemon.Name == choosenPokemon);
+            this.Groudon = groudon;
+            _Hardmode = hardmode;
             battleMusic.PlayLooping();
+
+            if (choosenPokemon != "Groudon")
+            {
+                PlayerPokemon = _allPokemon.Find(pokemon => pokemon.Name == choosenPokemon); 
+            }
+            else
+            {
+                PlayerPokemon = Groudon;
+            }
             AssignAttacks();
             PrepareUi();
             DelcareEnemyPokemon();
@@ -317,7 +321,18 @@ namespace PokemonPoGl
 
             if (PlayerHp.Value == 0 && PlayerHp.SmoothValue == 0)
             {
-                MessageBox.Show("YOU DIED");
+                var result = MessageBox.Show("Do you want to Restart?","YOU DIED", MessageBoxButton.YesNoCancel);
+                battleMusic.Stop();
+                if (result == MessageBoxResult.Yes)
+                {
+                    CharSelect startWindow = new CharSelect();
+                    startWindow.Show();
+                    this.Close();
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    System.Environment.Exit(1);
+                }
             }
         }
 
@@ -380,7 +395,19 @@ namespace PokemonPoGl
                 }
                 else
                 {
-                    MessageBox.Show("Sie haben gewonnen");
+                    JsonSerialization.WriteToJsonFile(@"../../res/json/unlocked.json", true);
+                    var result = MessageBox.Show("You have unlocked Groudon as playable character, do you want to restart?", "You won!", MessageBoxButton.YesNoCancel);
+                    battleMusic.Stop();
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        CharSelect startWindow = new CharSelect();
+                        startWindow.Show();
+                        this.Close();
+                    }
+                    else if (result == MessageBoxResult.No)
+                    {
+                        System.Environment.Exit(1);
+                    }
                 }
             }
         }
