@@ -8,69 +8,67 @@ namespace smoothBar
 {
     internal class SmoothProgressBar : ProgressBar
     {
-        private readonly Timer _drawTimer;
-        private double _speed;
+        private readonly Timer drawTimer;
+        private double speed;
         public double Acceleration { get; set; }
 
         // ReSharper disable once InconsistentNaming
         private new double Value;
         public double SmoothValue
         {
-            get => Value;
+            get => this.Value;
             set
             {
-                if (Value > 1000)
-                    Value = 1000;
-                else if (Value < 0)
-                    Value = 0;
+                if (this.Value > 1000)
+                    this.Value = 1000;
+                else if (this.Value < 0)
+                    this.Value = 0;
                 else
-                    Value = value;
+                    this.Value = value;
             }
         }
+
         public SmoothProgressBar()
         {
-            _drawTimer = new Timer();
-            _drawTimer.Elapsed += OnTimerEvent;
+            this.drawTimer = new Timer();
+            this.drawTimer.Elapsed += OnTimerEvent;
 
             // 25 Fps für Timer verwenden
-            _drawTimer.Interval = 40;
-            _drawTimer.Enabled = true;
+            this.drawTimer.Interval = 40;
+            this.drawTimer.Enabled = true;
 
-            _speed = 0;
-            Acceleration = 0.5;
+            this.speed = 0;
+            this.Acceleration = 0.5;
         }
-
-
-
 
         public void OnTimerEvent(object source, ElapsedEventArgs e)
         {
             // Dispatcher aufrufen um an STA-Thread von wpf zu gelangen
-            Dispatcher.Invoke(DispatcherPriority.Normal, (Action) delegate
+            this.Dispatcher.Invoke(DispatcherPriority.Normal, (Action) delegate
             {
-                if (Math.Abs(Value - base.Value) > 0)
+                if (Math.Abs(this.Value - base.Value) > 0)
                 {
                     // beliebiges maximum normalisieren
-                    var faktor = 1 / Maximum;
+                    var faktor = 1 / this.Maximum;
                     // position auf Interval von 0-1 berechnen
                     var position = faktor * base.Value;
 
                     // Minimum berechnen zwischen beschleunigter und negativ beschleunigter Bewegung
                     // parameter 1: v = a*t
                     // parameter 2: v = sqrt(2*Bremsweg*a)
-                    _speed = Math.Min(_speed + Acceleration * (_drawTimer.Interval / 1000),
-                        Math.Sqrt(2 * Math.Abs(faktor * Value - position) * Acceleration));
+                    this.speed = Math.Min(this.speed + this.Acceleration * (this.drawTimer.Interval / 1000),
+                        Math.Sqrt(2 * Math.Abs(faktor * this.Value - position) * this.Acceleration));
 
                     // Nach rechts oder Links bewegen. s = v * t
-                    if (Value > base.Value)
+                    if (this.Value > base.Value)
                     {
-                        position += _drawTimer.Interval / 1000 * _speed;
-                        base.Value = Math.Min(position / faktor, Value);
+                        position += this.drawTimer.Interval / 1000 * this.speed;
+                        base.Value = Math.Min(position / faktor, this.Value);
                     }
                     else
                     {
-                        position -= _drawTimer.Interval / 1000 * _speed;
-                        base.Value = Math.Max(position / faktor, Value);
+                        position -= this.drawTimer.Interval / 1000 * this.speed;
+                        base.Value = Math.Max(position / faktor, this.Value);
                     }
                 }
             });

@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="PokemonPoGl.GameModeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PokemonPoGl"
+             mc:Ignorable="d" d:DesignWidth="800" Height="69">
+    <Grid>
+        <Label Content="{Binding GameMode}" Foreground="{Binding GameModeContentColor}" FontSize="45" FontWeight="Bold" HorizontalAlignment="Left">
+            <Label.Effect>
+                <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="1" BlurRadius="1"/>
+            </Label.Effect>
+        </Label>
+
+        <local:HelpView DataContext="{Binding HelpViewModel}" />
+    </Grid>
+</UserControl>

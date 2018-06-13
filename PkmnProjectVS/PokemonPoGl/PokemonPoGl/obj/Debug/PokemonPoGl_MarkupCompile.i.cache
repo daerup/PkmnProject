@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\
+C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\
 PokemonPoGl
 none
 false
 DEBUG;TRACE
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\App.xaml
-2-1952017250
+C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\App.xaml
+4-1934583466
 4-1511149010
-15-104093464
-181543744632
-CharSelect.xaml;MainWindow.xaml;
+24934722545
+18810710576
+CharSelectView.xaml;MVVM\HelpView.xaml;MVVM\GameModeView.xaml;MainWindowView.xaml;
 
-False
+True
 

@@ -80,17 +80,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CharSelect.xaml.cs">
-      <DependentUpon>CharSelect.xaml</DependentUpon>
+    <Compile Include="Attack.cs" />
+    <Compile Include="CharSelectView.xaml.cs">
+      <DependentUpon>CharSelectView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\HelpView.xaml.cs">
+      <DependentUpon>HelpView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\CharSelectViewModel.cs" />
+    <Compile Include="GameSettings.cs" />
+    <Compile Include="MVVM\HelpViewModel.cs" />
+    <Compile Include="MVVM\MainWindowViewModel.cs" />
+    <Compile Include="MVVM\GameModeView.xaml.cs">
+      <DependentUpon>GameModeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\GameModeViewModel.cs" />
     <Compile Include="JsonSerialization.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="SmoothProgressBar.cs" />
-    <Page Include="CharSelect.xaml">
+    <Compile Include="MVVM\ViewModelBase.cs" />
+    <Compile Include="Types.cs" />
+    <Page Include="CharSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="MVVM\HelpView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\GameModeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -98,9 +120,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="attacks.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="MainWindowView.xaml.cs">
+      <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Media;
 using Newtonsoft.Json;
 
 namespace PokemonPoGl
 {
-    public enum Types
-    {
-        Fire,
-        Water,
-        Plant,
-        Normal
-    }
-
     public class Pokemon
     {
         private static readonly Attack Precipiceblades = new Attack(nameof(Precipiceblades), Types.Fire, 600);
@@ -28,7 +18,6 @@ namespace PokemonPoGl
 
         public Thickness FrontMargin { get; set; }
         public Thickness BackMargin { get; set; }
-        private Random _random = new Random();
 
 
         [JsonIgnore]
@@ -57,17 +46,17 @@ namespace PokemonPoGl
 
             if (this.Name == "Groudon")
             {
-                StabAttack = Precipiceblades;
+                this.StabAttack = Precipiceblades;
             }
             else
             {
-                StabAttack = Precipiceblades;
+                this.StabAttack = Precipiceblades;
             }
         }
 
         public Types GetWeakness()
         {
-            switch (Type)
+            switch (this.Type)
             {
                 case Types.Fire: return Types.Water;
                 case Types.Water: return Types.Plant;
