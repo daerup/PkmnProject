@@ -80,35 +80,35 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Attack.cs" />
+    <Compile Include="Models\Attack.cs" />
     <Compile Include="CharSelectView.xaml.cs">
       <DependentUpon>CharSelectView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\HelpView.xaml.cs">
+    <Compile Include="Views\HelpView.xaml.cs">
       <DependentUpon>HelpView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\CharSelectViewModel.cs" />
-    <Compile Include="GameSettings.cs" />
-    <Compile Include="MVVM\HelpViewModel.cs" />
-    <Compile Include="MVVM\MainWindowViewModel.cs" />
-    <Compile Include="MVVM\GameModeView.xaml.cs">
+    <Compile Include="ViewModels\CharSelectViewModel.cs" />
+    <Compile Include="Models\GameSettings.cs" />
+    <Compile Include="ViewModels\HelpViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\GameModeView.xaml.cs">
       <DependentUpon>GameModeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\GameModeViewModel.cs" />
-    <Compile Include="JsonSerialization.cs" />
+    <Compile Include="ViewModels\GameModeViewModel.cs" />
+    <Compile Include="Models\JsonSerialization.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="SmoothProgressBar.cs" />
-    <Compile Include="MVVM\ViewModelBase.cs" />
-    <Compile Include="Types.cs" />
+    <Compile Include="Models\SmoothProgressBar.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Models\Types.cs" />
     <Page Include="CharSelectView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\HelpView.xaml">
+    <Page Include="Views\HelpView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\GameModeView.xaml">
+    <Page Include="Views\GameModeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,7 +126,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="pokemon.cs" />
+    <Compile Include="Models\pokemon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

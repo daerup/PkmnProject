@@ -3,34 +3,39 @@ using System.Collections.Generic;
 using System.Media;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using smoothBar;
 using WpfAnimatedGif;
-using System.Windows.Media.Animation;
-using MessageBox = System.Windows.MessageBox;
+
 // ReSharper disable CompareOfFloatsByEqualityOperator
 
 namespace PokemonPoGl
 {
     /// <summary>
-    /// Interaktionslogik für MainWindowView.xaml
+    ///     Interaktionslogik für MainWindowView.xaml
     /// </summary>
     public partial class MainWindowView
     {
-        private List<Pokemon> allPokemon = JsonSerialization.ReadFromJsonFile<List<Pokemon>>(@"../../res/json/Pokemon.json");
+        private readonly Random random = new Random();
 
-        private List<Attack> normalAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/normal.json");
+        private readonly List<Pokemon> allPokemon =
+            JsonSerialization.ReadFromJsonFile<List<Pokemon>>(@"../../res/json/Pokemon.json");
 
-        private List<Attack> fireAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/fire.json");
+        private readonly SoundPlayer battleMusic = new SoundPlayer(@"../../res/music/battleMusic.wav");
 
-        private List<Attack> waterAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/water.json");
-
-        private List<Attack> plantAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/plant.json");
+        private readonly List<Attack> fireAttacks =
+            JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/fire.json");
 
         public Pokemon Groudon;
 
-        SoundPlayer battleMusic = new SoundPlayer(@"../../res/music/battleMusic.wav");
+        private readonly List<Attack> normalAttacks =
+            JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/normal.json");
 
-        private readonly Random random = new Random();
+        private readonly List<Attack> plantAttacks =
+            JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/plant.json");
+
+        private readonly List<Attack> waterAttacks =
+            JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/water.json");
 
         public MainWindowView()
         {
@@ -39,13 +44,10 @@ namespace PokemonPoGl
             this.battleMusic.PlayLooping();
 
             if (GameSettings.ChoosenPokemon != "Groudon")
-            {
-                GameSettings.PlayerPokemon = this.allPokemon.Find(pokemon => pokemon.Name == GameSettings.ChoosenPokemon); 
-            }
+                GameSettings.PlayerPokemon =
+                    this.allPokemon.Find(pokemon => pokemon.Name == GameSettings.ChoosenPokemon);
             else
-            {
                 GameSettings.PlayerPokemon = this.Groudon;
-            }
 
             AssignAttacks();
             PrepareUi();
@@ -102,8 +104,8 @@ namespace PokemonPoGl
                     break;
             }
 
-            this.Stab.Content = GameSettings.PlayerPokemon.StabAttack.Name;
-            this.Normal.Content = GameSettings.PlayerPokemon.NormalAttack.Name;
+            this.Stab.Content = $"_{GameSettings.PlayerPokemon.StabAttack.Name}";
+            this.Normal.Content = $"_{GameSettings.PlayerPokemon.NormalAttack.Name}";
 
             this.Normal.Background = new SolidColorBrush(Color.FromArgb(255, 95, 95, 95));
             this.Stab.Background = GameSettings.Color;
@@ -127,13 +129,15 @@ namespace PokemonPoGl
                 damage = GameSettings.DamageOfDodgedAttack;
                 return damage;
             }
+
             if (GameSettings.CriticalHit)
             {
                 damage = usedAttack.Strength * GameSettings.CriticalHitAttackFactor;
                 return damage;
             }
+
             damage = CalculateDamageWithEffectivenessOfAttack(usedAttack);
-            
+
             return damage;
         }
 
@@ -160,67 +164,49 @@ namespace PokemonPoGl
 
         private bool CheckIfAttackIsDodged()
         {
-            if (CheckIfDodgedChanceIsRaised())
-            {
-                return CheckIfAttackIsDodgedInHardMode();
-            }
+            if (CheckIfDodgedChanceIsRaised()) return CheckIfAttackIsDodgedInHardMode();
 
             return CheckIfAttackIsDodgedInNormalMode();
         }
 
         private bool CheckIfDodgedChanceIsRaised()
         {
-            if (GameSettings.Hardmode && GameSettings.AttackingPokemon == GameSettings.EnemyPokemon)
-            {
-                return true;
-            }
+            if (GameSettings.Hardmode && GameSettings.AttackingPokemon == GameSettings.EnemyPokemon) return true;
 
             return false;
         }
 
         private bool CheckIfAttackIsDodgedInHardMode()
         {
-            if (this.random.Next(0, 7) == 0)
-            {
-                return true;
-            }
+            if (this.random.Next(0, 7) == 0) return true;
 
             return false;
         }
 
         private bool CheckIfAttackIsDodgedInNormalMode()
         {
-            if (this.random.Next(0, 11) == 0)
-            {
-                return true;
-            }
+            if (this.random.Next(0, 11) == 0) return true;
 
             return false;
         }
 
         private bool CheckIfAttackIsCritical()
         {
-            if (CheckIfCriticalHitChanceIsRaised())
-            {
-                return CheckIfAttackIsCriticalInHardMode();
-            }
+            if (CheckIfCriticalHitChanceIsRaised()) return CheckIfAttackIsCriticalInHardMode();
 
             return CheckIfAttackIsCriticalInNormalMode();
         }
 
         private bool CheckIfCriticalHitChanceIsRaised()
         {
-            if (GameSettings.Hardmode && GameSettings.AttackingPokemon == GameSettings.EnemyPokemon)
-            {
-                return true;
-            }
+            if (GameSettings.Hardmode && GameSettings.AttackingPokemon == GameSettings.EnemyPokemon) return true;
 
             return false;
         }
 
         private bool CheckIfAttackIsCriticalInHardMode()
         {
-            if (this.random.Next(0,7) == 0)
+            if (this.random.Next(0, 7) == 0)
             {
                 GameSettings.Effectiveness = "a Critical Hit";
                 return true;
@@ -242,12 +228,8 @@ namespace PokemonPoGl
 
         private double CalculateDamageWithEffectivenessOfAttack(Attack usedAttack)
         {
-            if (GameSettings.Hardmode)
-            {
-                return CalculateDamageWithEffectivenessOfAttackInHardMode(usedAttack);
-            }
+            if (GameSettings.Hardmode) return CalculateDamageWithEffectivenessOfAttackInHardMode(usedAttack);
             return CalculateDamageWithEffectivenessOfAttackInNormalMode(usedAttack);
-
         }
 
         private double CalculateDamageWithEffectivenessOfAttackInHardMode(Attack usedAttack)
@@ -259,6 +241,7 @@ namespace PokemonPoGl
                 GameSettings.Effectiveness = "very Effective";
                 return damage;
             }
+
             if (CheckIfAttackIsNotEffectrive(usedAttack))
             {
                 damage = usedAttack.Strength * GameSettings.NotEffectiveAttackFactor;
@@ -274,7 +257,8 @@ namespace PokemonPoGl
         private double CalculateDamageWithEffectivenessOfAttackInNormalMode(Attack usedAttack)
         {
             double damage;
-            if (CheckIfAttackIsVeryEffectrive(usedAttack) && GameSettings.AttackingPokemon == GameSettings.PlayerPokemon)
+            if (CheckIfAttackIsVeryEffectrive(usedAttack) &&
+                GameSettings.AttackingPokemon == GameSettings.PlayerPokemon)
             {
                 damage = usedAttack.Strength * GameSettings.VeryEffectiveAttackFactor;
                 GameSettings.Effectiveness = "very Effective";
@@ -309,45 +293,33 @@ namespace PokemonPoGl
 
         private bool CheckIfAttackIsVeryEffectrive(Attack usedAttack)
         {
-            if (usedAttack.Type == GameSettings.DefendingPokemon.GetWeakness())
-            {
-                return true;
-            }
+            if (usedAttack.Type == GameSettings.DefendingPokemon.GetWeakness()) return true;
 
             return false;
         }
 
         private bool CheckIfAttackIsNotEffectrive(Attack usedAttack)
         {
-            if (GameSettings.AttackingPokemon.GetWeakness() == GameSettings.DefendingPokemon.Type && CheckIfAttackGetsTypeBonus(usedAttack))
-            {
-                return true;
-            }
+            if (GameSettings.AttackingPokemon.GetWeakness() == GameSettings.DefendingPokemon.Type &&
+                CheckIfAttackGetsTypeBonus(usedAttack)) return true;
 
             return false;
         }
 
         private bool CheckIfAttackGetsTypeBonus(Attack usedAttack)
         {
-            if (usedAttack.Type != Types.Normal)
-            {
-                return true;
-            }
+            if (usedAttack.Type != Types.Normal) return true;
 
             return false;
         }
+
         private void TakeDamage(double damage, SmoothProgressBar hpBar)
         {
             double newHp = hpBar.Value - damage;
 
             if (newHp < 0)
-            {
                 newHp = 0;
-            }
-            else if (newHp > 1000)
-            {
-                newHp = 1000;
-            }
+            else if (newHp > 1000) newHp = 1000;
             hpBar.SmoothValue = newHp;
         }
 
@@ -378,30 +350,19 @@ namespace PokemonPoGl
 
         private void PlayerHP_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (this.PlayerHp.Value < (this.PlayerHp.Maximum / 4)) //Damit immer nach 25% geprüft wird
-            {
+            if (this.PlayerHp.Value < this.PlayerHp.Maximum / 4) //Damit immer nach 25% geprüft wird
                 this.PlayerHp.Foreground = Brushes.Red;
-            }
-            else if (this.PlayerHp.Value < (this.PlayerHp.Maximum / 2))
-            {
+            else if (this.PlayerHp.Value < this.PlayerHp.Maximum / 2)
                 this.PlayerHp.Foreground = Brushes.Orange;
-            }
             else
-            {
                 this.PlayerHp.Foreground = Brushes.Green;
-            }
 
-            if (this.PlayerHp.Value == this.PlayerHp.SmoothValue && this.PlayerHp.SmoothValue != this.PlayerHp.Maximum && this.PlayerHp.SmoothValue != 0)
-            {
-                EnableButtons();
-            }
+            if (this.PlayerHp.Value == this.PlayerHp.SmoothValue &&
+                this.PlayerHp.SmoothValue != this.PlayerHp.Maximum && this.PlayerHp.SmoothValue != 0) EnableButtons();
 
             if (Math.Abs(this.PlayerHp.SmoothValue - this.PlayerHp.Value) > 0) //genauer als ==
             {
-                if ((string) this.PlayerHp.Tag != @"ShouldBlink")
-                {
-                    this.PlayerHp.Tag = "ShouldBlink";
-                }
+                if ((string) this.PlayerHp.Tag != @"ShouldBlink") this.PlayerHp.Tag = "ShouldBlink";
             }
             else
             {
@@ -410,7 +371,8 @@ namespace PokemonPoGl
 
             if (this.PlayerHp.Value == 0 && this.PlayerHp.SmoothValue == 0)
             {
-                var result = MessageBox.Show("Do you want to Restart?","YOU DIED", MessageBoxButton.YesNoCancel);
+                MessageBoxResult result =
+                    MessageBox.Show("Do you want to Restart?", "YOU DIED", MessageBoxButton.YesNoCancel);
                 this.battleMusic.Stop();
                 if (result == MessageBoxResult.Yes)
                 {
@@ -428,42 +390,29 @@ namespace PokemonPoGl
 
         private void EnemyHP_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (this.EnemyHp.Value < (this.EnemyHp.Maximum / 4))
-            {
+            if (this.EnemyHp.Value < this.EnemyHp.Maximum / 4)
                 this.EnemyHp.Foreground = Brushes.Red;
-            }
-            else if (this.EnemyHp.Value < (this.EnemyHp.Maximum / 2))
-            {
+            else if (this.EnemyHp.Value < this.EnemyHp.Maximum / 2)
                 this.EnemyHp.Foreground = Brushes.Orange;
-            }
             else
-            {
                 this.EnemyHp.Foreground = Brushes.Green;
-            }
 
-            if (this.EnemyHp.Value == this.EnemyHp.SmoothValue && this.EnemyHp.SmoothValue != this.EnemyHp.Maximum && this.EnemyHp.SmoothValue != 0)
-            {
-                EnemyAttack();
-            }
+            if (this.EnemyHp.Value == this.EnemyHp.SmoothValue && this.EnemyHp.SmoothValue != this.EnemyHp.Maximum &&
+                this.EnemyHp.SmoothValue != 0) EnemyAttack();
 
             if (Math.Abs(this.EnemyHp.SmoothValue - this.EnemyHp.Value) > 0)
             {
                 if ((string) this.EnemyHp.Tag != "ShouldBlink")
                 {
                     this.EnemyHp.Tag = "ShouldBlink";
-                    if (this.Stab != null && this.Normal != null)
-                    {
-                        DisableButtons();
-                    }
+                    if (this.Stab != null && this.Normal != null) DisableButtons();
                 }
             }
             else
             {
                 this.EnemyHp.Tag = "ShouldNotBlink";
                 if (this.Stab != null && this.Normal != null && this.EnemyHp.Value == this.EnemyHp.Maximum)
-                {
                     EnableButtons();
-                }
             }
 
             if (this.EnemyHp.Value == 0)
@@ -478,7 +427,6 @@ namespace PokemonPoGl
         private void CheckIfWon()
         {
             if (this.allPokemon.Count == 0)
-            {
                 if (!this.Groudon.Beaten)
                 {
                     this.allPokemon.Add(this.Groudon);
@@ -491,26 +439,27 @@ namespace PokemonPoGl
                     MessageBox.Show("You have unlocked Groudon as playable character!", "You won!");
                     while (waitforChoice)
                     {
-                        MessageBoxResult restartGame = MessageBox.Show("Do you want to restart the Game?", "Restart Pokemon PoGl", MessageBoxButton.YesNo);
+                        MessageBoxResult restartGame = MessageBox.Show("Do you want to restart the Game?",
+                            "Restart Pokemon PoGl", MessageBoxButton.YesNo);
                         if (restartGame == MessageBoxResult.Yes)
                         {
                             waitforChoice = false;
                             CharSelectView startWindow = new CharSelectView();
                             startWindow.Show();
-                            this.Close();
+                            Close();
                         }
                         else
                         {
-                            MessageBoxResult exitGame= MessageBox.Show("Are you sure you want to exit?", "Exit the Pokemon PoGl", MessageBoxButton.YesNo);
+                            MessageBoxResult exitGame = MessageBox.Show("Are you sure you want to exit?",
+                                "Exit the Pokemon PoGl", MessageBoxButton.YesNo);
                             if (exitGame == MessageBoxResult.Yes)
                             {
                                 waitforChoice = false;
                                 Environment.Exit(1);
                             }
-                        } 
+                        }
                     }
                 }
-            }
         }
 
         private void EnemyAttack()
@@ -557,7 +506,8 @@ namespace PokemonPoGl
 
         private void AttackNarrator()
         {
-            string statement = $"{GameSettings.AttackingPokemon.Name} used {GameSettings.UsedAttack.Name}...It's {GameSettings.Effectiveness}";
+            string statement =
+                $"{GameSettings.AttackingPokemon.Name} used {GameSettings.UsedAttack.Name}...It's {GameSettings.Effectiveness}";
             this.Narrator.Text = statement;
         }
 
@@ -595,13 +545,9 @@ namespace PokemonPoGl
             double damage = CalculateDamage(GameSettings.PlayerPokemon, GameSettings.UsedAttack);
             TakeDamage(damage, this.EnemyHp);
             if (GameSettings.Dodged)
-            {
                 DodgeNarrator();
-            }
             else
-            {
                 AttackNarrator();
-            }
         }
 
         private void Stab_Click(object sender, RoutedEventArgs e)
@@ -612,13 +558,9 @@ namespace PokemonPoGl
             double damage = CalculateDamage(GameSettings.PlayerPokemon, GameSettings.UsedAttack);
             TakeDamage(damage, this.EnemyHp);
             if (GameSettings.Dodged)
-            {
                 DodgeNarrator();
-            }
             else
-            {
                 AttackNarrator();
-            }
         }
     }
 }

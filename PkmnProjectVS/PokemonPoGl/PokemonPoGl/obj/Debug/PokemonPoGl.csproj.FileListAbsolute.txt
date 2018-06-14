@@ -136,8 +136,8 @@ C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\Pokemo
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\Newtonsoft.Json.xml
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\WpfAnimatedGif.xml
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\CharSelectView.g.cs
-C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\MVVM\HelpView.g.cs
-C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\MVVM\GameModeView.g.cs
+C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\HelpView.g.cs
+C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\GameModeView.g.cs
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\MainWindowView.g.cs
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\App.g.cs
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl_Content.g.cs
@@ -145,8 +145,8 @@ C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\Pokemo
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl_MarkupCompile.cache
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl_MarkupCompile.lref
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\CharSelectView.baml
-C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\MVVM\HelpView.baml
-C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\MVVM\GameModeView.baml
+C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\HelpView.baml
+C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\GameModeView.baml
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\MainWindowView.baml
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.g.resources
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.Properties.Resources.resources
@@ -155,4 +155,3 @@ C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\Pokemo
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.CopyComplete
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.exe
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.pdb
-C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csprojResolveAssemblyReference.cache
