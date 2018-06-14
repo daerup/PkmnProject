@@ -9,7 +9,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance pokemonPoGl:GameModeViewModel}"
-
+        ResizeMode="NoResize"
         Title="BattleWindow" Height="821" Width="1000">
 
     <Grid Margin="0,0,0,0">
@@ -17,7 +17,9 @@
             <ImageBrush ImageSource="res/stage/rock.png" />
         </Grid.Background>
 
-        <pokemonPoGl:GameModeView DataContext="{Binding GameModeViewModel}" Margin="549,10,17,711"/>
+        <pokemonPoGl:GameModeView DataContext="{Binding GameModeViewModel}" Margin="0,11,621,721"/>
+        <pokemonPoGl:HelpView DataContext="{Binding HelpViewModel}" HorizontalAlignment="Right" Margin="0,0,19,712" Width="75" />
+
 
         <Image x:Name="ImgPlayerPokemon" gif:ImageBehavior.AnimationLoaded="ImgPlayerPokemon_OnAnimationLoaded" />
         <Image x:Name="ImgEnemyPokemon" gif:ImageBehavior.AnimationLoaded="ImgEnemyPokemon_OnAnimationLoaded" />

@@ -371,19 +371,28 @@ namespace PokemonPoGl
 
             if (this.PlayerHp.Value == 0 && this.PlayerHp.SmoothValue == 0)
             {
-                MessageBoxResult result =
-                    MessageBox.Show("Do you want to Restart?", "YOU DIED", MessageBoxButton.YesNoCancel);
+                bool waitforChoice = true;
                 this.battleMusic.Stop();
-                if (result == MessageBoxResult.Yes)
+                MessageBox.Show("You died!");
+                while (waitforChoice)
                 {
-                    CharSelectView startWindow = new CharSelectView();
-                    startWindow.Show();
-
-                    Close();
-                }
-                else if (result == MessageBoxResult.No)
-                {
-                    Environment.Exit(1);
+                    MessageBoxResult restartGame = MessageBox.Show("Do you want to restart the Game?", "Restart Pokemon PoGl", MessageBoxButton.YesNo);
+                    if (restartGame == MessageBoxResult.Yes)
+                    {
+                        waitforChoice = false;
+                        CharSelectView startWindow = new CharSelectView();
+                        startWindow.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBoxResult exitGame = MessageBox.Show("Are you sure you want to exit?", "Exit the Pokemon PoGl", MessageBoxButton.YesNo);
+                        if (exitGame == MessageBoxResult.Yes)
+                        {
+                            waitforChoice = false;
+                            Environment.Exit(1);
+                        }
+                    }
                 }
             }
         }

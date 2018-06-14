@@ -6,12 +6,10 @@
              xmlns:local="clr-namespace:PokemonPoGl"
              mc:Ignorable="d" d:DesignWidth="800" Height="69">
     <Grid>
-        <Label Content="{Binding GameMode}" Foreground="{Binding GameModeContentColor}" FontSize="45" FontWeight="Bold" HorizontalAlignment="Left">
+        <Label Content="{Binding GameMode}" Foreground="{Binding GameModeContentColor}" FontSize="38" FontWeight="Bold" HorizontalAlignment="Left" Width="726" FontFamily="Impact">
             <Label.Effect>
                 <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="1" BlurRadius="1"/>
             </Label.Effect>
         </Label>
-
-        <local:HelpView DataContext="{Binding HelpViewModel}" />
     </Grid>
 </UserControl>

@@ -23,11 +23,9 @@ namespace PokemonPoGl
         public const double CriticalHitAttackFactor = 2;
 
         public const double VeryEffectiveAttackFactor = 1.75;
-        public const double NormalEffectiveAttackFactor = 1;
         public const double NotEffectiveAttackFactor = 0.5;
 
         public const double VeryEffectiveAttackFactorOfEnemyPokemon = 1.25;
-        public const double NormalEffectiveAttackFactorOfEnemyPokemon = 1;
         public const double NotEffectiveAttackFactorOfEnemyPokemon = 0.4;
 
     }
