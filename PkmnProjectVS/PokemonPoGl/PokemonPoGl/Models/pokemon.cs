@@ -7,7 +7,7 @@ namespace PokemonPoGl
 {
     public class Pokemon
     {
-        private static readonly Attack Precipiceblades = new Attack(nameof(Precipiceblades), Types.Fire, 600);
+        private static readonly Attack Precipiceblades = new Attack(nameof(Precipiceblades), Types.Fire, 66600);
 
         public string Name { get; set; }
         public bool Beaten { get; set; }

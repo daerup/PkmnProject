@@ -47,6 +47,7 @@ namespace PokemonPoGl
 
 
             this.Groudon = GameSettings.Groudon;
+            GameSettings.Won = false;
             this.battleMusic.PlayLooping();
 
             if (GameSettings.ChoosenPokemon != "Groudon")
@@ -333,9 +334,16 @@ namespace PokemonPoGl
             int r = this.random.Next(0, this.allPokemon.Count - 1);
 
             UpdateList();
-            GameSettings.EnemyPokemon = this.allPokemon[r];
-            this.TxtPlayerPokemon.Text = GameSettings.PlayerPokemon.Name;
-            this.TxtEnemyPokemon.Text = GameSettings.EnemyPokemon.Name;
+            if (GameSettings.Won)
+            {
+                GameSettings.Won = false;
+            }
+            else
+            {
+                GameSettings.EnemyPokemon = this.allPokemon[r];
+                this.TxtPlayerPokemon.Text = GameSettings.PlayerPokemon.Name;
+                this.TxtEnemyPokemon.Text = GameSettings.EnemyPokemon.Name;
+            }
         }
 
         private void UpdateList()
@@ -433,15 +441,9 @@ namespace PokemonPoGl
             {
                 GameSettings.EnemyPokemon.Beaten = true;
                 DeathNarrator();
-                UpdateBeatenPokemon();
                 this.PlayerHp.SmoothValue = this.PlayerHp.Maximum;
                 UpdateEnemy();
             }
-        }
-
-        private void UpdateBeatenPokemon()
-        {
-                GameSettings.PokemonBeatenCounterView.BeatenPokemon++;
         }
 
         private void CheckIfWon()
@@ -465,8 +467,9 @@ namespace PokemonPoGl
                         {
                             waitforChoice = false;
                             CharSelectView startWindow = new CharSelectView();
-                            startWindow.Show();
+                            GameSettings.Won = true;
                             Close();
+                            startWindow.Show();
                         }
                         else
                         {

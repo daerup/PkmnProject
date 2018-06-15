@@ -54,27 +54,6 @@ C:\Users\darioportmann\Documents\Visual Studio 2017\PKMN\PkmnProjectVS\PokemonPo
 C:\Users\darioportmann\Documents\Visual Studio 2017\PKMN\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.GenerateResource.cache
 C:\Users\darioportmann\Documents\Visual Studio 2017\PKMN\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.CoreCompileInputs.cache
 C:\Users\darioportmann\Documents\Visual Studio 2017\PKMN\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.CopyComplete
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csprojResolveAssemblyReference.cache
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\App.g.cs
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl_Content.g.cs
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\GeneratedInternalTypeHelper.g.cs
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl_MarkupCompile.cache
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl_MarkupCompile.lref
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.exe
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.pdb
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\PokemonPoGl.exe.config
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\PokemonPoGl.exe
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\PokemonPoGl.pdb
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\Newtonsoft.Json.dll
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\WpfAnimatedGif.dll
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\Newtonsoft.Json.xml
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\WpfAnimatedGif.xml
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\de\Microsoft.QualityTools.Testing.Fakes.resources.dll
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.g.resources
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.Properties.Resources.resources
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.GenerateResource.Cache
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.CoreCompileInputs.cache
 C:\Users\vmadmin\Desktop\M226B&M120Project\PoGl\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\PokemonPoGl.exe.config
 C:\Users\vmadmin\Desktop\M226B&M120Project\PoGl\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\PokemonPoGl.exe
 C:\Users\vmadmin\Desktop\M226B&M120Project\PoGl\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\PokemonPoGl.pdb
@@ -128,14 +107,6 @@ C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\Pokemo
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.CopyComplete
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.exe
 C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.pdb
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\CharSelectView.baml
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\CharSelectView.g.cs
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\HelpView.g.cs
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\GameModeView.g.cs
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\MainWindowView.g.cs
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\HelpView.baml
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\GameModeView.baml
-H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\MainWindowView.baml
 C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csprojResolveAssemblyReference.cache
 C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\CharSelectView.baml
 C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\CharSelectView.g.cs
@@ -167,3 +138,31 @@ C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug
 C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.CoreCompileInputs.cache
 C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.exe
 C:\Users\vmadmin\Desktop\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.pdb
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\CharSelectView.baml
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\CharSelectView.g.cs
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\HelpView.g.cs
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\GameModeView.g.cs
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\MainWindowView.g.cs
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\App.g.cs
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl_Content.g.cs
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\GeneratedInternalTypeHelper.g.cs
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl_MarkupCompile.cache
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl_MarkupCompile.lref
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\PokemonPoGl.exe.config
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\PokemonPoGl.exe
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\PokemonPoGl.pdb
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\Newtonsoft.Json.dll
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\WpfAnimatedGif.dll
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\Newtonsoft.Json.xml
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\WpfAnimatedGif.xml
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\bin\Debug\de\Microsoft.QualityTools.Testing.Fakes.resources.dll
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\HelpView.baml
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\Views\GameModeView.baml
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\MainWindowView.baml
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.g.resources
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.Properties.Resources.resources
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.GenerateResource.Cache
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csproj.CoreCompileInputs.cache
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.exe
+H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.pdb
