@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Media;
 using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Input;
 using WpfAnimatedGif;
 
 namespace PokemonPoGl
@@ -38,7 +41,9 @@ namespace PokemonPoGl
             this.titleMusic.PlayLooping();
 
             this.Index = 0;
-            ImageBehavior.SetAnimatedSource(this.Pokemon, this.allPokemon[this.Index].FrontPath);
+
+            UpdateName();
+            UpdateImage();
         }
 
         private void AddGroudon()
@@ -54,18 +59,36 @@ namespace PokemonPoGl
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Index--;
+            UpdateName();
             UpdateImage();
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
             this.Index++;
+            UpdateName();
             UpdateImage();
         }
 
         private void UpdateImage()
         {
             ImageBehavior.SetAnimatedSource(this.Pokemon, this.allPokemon[this.index].FrontPath);
+        }
+
+        private void UpdateName()
+        {
+            PokemonName.Content = this.allPokemon[this.index].Name;
+        }
+        private void KeyPressed(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Right)
+            {
+                Next_Click(null, null);
+            }
+            else if(e.Key == Key.Left)
+            {
+                Back_Click(null, null);
+            }
         }
 
         private void Start_Click(object sender, RoutedEventArgs e)

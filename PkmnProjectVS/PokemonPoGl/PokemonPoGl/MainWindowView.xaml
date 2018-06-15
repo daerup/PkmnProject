@@ -1,10 +1,10 @@
 ﻿<!-- ReSharper disable once Xaml.RedundantNamespaceAlias -->
 <Window x:Class="PokemonPoGl.MainWindowView"
-
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:pokemonPoGl="clr-namespace:PokemonPoGl"
+        xmlns:pokemonPoGlView="clr-namespace:PokemonPoGl.Views"
         xmlns:smoothBar="clr-namespace:smoothBar" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
@@ -18,6 +18,7 @@
         </Grid.Background>
 
         <pokemonPoGl:GameModeView DataContext="{Binding GameModeViewModel}" Margin="0,11,621,721"/>
+        <pokemonPoGlView:PokemonBeatenCounterView DataContext="{Binding PokemonBeatenCounterViewModel}" Margin="0,11,0,712"/>
         <pokemonPoGl:HelpView DataContext="{Binding HelpViewModel}" HorizontalAlignment="Right" Margin="0,0,19,712" Width="75" />
 
 

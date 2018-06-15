@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        KeyDown="KeyPressed"
         ResizeMode="NoResize"
         Title="CharSelectView" Height="800" Width="1000">
 
@@ -34,6 +35,8 @@
                 <ScaleTransform ScaleX="3" ScaleY="3" />
             </CheckBox.LayoutTransform>
         </CheckBox>
+        
+        <Label x:Name="PokemonName" Content="IMPACT" Grid.Column="1" HorizontalAlignment="Center" Margin="0,12,0,0" Grid.Row="2" VerticalAlignment="Top" FontFamily="Impact" FontSize="36" Foreground="#FFD3FFF2" Width="331" HorizontalContentAlignment="Center"/>
 
     </Grid>
 </Window>

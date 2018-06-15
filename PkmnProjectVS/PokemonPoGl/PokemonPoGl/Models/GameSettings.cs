@@ -1,10 +1,12 @@
 ﻿using System.Windows;
 using System.Windows.Media;
+using PokemonPoGl.Views;
 
 namespace PokemonPoGl
 {
     public class GameSettings
     {
+        public static PokemonBeatenCounterView PokemonBeatenCounterView = new PokemonBeatenCounterView();
         public static string ChoosenPokemon { get; set; }
         public static bool Hardmode { get; set; }
         public static bool Dodged { get; set; }
@@ -27,6 +29,5 @@ namespace PokemonPoGl
 
         public const double VeryEffectiveAttackFactorOfEnemyPokemon = 1.25;
         public const double NotEffectiveAttackFactorOfEnemyPokemon = 0.4;
-
     }
 }

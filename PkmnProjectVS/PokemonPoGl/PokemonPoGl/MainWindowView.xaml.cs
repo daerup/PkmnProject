@@ -18,28 +18,34 @@ namespace PokemonPoGl
     {
         private readonly Random random = new Random();
 
-        private readonly List<Pokemon> allPokemon =
-            JsonSerialization.ReadFromJsonFile<List<Pokemon>>(@"../../res/json/Pokemon.json");
+        private readonly List<Pokemon> allPokemon;
 
         private readonly SoundPlayer battleMusic = new SoundPlayer(@"../../res/music/battleMusic.wav");
 
-        private readonly List<Attack> fireAttacks =
-            JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/fire.json");
+        private readonly List<Attack> fireAttacks;
+        readonly List<Attack> waterAttacks;
+        private readonly List<Attack> plantAttacks;
+        private readonly List<Attack> normalAttacks;
 
         public Pokemon Groudon;
 
-        private readonly List<Attack> normalAttacks =
-            JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/normal.json");
 
-        private readonly List<Attack> plantAttacks =
-            JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/plant.json");
 
-        private readonly List<Attack> waterAttacks =
-            JsonSerialization.ReadFromJsonFile<List<Attack>>(@"../../res/json/water.json");
-
+            
         public MainWindowView()
         {
             InitializeComponent();
+
+            string jsonFolderPath = @"../../res/json";
+
+
+            allPokemon = JsonSerialization.ReadFromJsonFile<List<Pokemon>>($"{jsonFolderPath}/Pokemon.json");
+            fireAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/fire.json");
+            waterAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/water.json");
+            plantAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/plant.json");
+            normalAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/normal.json");
+
+
             this.Groudon = GameSettings.Groudon;
             this.battleMusic.PlayLooping();
 
@@ -48,7 +54,6 @@ namespace PokemonPoGl
                     this.allPokemon.Find(pokemon => pokemon.Name == GameSettings.ChoosenPokemon);
             else
                 GameSettings.PlayerPokemon = this.Groudon;
-
             AssignAttacks();
             PrepareUi();
             DelcareEnemyPokemon();
@@ -390,7 +395,7 @@ namespace PokemonPoGl
                         if (exitGame == MessageBoxResult.Yes)
                         {
                             waitforChoice = false;
-                            Environment.Exit(1);
+                            Environment.Exit(0);
                         }
                     }
                 }
@@ -428,9 +433,15 @@ namespace PokemonPoGl
             {
                 GameSettings.EnemyPokemon.Beaten = true;
                 DeathNarrator();
+                UpdateBeatenPokemon();
                 this.PlayerHp.SmoothValue = this.PlayerHp.Maximum;
                 UpdateEnemy();
             }
+        }
+
+        private void UpdateBeatenPokemon()
+        {
+                GameSettings.PokemonBeatenCounterView.BeatenPokemon++;
         }
 
         private void CheckIfWon()
@@ -464,7 +475,7 @@ namespace PokemonPoGl
                             if (exitGame == MessageBoxResult.Yes)
                             {
                                 waitforChoice = false;
-                                Environment.Exit(1);
+                                Environment.Exit(0);
                             }
                         }
                     }
