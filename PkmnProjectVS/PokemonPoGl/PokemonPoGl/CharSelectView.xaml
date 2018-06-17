@@ -6,6 +6,7 @@
         mc:Ignorable="d"
         KeyDown="KeyPressed"
         ResizeMode="NoResize"
+        Icon="/res/icon/icon.ico"
         Title="CharSelectView" Height="800" Width="1000">
 
     <Grid MaxWidth="993" MaxHeight="769" MinHeight="769" Height="769">
@@ -19,24 +20,53 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+
         <Grid.Background>
             <ImageBrush ImageSource="res/stage/stars.png"/>
         </Grid.Background>
-        <Button x:Name="Back" Content="_&lt;" HorizontalAlignment="Left" Margin="281,71,0,71" Width="50"  Background="#FF28895A" FontFamily="Impact" FontSize="22" Foreground="#FFA8E9FB" Grid.Row="1" Click="Back_Click"/>
-        <Button x:Name="Next" Content="_&gt;" Margin="0,71,281,71"  Background="#FF28895A" FontFamily="Impact" FontSize="22" Foreground="#FFA8E9FB" Grid.Column="2" Grid.Row="1" Click="Next_Click"/>
+
+        <Button x:Name="Back" 
+                Content="_&lt;" 
+                HorizontalAlignment="Left" 
+                Margin="281,71,0,71" 
+                Width="50"  
+                Background="#FF28895A" 
+                FontFamily="Impact" 
+                FontSize="22" 
+                Foreground="#FFA8E9FB" 
+                Grid.Row="1" 
+                Click="Back_Click"/>
+        
+        <Button x:Name="Next" 
+                Content="_&gt;" 
+                Margin="0,71,281,71"  
+                Background="#FF28895A" 
+                FontFamily="Impact" 
+                FontSize="22" 
+                Foreground="#FFA8E9FB" 
+                Grid.Column="2" 
+                Grid.Row="1" 
+                Click="Next_Click"/>
 
         <Image Margin="170,0,170,142" Source="res/stage/headLogo.png" Stretch="Fill" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" Panel.ZIndex="1"/>
         <Image Grid.Row="0" Grid.Column="1" Margin="47,202,56,38" Source="res/stage/footLogo.png" Stretch="Fill"/>
+        <Image x:Name="Pokemon" Grid.Column="1" Grid.Row="1" />
 
-        <Image x:Name="Pokemon" Grid.Column="1" Grid.Row="1"/>
-        <Button x:Name="Start" Content="_Start Battle" Grid.Column="2" Grid.Row="2" Margin="0,50,142,59" Foreground="#FFD3FFFC" Background="#FF4AA45C" FontFamily="Impact" FontSize="30" BorderBrush="#FF5080EE" BorderThickness="5" Click="Start_Click" IsDefault="True"/>
-        <CheckBox x:Name="HardMode" Content="_Hard-Mode" Grid.Column="1" HorizontalAlignment="Left" Margin="49,72,0,0" Grid.Row="2" VerticalAlignment="Top" Height="20" Width="92" FontFamily="Impact" FontSize="14" Foreground="#FFD49688">
+        <Button x:Name="Start" Content="_Start Battle" Grid.Column="2" Grid.Row="2" Margin="0,50,142,59" Foreground="#FFD3FFFC" Background="#FF4AA45C" FontFamily="Impact" FontSize="30" BorderBrush="#FF5080EE" BorderThickness="5" Click="Start_Click" IsDefault="True" />
+        
+        <CheckBox x:Name="HardModeControl" Content="_Hard-Mode" Grid.Column="1" HorizontalAlignment="Left" Margin="49,72,0,0" Grid.Row="2" VerticalAlignment="Top" Height="20" Width="92" FontFamily="Impact" FontSize="14" Foreground="#FFD49688">
             <CheckBox.LayoutTransform>
                 <ScaleTransform ScaleX="3" ScaleY="3" />
             </CheckBox.LayoutTransform>
+            <CheckBox.Effect>
+                <DropShadowEffect ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="1"/>
+            </CheckBox.Effect>
         </CheckBox>
-        
-        <Label x:Name="PokemonName" Content="IMPACT" Grid.Column="1" HorizontalAlignment="Center" Margin="0,12,0,0" Grid.Row="2" VerticalAlignment="Top" FontFamily="Impact" FontSize="36" Foreground="#FFD3FFF2" Width="331" HorizontalContentAlignment="Center"/>
 
+        <Label x:Name="PokemonName" Content="IMPACT" Grid.Column="1" HorizontalAlignment="Center" Margin="0,12,0,0" Grid.Row="2" VerticalAlignment="Top" FontFamily="Impact" FontSize="36" Foreground="#FFD3FFF2" Width="331" HorizontalContentAlignment="Center">
+            <Label.Effect>
+                <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="1" BlurRadius="1"/>
+            </Label.Effect>
+        </Label>
     </Grid>
 </Window>

@@ -31,7 +31,7 @@ namespace smoothBar
         public SmoothProgressBar()
         {
             this.drawTimer = new Timer();
-            this.drawTimer.Elapsed += OnTimerEvent;
+            this.drawTimer.Elapsed += this.OnTimerEvent;
 
             // 25 Fps für Timer verwenden
             this.drawTimer.Interval = 40;

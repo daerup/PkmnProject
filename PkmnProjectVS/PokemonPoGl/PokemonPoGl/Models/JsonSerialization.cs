@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
 namespace PokemonPoGl
 {
@@ -41,7 +36,6 @@ namespace PokemonPoGl
                     writer.Close();
             }
         }
-
         /// <summary>
         /// Reads an object instance from an Json file.
         /// <para>Object type must have a parameterless constructor.</para>
@@ -61,7 +55,9 @@ namespace PokemonPoGl
             finally
             {
                 if (reader != null)
+                {
                     reader.Close();
+                }
             }
         }
     }

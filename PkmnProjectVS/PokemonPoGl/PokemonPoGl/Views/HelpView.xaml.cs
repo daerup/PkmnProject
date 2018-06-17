@@ -11,7 +11,7 @@ namespace PokemonPoGl
     {
         public HelpView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void Help_OnMouseEnter(object sender, MouseEventArgs e)

@@ -8,9 +8,9 @@
         public uint Strength { get; set; }
         public Attack(string name, Types type, uint strength)
         {
-            Name = name;
-            Type = type;
-            Strength = strength;
+            this.Name = name;
+            this.Type = type;
+            this.Strength = strength;
         }
     }
 }

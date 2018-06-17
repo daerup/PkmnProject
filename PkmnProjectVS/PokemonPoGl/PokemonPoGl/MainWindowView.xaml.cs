@@ -34,31 +34,30 @@ namespace PokemonPoGl
             
         public MainWindowView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             string jsonFolderPath = @"../../res/json";
 
 
-            allPokemon = JsonSerialization.ReadFromJsonFile<List<Pokemon>>($"{jsonFolderPath}/Pokemon.json");
-            fireAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/fire.json");
-            waterAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/water.json");
-            plantAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/plant.json");
-            normalAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/normal.json");
-
+            this.allPokemon = JsonSerialization.ReadFromJsonFile<List<Pokemon>>($"{jsonFolderPath}/Pokemon.json");
+            this.fireAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/fire.json");
+            this.waterAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/water.json");
+            this.plantAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/plant.json");
+            this.normalAttacks = JsonSerialization.ReadFromJsonFile<List<Attack>>($"{jsonFolderPath}/normal.json");
 
             this.Groudon = GameSettings.Groudon;
             GameSettings.Won = false;
             this.battleMusic.PlayLooping();
 
             if (GameSettings.ChoosenPokemon != "Groudon")
-                GameSettings.PlayerPokemon =
-                    this.allPokemon.Find(pokemon => pokemon.Name == GameSettings.ChoosenPokemon);
+                GameSettings.PlayerPokemon = this.allPokemon.Find(pokemon => pokemon.Name == GameSettings.ChoosenPokemon);
             else
                 GameSettings.PlayerPokemon = this.Groudon;
-            AssignAttacks();
-            PrepareUi();
-            DelcareEnemyPokemon();
-            ShowPokemon();
+
+            this.AssignAttacks();
+            this.PrepareUi();
+            this.DelcareEnemyPokemon();
+            this.ShowPokemon();
         }
 
         private void AssignAttacks()
@@ -119,16 +118,16 @@ namespace PokemonPoGl
 
         private void UpdateEnemy()
         {
-            DelcareEnemyPokemon();
+            this.DelcareEnemyPokemon();
             ImageBehavior.SetAnimatedSource(this.ImgEnemyPokemon, GameSettings.EnemyPokemon.FrontPath);
-            ImgEnemyPokemon_OnAnimationLoaded(this.ImgEnemyPokemon, null);
+            this.ImgEnemyPokemon_OnAnimationLoaded(this.ImgEnemyPokemon, null);
             this.EnemyHp.SmoothValue = GameSettings.MaxHealth;
         }
 
         private double CalculateDamage(Pokemon attackingPokemon, Attack usedAttack)
         {
             double damage;
-            AnalyseAttack(attackingPokemon);
+            this.AnalyseAttack(attackingPokemon);
 
             if (GameSettings.Dodged)
             {
@@ -142,16 +141,16 @@ namespace PokemonPoGl
                 return damage;
             }
 
-            damage = CalculateDamageWithEffectivenessOfAttack(usedAttack);
+            damage = this.CalculateDamageWithEffectivenessOfAttack(usedAttack);
 
             return damage;
         }
 
         private void AnalyseAttack(Pokemon attackingPokemon)
         {
-            SetPokemonRoles(attackingPokemon);
-            GameSettings.CriticalHit = CheckIfAttackIsCritical();
-            GameSettings.Dodged = CheckIfAttackIsDodged();
+            this.SetPokemonRoles(attackingPokemon);
+            GameSettings.CriticalHit = this.CheckIfAttackIsCritical();
+            GameSettings.Dodged = this.CheckIfAttackIsDodged();
         }
 
         private void SetPokemonRoles(Pokemon attackingPokemon)
@@ -170,9 +169,9 @@ namespace PokemonPoGl
 
         private bool CheckIfAttackIsDodged()
         {
-            if (CheckIfDodgedChanceIsRaised()) return CheckIfAttackIsDodgedInHardMode();
+            if (this.CheckIfDodgedChanceIsRaised()) return this.CheckIfAttackIsDodgedInHardMode();
 
-            return CheckIfAttackIsDodgedInNormalMode();
+            return this.CheckIfAttackIsDodgedInNormalMode();
         }
 
         private bool CheckIfDodgedChanceIsRaised()
@@ -198,9 +197,9 @@ namespace PokemonPoGl
 
         private bool CheckIfAttackIsCritical()
         {
-            if (CheckIfCriticalHitChanceIsRaised()) return CheckIfAttackIsCriticalInHardMode();
+            if (this.CheckIfCriticalHitChanceIsRaised()) return this.CheckIfAttackIsCriticalInHardMode();
 
-            return CheckIfAttackIsCriticalInNormalMode();
+            return this.CheckIfAttackIsCriticalInNormalMode();
         }
 
         private bool CheckIfCriticalHitChanceIsRaised()
@@ -234,21 +233,21 @@ namespace PokemonPoGl
 
         private double CalculateDamageWithEffectivenessOfAttack(Attack usedAttack)
         {
-            if (GameSettings.Hardmode) return CalculateDamageWithEffectivenessOfAttackInHardMode(usedAttack);
-            return CalculateDamageWithEffectivenessOfAttackInNormalMode(usedAttack);
+            if (GameSettings.Hardmode) return this.CalculateDamageWithEffectivenessOfAttackInHardMode(usedAttack);
+            return this.CalculateDamageWithEffectivenessOfAttackInNormalMode(usedAttack);
         }
 
         private double CalculateDamageWithEffectivenessOfAttackInHardMode(Attack usedAttack)
         {
             double damage;
-            if (CheckIfAttackIsVeryEffectrive(usedAttack))
+            if (this.CheckIfAttackIsVeryEffectrive(usedAttack))
             {
                 damage = usedAttack.Strength * GameSettings.VeryEffectiveAttackFactor;
                 GameSettings.Effectiveness = "very Effective";
                 return damage;
             }
 
-            if (CheckIfAttackIsNotEffectrive(usedAttack))
+            if (this.CheckIfAttackIsNotEffectrive(usedAttack))
             {
                 damage = usedAttack.Strength * GameSettings.NotEffectiveAttackFactor;
                 GameSettings.Effectiveness = "not Effective";
@@ -263,7 +262,7 @@ namespace PokemonPoGl
         private double CalculateDamageWithEffectivenessOfAttackInNormalMode(Attack usedAttack)
         {
             double damage;
-            if (CheckIfAttackIsVeryEffectrive(usedAttack) &&
+            if (this.CheckIfAttackIsVeryEffectrive(usedAttack) &&
                 GameSettings.AttackingPokemon == GameSettings.PlayerPokemon)
             {
                 damage = usedAttack.Strength * GameSettings.VeryEffectiveAttackFactor;
@@ -271,21 +270,21 @@ namespace PokemonPoGl
                 return damage;
             }
 
-            if (CheckIfAttackIsVeryEffectrive(usedAttack) && GameSettings.AttackingPokemon == GameSettings.EnemyPokemon)
+            if (this.CheckIfAttackIsVeryEffectrive(usedAttack) && GameSettings.AttackingPokemon == GameSettings.EnemyPokemon)
             {
                 damage = usedAttack.Strength * GameSettings.VeryEffectiveAttackFactorOfEnemyPokemon;
                 GameSettings.Effectiveness = "very Effective";
                 return damage;
             }
 
-            if (CheckIfAttackIsNotEffectrive(usedAttack) && GameSettings.AttackingPokemon == GameSettings.PlayerPokemon)
+            if (this.CheckIfAttackIsNotEffectrive(usedAttack) && GameSettings.AttackingPokemon == GameSettings.PlayerPokemon)
             {
                 damage = usedAttack.Strength * GameSettings.NotEffectiveAttackFactor;
                 GameSettings.Effectiveness = "not Effective";
                 return damage;
             }
 
-            if (CheckIfAttackIsNotEffectrive(usedAttack) && GameSettings.AttackingPokemon == GameSettings.EnemyPokemon)
+            if (this.CheckIfAttackIsNotEffectrive(usedAttack) && GameSettings.AttackingPokemon == GameSettings.EnemyPokemon)
             {
                 damage = usedAttack.Strength * GameSettings.NotEffectiveAttackFactorOfEnemyPokemon;
                 GameSettings.Effectiveness = "not Effective";
@@ -306,8 +305,7 @@ namespace PokemonPoGl
 
         private bool CheckIfAttackIsNotEffectrive(Attack usedAttack)
         {
-            if (GameSettings.AttackingPokemon.GetWeakness() == GameSettings.DefendingPokemon.Type &&
-                CheckIfAttackGetsTypeBonus(usedAttack)) return true;
+            if (GameSettings.AttackingPokemon.GetWeakness() == GameSettings.DefendingPokemon.Type && this.CheckIfAttackGetsTypeBonus(usedAttack)) return true;
 
             return false;
         }
@@ -333,7 +331,7 @@ namespace PokemonPoGl
         {
             int r = this.random.Next(0, this.allPokemon.Count - 1);
 
-            UpdateList();
+            this.UpdateList();
             if (GameSettings.Won)
             {
                 GameSettings.Won = false;
@@ -350,7 +348,7 @@ namespace PokemonPoGl
         {
             this.allPokemon.RemoveAll(a => a.Beaten);
             this.allPokemon.RemoveAll(a => a.Name == GameSettings.PlayerPokemon.Name);
-            CheckIfWon();
+            this.CheckIfWon();
         }
 
         private void ShowPokemon()
@@ -371,7 +369,8 @@ namespace PokemonPoGl
                 this.PlayerHp.Foreground = Brushes.Green;
 
             if (this.PlayerHp.Value == this.PlayerHp.SmoothValue &&
-                this.PlayerHp.SmoothValue != this.PlayerHp.Maximum && this.PlayerHp.SmoothValue != 0) EnableButtons();
+                this.PlayerHp.SmoothValue != this.PlayerHp.Maximum && this.PlayerHp.SmoothValue != 0)
+                this.EnableButtons();
 
             if (Math.Abs(this.PlayerHp.SmoothValue - this.PlayerHp.Value) > 0) //genauer als ==
             {
@@ -420,29 +419,29 @@ namespace PokemonPoGl
                 this.EnemyHp.Foreground = Brushes.Green;
 
             if (this.EnemyHp.Value == this.EnemyHp.SmoothValue && this.EnemyHp.SmoothValue != this.EnemyHp.Maximum &&
-                this.EnemyHp.SmoothValue != 0) EnemyAttack();
+                this.EnemyHp.SmoothValue != 0)
+                this.EnemyAttack();
 
             if (Math.Abs(this.EnemyHp.SmoothValue - this.EnemyHp.Value) > 0)
             {
                 if ((string) this.EnemyHp.Tag != "ShouldBlink")
                 {
                     this.EnemyHp.Tag = "ShouldBlink";
-                    if (this.Stab != null && this.Normal != null) DisableButtons();
+                    if (this.Stab != null && this.Normal != null) this.DisableButtons();
                 }
             }
             else
             {
                 this.EnemyHp.Tag = "ShouldNotBlink";
-                if (this.Stab != null && this.Normal != null && this.EnemyHp.Value == this.EnemyHp.Maximum)
-                    EnableButtons();
+                if (this.Stab != null && this.Normal != null && this.EnemyHp.Value == this.EnemyHp.Maximum) this.EnableButtons();
             }
 
             if (this.EnemyHp.Value == 0)
             {
                 GameSettings.EnemyPokemon.Beaten = true;
-                DeathNarrator();
+                this.DeathNarrator();
                 this.PlayerHp.SmoothValue = this.PlayerHp.Maximum;
-                UpdateEnemy();
+                this.UpdateEnemy();
             }
         }
 
@@ -461,20 +460,18 @@ namespace PokemonPoGl
                     MessageBox.Show("You have unlocked Groudon as playable character!", "You won!");
                     while (waitforChoice)
                     {
-                        MessageBoxResult restartGame = MessageBox.Show("Do you want to restart the Game?",
-                            "Restart Pokemon PoGl", MessageBoxButton.YesNo);
+                        MessageBoxResult restartGame = MessageBox.Show("Do you want to restart the Game?", "Restart Pokemon PoGl", MessageBoxButton.YesNo);
                         if (restartGame == MessageBoxResult.Yes)
                         {
                             waitforChoice = false;
                             CharSelectView startWindow = new CharSelectView();
                             GameSettings.Won = true;
-                            Close();
+                            this.Close();
                             startWindow.Show();
                         }
                         else
                         {
-                            MessageBoxResult exitGame = MessageBox.Show("Are you sure you want to exit?",
-                                "Exit the Pokemon PoGl", MessageBoxButton.YesNo);
+                            MessageBoxResult exitGame = MessageBox.Show("Are you sure you want to exit?", "Exit the Pokemon PoGl", MessageBoxButton.YesNo);
                             if (exitGame == MessageBoxResult.Yes)
                             {
                                 waitforChoice = false;
@@ -495,17 +492,17 @@ namespace PokemonPoGl
 
             int r = this.random.Next(0, 2);
             GameSettings.UsedAttack = availableAttacks[r];
-            double damage = CalculateDamage(GameSettings.EnemyPokemon, GameSettings.UsedAttack);
-            TakeDamage(damage, this.PlayerHp);
+            double damage = this.CalculateDamage(GameSettings.EnemyPokemon, GameSettings.UsedAttack);
+            this.TakeDamage(damage, this.PlayerHp);
 
             if (GameSettings.Dodged)
             {
-                DodgeNarrator();
+                this.DodgeNarrator();
                 GameSettings.Dodged = false;
             }
             else
             {
-                AttackNarrator();
+                this.AttackNarrator();
             }
 
             availableAttacks.Clear();
@@ -565,12 +562,12 @@ namespace PokemonPoGl
             GameSettings.Dodged = false;
             GameSettings.UsedAttack = GameSettings.PlayerPokemon.NormalAttack;
 
-            double damage = CalculateDamage(GameSettings.PlayerPokemon, GameSettings.UsedAttack);
-            TakeDamage(damage, this.EnemyHp);
+            double damage = this.CalculateDamage(GameSettings.PlayerPokemon, GameSettings.UsedAttack);
+            this.TakeDamage(damage, this.EnemyHp);
             if (GameSettings.Dodged)
-                DodgeNarrator();
+                this.DodgeNarrator();
             else
-                AttackNarrator();
+                this.AttackNarrator();
         }
 
         private void Stab_Click(object sender, RoutedEventArgs e)
@@ -578,12 +575,12 @@ namespace PokemonPoGl
             GameSettings.Dodged = false;
             GameSettings.UsedAttack = GameSettings.PlayerPokemon.StabAttack;
 
-            double damage = CalculateDamage(GameSettings.PlayerPokemon, GameSettings.UsedAttack);
-            TakeDamage(damage, this.EnemyHp);
+            double damage = this.CalculateDamage(GameSettings.PlayerPokemon, GameSettings.UsedAttack);
+            this.TakeDamage(damage, this.EnemyHp);
             if (GameSettings.Dodged)
-                DodgeNarrator();
+                this.DodgeNarrator();
             else
-                AttackNarrator();
+                this.AttackNarrator();
         }
     }
 }

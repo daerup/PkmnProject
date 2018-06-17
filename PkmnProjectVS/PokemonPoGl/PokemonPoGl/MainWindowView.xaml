@@ -1,14 +1,15 @@
-﻿<!-- ReSharper disable once Xaml.RedundantNamespaceAlias -->
-<Window x:Class="PokemonPoGl.MainWindowView"
+﻿<Window x:Class="PokemonPoGl.MainWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:pokemonPoGl="clr-namespace:PokemonPoGl"
-        xmlns:smoothBar="clr-namespace:smoothBar" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:smoothBar="clr-namespace:smoothBar" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance pokemonPoGl:GameModeViewModel}"
         ResizeMode="NoResize"
+        Icon="/res/icon/icon.ico"
         Title="BattleWindow" Height="821" Width="1000">
 
     <Grid Margin="0,0,0,0">
@@ -34,7 +35,8 @@
                                         <DoubleAnimation
                                             Storyboard.Target="{Binding Source={x:Reference ImgPlayerPokemon}}"
                                             Storyboard.TargetProperty="(Image.Opacity)"
-                                            BeginTime="0:0:0" Duration="0:0:0.3"
+                                            BeginTime="0:0:0" 
+                                            Duration="0:0:0.3"
                                             From="1.0" To="0.0"
                                             RepeatBehavior="3x"
                                             AutoReverse="True" />
@@ -46,6 +48,7 @@
                 </Style>
             </ProgressBar.Style>
         </smoothBar:SmoothProgressBar>
+
         <smoothBar:SmoothProgressBar x:Name="EnemyHp" Height="30" Width="390" Minimum="0" Maximum="1000" Value="1" Foreground="Green" ValueChanged="EnemyHP_ValueChanged" Tag="ShouldNotBlink" Panel.ZIndex="3" Margin="10,114,592,646">
             <ProgressBar.Style>
                 <Style>
@@ -57,7 +60,8 @@
                                         <DoubleAnimation
                                             Storyboard.Target="{Binding Source={x:Reference ImgEnemyPokemon}}"
                                             Storyboard.TargetProperty="(Image.Opacity)"
-                                            BeginTime="0:0:0" Duration="0:0:0.3"
+                                            BeginTime="0:0:0" 
+                                            Duration="0:0:0.3"
                                             From="1.0" To="0.0"
                                             RepeatBehavior="3x"
                                             AutoReverse="True" />
@@ -70,20 +74,71 @@
             </ProgressBar.Style>
         </smoothBar:SmoothProgressBar>
 
-        <Button x:Name="Stab" Content="StabAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="232"
-                Height="60" Click="Stab_Click" Margin="743,651,0,0" FontFamily="Impact" FontSize="24"
-                BorderBrush="Black" BorderThickness="3" IsEnabled="False" />
-        <Button x:Name="Normal" Content="NormalAttack" HorizontalAlignment="Left" VerticalAlignment="Top" Width="232"
-                Height="60" Click="Normal_Click" Margin="743,585,0,0" FontFamily="Impact" FontSize="24"
-                BorderBrush="White" BorderThickness="3" IsEnabled="False" />
+        <Button x:Name="Stab" 
+                Content="StabAttack" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="232"
+                Height="60"
+                Click="Stab_Click" 
+                Margin="743,651,0,0" 
+                FontFamily="Impact" 
+                FontSize="24"
+                BorderBrush="Black" 
+                BorderThickness="3" 
+                IsEnabled="False" />
 
-        <TextBlock x:Name="TxtPlayerPokemon" HorizontalAlignment="Left" Margin="585,463,0,0" TextWrapping="Wrap"
-                   VerticalAlignment="Top" Height="39" Width="390" OpacityMask="Black" FontFamily="Impact"
-                   FontSize="36" Text="Your Pokemon" />
-        <TextBlock x:Name="TxtEnemyPokemon" HorizontalAlignment="Left" Margin="10,76,0,0" TextWrapping="Wrap"
-                   VerticalAlignment="Top" Height="39" Width="390" OpacityMask="Black" FontFamily="Impact"
-                   FontSize="36" Text="Enemy Pokemon" />
-        <TextBlock x:Name="Narrator" HorizontalAlignment="Left" Margin="26,717,0,0" TextWrapping="Wrap"
-                   VerticalAlignment="Top" Height="73" Width="966" Foreground="White" FontSize="45" FontFamily="Impact" />
+        <Button x:Name="Normal" 
+                Content="NormalAttack" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="232"
+                Height="60" 
+                Click="Normal_Click" 
+                Margin="743,585,0,0" 
+                FontFamily="Impact" 
+                FontSize="24"
+                BorderBrush="White" 
+                BorderThickness="3" 
+                IsEnabled="False" />
+
+        <TextBlock x:Name="TxtPlayerPokemon" 
+                   Foreground="WhiteSmoke"
+                   HorizontalAlignment="Left" 
+                   Margin="585,460,0,0" 
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top" 
+                   Height="43" 
+                   Width="390" 
+                   OpacityMask="Black" 
+                   FontFamily="Impact"
+                   FontSize="36" Text="Your Pokemon">
+            <TextBlock.Effect>
+                <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="1" BlurRadius="1"/>
+            </TextBlock.Effect>
+        </TextBlock>
+
+        <TextBlock x:Name="TxtEnemyPokemon"
+                   Foreground="WhiteSmoke"
+                   HorizontalAlignment="Left" 
+                   Margin="10,72,0,0" 
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top" 
+                   Height="43" 
+                   Width="390" 
+                   OpacityMask="Black" 
+                   FontFamily="Impact"
+                   FontSize="36" 
+                   Text="Enemy Pokemon">
+            <TextBlock.Effect>
+                <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="1" BlurRadius="1"/>
+            </TextBlock.Effect>
+        </TextBlock>
+
+        <TextBlock x:Name="Narrator" HorizontalAlignment="Left" Margin="26,717,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="73" Width="966" Foreground="WhiteSmoke" FontSize="45" FontFamily="Impact">
+            <TextBlock.Effect>
+                <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="1" BlurRadius="1"/>
+            </TextBlock.Effect>
+        </TextBlock>
     </Grid>
 </Window>

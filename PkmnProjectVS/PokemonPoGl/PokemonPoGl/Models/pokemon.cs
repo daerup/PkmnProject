@@ -27,9 +27,6 @@ namespace PokemonPoGl
 
         [SuppressMessage("ReSharper", "ArrangeThisQualifier")]
 
-        public Pokemon()
-        {
-        }
         public Pokemon(Types type, string name, Thickness backSideMargin, Thickness frontSideMargin)
         {
             this.Name = name;

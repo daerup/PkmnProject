@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Media;
 using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Input;
 using WpfAnimatedGif;
 
@@ -13,9 +11,9 @@ namespace PokemonPoGl
     /// </summary>
     public partial class CharSelectView
     {
-        private List<Pokemon> allPokemon = JsonSerialization.ReadFromJsonFile<List<Pokemon>>(@"../../res/json/Pokemon.json");
+        private readonly List<Pokemon> allPokemon = JsonSerialization.ReadFromJsonFile<List<Pokemon>>(@"../../res/json/Pokemon.json");
         public Pokemon Groudon = GameSettings.Groudon;
-        SoundPlayer titleMusic = new SoundPlayer(@"../../res/music/titleMusic.wav");
+        readonly SoundPlayer titleMusic = new SoundPlayer(@"../../res/music/titleMusic.wav");
         private int index;
 
         public int Index
@@ -36,14 +34,14 @@ namespace PokemonPoGl
         }
         public CharSelectView()
         {
-            InitializeComponent();
-            AddGroudon();
+            this.InitializeComponent();
+            this.AddGroudon();
             this.titleMusic.PlayLooping();
 
             this.Index = 0;
 
-            UpdateName();
-            UpdateImage();
+            this.UpdateName();
+            this.UpdateImage();
         }
 
         private void AddGroudon()
@@ -59,15 +57,15 @@ namespace PokemonPoGl
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Index--;
-            UpdateName();
-            UpdateImage();
+            this.UpdateName();
+            this.UpdateImage();
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
             this.Index++;
-            UpdateName();
-            UpdateImage();
+            this.UpdateName();
+            this.UpdateImage();
         }
 
         private void UpdateImage()
@@ -77,17 +75,17 @@ namespace PokemonPoGl
 
         private void UpdateName()
         {
-            PokemonName.Content = this.allPokemon[this.index].Name;
+            this.PokemonName.Content = this.allPokemon[this.index].Name;
         }
-        private void KeyPressed(object sender, System.Windows.Input.KeyEventArgs e)
+        private void KeyPressed(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Right)
             {
-                Next_Click(null, null);
+                this.Next_Click(null, null);
             }
             else if(e.Key == Key.Left)
             {
-                Back_Click(null, null);
+                this.Back_Click(null, null);
             }
         }
 
@@ -95,7 +93,7 @@ namespace PokemonPoGl
         {
             this.titleMusic.Stop();
 
-            if (this.HardMode.IsChecked == true)
+            if (this.HardModeControl.IsChecked == true)
             {
                 GameSettings.Hardmode = true;
             }
@@ -107,7 +105,7 @@ namespace PokemonPoGl
             GameSettings.ChoosenPokemon = this.allPokemon[this.index].Name;
             MainWindowView mainWindowView = new MainWindowView(){DataContext = new MainWindowViewModel()};
             mainWindowView.Show();
-            Close();
+            this.Close();
         }
     }
 }
