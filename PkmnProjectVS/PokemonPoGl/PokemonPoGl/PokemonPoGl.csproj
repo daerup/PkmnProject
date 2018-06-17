@@ -80,6 +80,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HelpWindowView.xaml.cs">
+      <DependentUpon>HelpWindowView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Attack.cs" />
     <Compile Include="CharSelectView.xaml.cs">
       <DependentUpon>CharSelectView.xaml</DependentUpon>
@@ -101,6 +104,10 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Models\Types.cs" />
     <Page Include="CharSelectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,6 +151,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -169,6 +177,7 @@
     <Resource Include="res\stage\stars.png" />
     <Resource Include="res\stage\headLogo.png" />
     <Resource Include="res\icon\icon.ico" />
+    <Resource Include="res\images\helpWindow.png" />
     <Content Include="res\music\battleMusic.wav" />
     <Content Include="res\music\hitSound.wav" />
     <Content Include="res\music\titleMusic.wav" />

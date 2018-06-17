@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\App.xaml
-4857248728
+51345791635
 4-1511149010
-241785446538
+25-1711661068
 181543744632
-CharSelectView.xaml;Views\HelpView.xaml;Views\GameModeView.xaml;MainWindowView.xaml;
+CharSelectView.xaml;HelpWindowView.xaml;Views\HelpView.xaml;Views\GameModeView.xaml;MainWindowView.xaml;
 
-False
+True
 

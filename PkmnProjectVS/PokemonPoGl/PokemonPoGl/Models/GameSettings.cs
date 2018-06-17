@@ -5,6 +5,7 @@ namespace PokemonPoGl
 {
     public class GameSettings
     {
+        public static bool HelpIsOpen { get; set; }
         public static string ChoosenPokemon { get; set; }
         public static bool Won { get; set; }
         public static bool Hardmode { get; set; }

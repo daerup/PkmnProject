@@ -31,5 +31,15 @@ namespace PokemonPoGl
         {
             this.Help.Effect = null;
         }
+
+        private void Help_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (GameSettings.HelpIsOpen == false)
+            {
+                HelpWindowView helpWindowView = new HelpWindowView();
+                helpWindowView.Show();
+                GameSettings.HelpIsOpen = true;
+            }
+        }
     }
 }

@@ -8,6 +8,6 @@
              xmlns:cmd ="http://www.galasoft.ch/mvvmlight">
 
     <Grid>
-        <Label Name="Help" Content="?" FontFamily="Cooper Black" FontSize="58" Foreground="White" HorizontalAlignment="Right" MouseEnter="Help_OnMouseEnter" MouseLeave="Help_OnMouseLeave"/>
+        <Label Name="Help" Content="?" FontFamily="Cooper Black" FontSize="58" Foreground="White" HorizontalAlignment="Right" MouseDown="Help_OnMouseDown" MouseEnter="Help_OnMouseEnter" MouseLeave="Help_OnMouseLeave"/>
     </Grid>
 </UserControl>
