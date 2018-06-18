@@ -169,3 +169,6 @@ H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\Pokemo
 H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.exe
 H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.pdb
 H:\Bilder\Bibliothek\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csprojResolveAssemblyReference.cache
+C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\PokemonPoGl.csprojResolveAssemblyReference.cache
+C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\HelpWindowView.baml
+C:\Users\darioportmann\Documents\Visual Studio 2017\Pokemon\PkmnProjectVS\PokemonPoGl\PokemonPoGl\obj\Debug\HelpWindowView.g.cs
